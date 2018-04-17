@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="interflow:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="interflow.war">
+      <element id="artifact" artifact-name="interflow:war exploded" />
+    </root>
+  </artifact>
+</component>
