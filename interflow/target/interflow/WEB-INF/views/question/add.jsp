@@ -28,29 +28,63 @@
 </head>
 <body>
 <jsp:include page="../header.jsp"></jsp:include>
-<form class="">
-    <div class="container">
 
-        <label>标题:</label>
-        <input type="text" class="form-control" id="title" placeholder="">
+<div class="container" style="margin-top: 80px">
 
-    </div>
-    <div class="container">
-        <textarea id="mul_input" name="content" style="width:700px;height:200px;">KindEditor</textarea>
+    <div class="col-sm-8">
+        <div class="container">
+            当前版块位置：<a href="/interflow/question/index?fid=${forum.fid}">${forum.title}></a>
+            <input type="hidden" id="forumid" value="${forum.fid}">
 
+        </div>
+        <div class="container">
+
+            <label>标题:</label>
+            <input type="text" class="form-control" id="title" placeholder="">
+
+        </div>
+        <div class="container">
+            <textarea id="mul_input" name="content" style="width:700px;height:200px;"></textarea>
+
+        </div>
+        <div class="container">
+            <button id="sub">立即发布</button>
+        </div>
     </div>
-    <div class="container">
-    <button id="sub">立即发布</button>
-    </div>
-</form>
+</div>
+
 <jsp:include page="../footer.jsp"></jsp:include>
 </body>
 <script>
     $(function () {
         $("#sub").click(function () {
+            var title = document.getElementById("title").value;
             editor.sync();//将KindEditor的数据同步到textarea标签。
             var value_content = $("#mul_input").val();
-            alert(value_content)
+            var loginid = document.getElementById("loginid").value;
+            var fid = document.getElementById("forumid").value;
+            $.ajax({
+                type: "post",
+                url: "/interflow/question/addQuestion",
+                dataType: "text",
+                data: {
+                    "title": title,
+                    "value_content": value_content,
+                    "loginid": loginid,
+                    "fid": fid
+                },
+                success: function (Result) {
+
+                    var dataObj = JSON.parse(Result);
+                    if (dataObj.Status) {
+                        alert("发表成功");
+                        location.reload();
+                    } else {
+                        $("#error").text("网络异常！");
+                    }
+                }
+
+            });
         });
     });
 

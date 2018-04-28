@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="pw.lumm.dao.AnsewerMapper" >
+    <insert id="addAnswer"  parameterType="pw.lumm.model.Answer" >
+        insert into answer (aid, uid, qid, content, time, username) values (#{aid}, #{uid}, #{qid},#{content},#{time,jdbcType=TIMESTAMP},#{username})
+    </insert>
+    <insert id="addAnswerToUser"  parameterType="pw.lumm.model.Answer" >
+        insert into answer
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="aid != null" >
+                aid,
+            </if>
+            <if test="content != null" >
+                content,
+            </if>
+            <if test="supportCnt != null" >
+                supportCnt,
+            </if>
+            <if test="opposeCnt != null" >
+                opposeCnt,
+            </if>
+            <if test="answerTo != null" >
+                answerTo,
+            </if>
+            <if test="time != null" >
+                time,
+            </if>
+            <if test="uid != null" >
+                uid,
+            </if>
+            <if test="accept != null" >
+                accept,
+            </if>
+            <if test="qid != null" >
+                qid,
+            </if>
+            <if test="username != null" >
+                username,
+            </if>
+
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="aid != null" >
+                #{aid,jdbcType=VARCHAR},
+            </if>
+            <if test="content != null" >
+                #{content,jdbcType=VARCHAR},
+            </if>
+            <if test="supportCnt != null" >
+                #{supportCnt,jdbcType=VARCHAR},
+            </if>
+            <if test="opposeCnt != null" >
+                #{opposeCnt,jdbcType=VARCHAR},
+            </if>
+            <if test="answerTo != null" >
+                #{answerTo,jdbcType=VARCHAR},
+            </if>
+            <if test="time != null" >
+                #{time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="uid != null" >
+                #{uid,jdbcType=VARCHAR},
+            </if>
+            <if test="accept != null">
+                #{accept,jdbcType=VARCHAR},
+            </if>
+            <if test="qid != null" >
+                #{qid,jdbcType=VARCHAR},
+            </if>
+
+            <if test="username != null" >
+                #{username,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+</mapper>

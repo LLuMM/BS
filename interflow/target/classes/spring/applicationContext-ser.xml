@@ -8,4 +8,11 @@
 
     <!-- 配置Service扫描 -->
     <context:component-scan base-package="pw.lumm.service" />
+    <context:component-scan base-package="pw.lumm.utils.listeners"/>
+    <bean name="newsService" class="pw.lumm.service.impl.NewsServiceImpl"></bean>
+    <bean name="questionService" class="pw.lumm.service.impl.QuestionServiceImpl"></bean>
+    <bean name="messageService" class="pw.lumm.service.impl.MessageServiceImpl"></bean>
+    <bean name="forumService" class="pw.lumm.service.impl.ForumServiceImpl"></bean>
+    <bean name="answerServer" class="pw.lumm.service.impl.AnswerServerImpl"></bean>
+
 </beans>

@@ -23,6 +23,15 @@ public class User {
     private String userinfo;
     private int userhidden;
     private int userviews;
+    private int privilege;
+
+    public int getPrivilege() {
+        return privilege;
+    }
+
+    public void setPrivilege(int privilege) {
+        this.privilege = privilege;
+    }
 
     public String getUid() {
         return uid;

@@ -13,7 +13,7 @@
     <div class="card" >
         <div class="card-footer">
             <center>
-            <p>2018 © <a href="/">lumm.pw</a> 在线交流平台 </p>
+            <p>2018 © <a href="/">lumm.pw</a>社区交流</p>
 
             <p>
                 <a href="mailto:yubaolee@163.com">商务合作</a>

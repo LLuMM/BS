@@ -11,4 +11,9 @@ public interface UserMapper {
     void insertUser(User user);
 
     List<User> getByNameAndPwd(String username, String password);
+    List<User> getAllUserByForum();
+
+    User getUserById(String id);
+
+    void setUserPrivilege(String id, int status);
 }

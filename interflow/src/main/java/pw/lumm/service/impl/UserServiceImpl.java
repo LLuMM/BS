@@ -30,7 +30,6 @@ public class UserServiceImpl implements UserService {
             String pwd = MD5.Encode(user.getPassword());
             user.setPassword(pwd);
             userMapper.insertUser(user);
-            System.out.println(user.getUsername());
             return "success";
         }catch (Exception e){
             e.printStackTrace();
@@ -49,5 +48,22 @@ public class UserServiceImpl implements UserService {
             return list.get(0);
         else
             return null;
+    }
+
+    @Override
+    public List<User> getAllUserByForum() {
+        List<User> users = userMapper.getAllUserByForum();
+        return users;
+    }
+
+    @Override
+    public User getUserById(String id) {
+       User user = userMapper.getUserById(id);
+        return user;
+    }
+
+    @Override
+    public void setUserPrivilege(String id, int status) {
+        userMapper.setUserPrivilege(id,status);
     }
 }

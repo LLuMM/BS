@@ -17,6 +17,9 @@ http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
+    <listener>
+        <listener-class>pw.lumm.utils.listeners.NewsListener</listener-class>
+    </listener>
 
     <!-- 配置过滤器，解决post的乱码问题 -->
     <filter>

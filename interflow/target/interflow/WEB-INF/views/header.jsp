@@ -15,7 +15,7 @@
 <script src="${pageContext.request.contextPath}/resources/bootstrap/js/bootstrap.min.js"></script>
 
 
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark navbar-dark fixed-top" >
     <div class="container">
         <div class="col-sm-2 ">
             <!-- Brand/logo -->
@@ -28,26 +28,25 @@
             <ul class="navbar-nav">
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#">热点新闻&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                    <a class="nav-link" href="/interflow/new/index?type=0">热点新闻&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">技术专区&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                    <a class="nav-link" href="/interflow/new/index?type=1">技术专区&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">情感专区&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                    <a class="nav-link" href="/interflow/new/index?type=2">情感专区&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
                 </li>
             </ul>
         </div>
         <div class="col-sm-2">
-
-
-            <%--<c:if test="${user.username} != null">--%>
-                <span  style="color: #ffffff"> 嗨！<a href="/interflow/user/userinfo">${user.username}</a>&nbsp;|<a
-                        href="/interflow/user/loginout" id="quit" style="color: #ffffff">退出&nbsp;</a>&nbsp;|</span>&nbsp;
-            <%--</c:if>--%>
-
+            <c:if test="${user !=null&&user !=''}">
+                <input type="hidden" id="loginid" value="${user.uid}">
+                <span style="color: #ffffff"> 嗨！<a href="/interflow/user/userindex?uid=${user.uid}">${user.username}</a></span>&nbsp;|<span id="quit" style="color: #ffffff">退出&nbsp;</span>&nbsp;|&nbsp;
+            </c:if>
+            <c:if test="${user ==null|| user ==''}">
+                <input type="hidden" id="loginid" value="">
                 <span data-toggle="modal" data-target="#login" style="color: #ffffff">登陆&nbsp;|&nbsp;</span>
-
+            </c:if>
             <a style="color: #ffffff" href="/interflow/user/toregister">注册</a>
 
         </div>
@@ -61,12 +60,13 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                    &times;
-                </button>
                 <h4 class="modal-title" id="myModalLabel">
                     登陆
                 </h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+
             </div>
             <div class="modal-body">
                 <form>
@@ -122,9 +122,15 @@
                 success: function (Result) {
 
                     var dataObj = JSON.parse(Result);
+
                     if (dataObj.Status) {
                         alert("登陆成功!");
-                        window.location.href = "/interflow/index";
+                        if (dataObj.user == '1'){
+                            window.location.href='/interflow/user/toadmin';
+                        }else {
+                            location.reload();
+                        }
+
                     } else {
                         $("#error").text("用户名或密码有误！请重新填写！");
                     }
@@ -133,6 +139,31 @@
             });
 
         });
+        $("#quit").click(function () {
+            var test = window.location.href;
+            var loginid = document.getElementById("loginid").value;
+            alert("退出?");
+            $.ajax({
+                type: "get",
+                url: "/interflow/user/loginout",
+                success: function (Result) {
+                    var dataObj = JSON.parse(Result);
+
+                    if (dataObj.Status) {
+                        if(test=="http://localhost:8080/interflow/user/toadmin" || test=="http://localhost:8080/interflow/user/userinfo?uid="+loginid){
+                            window.location.href='/interflow/index';
+                        }else {
+                        location.reload();
+                        }
+                    } else {
+                        $("#error").text("用户名或密码有误！请重新填写！");
+                    }
+                }
+
+            });
+
+        });
+
 
     });
 
