@@ -13,17 +13,14 @@
 </head>
 <body>
 <jsp:include page="../header.jsp"/>
-<div class="container"  style="margin-top: 80px">
+<div class="container"  style="margin-top: 100px">
 
     <div class="row">
         <div class="col-sm-2">
             <button id="upquestion" type="button" class="btn btn-primary" style="margin-left: 5px">发表新帖</button>
         </div>
         <div class="col-sm-6"></div>
-        <form class="form-inline col-sm-4">
-            <input type="text" class="form-control" id="keyword" placeholder="输入关键字">
-            <button type="submit" class="btn btn-primary" style="margin-left: 10px">搜索</button>
-        </form>
+
 
     </div>
 </div>
@@ -37,14 +34,15 @@
                         <div class="card-body">
                             <div class="container">
                                 <div class="row">
-                                    <div class="col-sm-1">${question.uname}</div>
+                                    <div class="col-sm-1"><a class="nav-link" href="/user/userinfo?uid=${question.userid}&who=">
+                                            ${question.uname}</a></div>
                                     <div class="col-sm-11">
-                                        <a href="/interflow/question/detail?id=${question.id}"
+                                        <a href="/question/detail?id=${question.id}"
                                         >${question.title}</a><br>
                                         <span>${question.time}</span>&nbsp;&nbsp;
                                         <span>浏览量：${question.hits}</span>
-                                        <button style="margin-left: 10px" class="badge badge-pill badge-primary">置顶</button>
-                                        <button class="badge badge-pill badge-danger" >置精</button>
+                                        <button style="margin-left: 10px" class="badge badge-pill badge-primary" value="${question.id}" onclick="setTop(this)">置顶</button>
+                                        <button class="badge badge-pill badge-danger" value="${question.id}" onclick="setFine(this)">置精</button>
                                     </div>
                                 </div>
 
@@ -53,7 +51,7 @@
                     </div>
                 </c:forEach>
             </c:if>
-            <c:if test="${forumExample.questions == null}">
+            <c:if test="${forumExample.questions.size()==0}">
                 <p>暂无数据！</p>
             </c:if>
         </div>
@@ -79,13 +77,56 @@
             if ("" == loginid) {
                 alert("请先登录！");
             } else {
-                window.location.href = "/interflow/question/add?id=${forumExample.forum.fid}";
+                window.location.href = "/question/add?id=${forumExample.forum.fid}";
             }
 
         });
 
     });
+    function setTop(event){
+        var id = event.value;
+        $.ajax({
+            type: "post",
+            url: "/question/setTop",
+            dataType: "text",
+            data: {
+                "id":id,
+                "status":1
+            },
+            success: function (Result) {
+                var dataObj = JSON.parse(Result);
+                if (dataObj.Status) {
+                    alert("设置成功!");
+                    location.reload();
+                } else {
+                    $("#error").text("网络异常！");
+                }
+            }
 
+        });
+    }
+    function setFine(event){
+        var id = event.value;
+        $.ajax({
+            type: "post",
+            url: "/question/setFine",
+            dataType: "text",
+            data: {
+                "id":id,
+                "status":1
+            },
+            success: function (Result) {
+                var dataObj = JSON.parse(Result);
+                if (dataObj.Status) {
+                    alert("设置成功!");
+                    location.reload();
+                } else {
+                    $("#error").text("网络异常！");
+                }
+            }
+
+        });
+    }
 
 </script>
 </html>

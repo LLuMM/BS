@@ -12,6 +12,14 @@ public class Msg {
     private String toname;
     private Date time;
     private String fid;
+    private int readstatus;
+    public int getReadstatus() {
+        return readstatus;
+    }
+
+    public void setReadstatus(int readstatus) {
+        this.readstatus = readstatus;
+    }
 
     @Override
     public String toString() {

@@ -19,35 +19,44 @@
     <div class="container">
         <div class="col-sm-2 ">
             <!-- Brand/logo -->
-            <a class="navbar-brand" href="/interflow/index/">
+            <a class="navbar-brand" href="/index/">
                 <img src="../img/Logo.jpg" style="width:100px;height: 40px">
             </a>
         </div>
         <!-- Links -->
-        <div class="col-sm-8 ">
+        <div class="col-sm-6">
             <ul class="navbar-nav">
-
                 <li class="nav-item">
-                    <a class="nav-link" href="/interflow/new/index?type=0">热点新闻&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                    <a class="nav-link" href="/new/index?type=0">热点新闻&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/interflow/new/index?type=1">技术专区&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                    <a class="nav-link" href="/new/index?type=1">技术专区&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/interflow/new/index?type=2">情感专区&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                    <a class="nav-link" href="/new/index?type=2">情感专区&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/new/index?type=3">讨论区&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
                 </li>
             </ul>
         </div>
+        <div class="col-sm-4">
+            <form class="form-inline" style="margin-top: 15px">
+                <input class="form-control" type="text" placeholder="Search">
+                <button class="btn btn-primary" type="button">Search</button>
+            </form>
+        </div>
+
         <div class="col-sm-2">
             <c:if test="${user !=null&&user !=''}">
                 <input type="hidden" id="loginid" value="${user.uid}">
-                <span style="color: #ffffff"> 嗨！<a href="/interflow/user/userindex?uid=${user.uid}">${user.username}</a></span>&nbsp;|<span id="quit" style="color: #ffffff">退出&nbsp;</span>&nbsp;|&nbsp;
+                <span style="color: #ffffff"> 嗨！<a href="/user/userindex?uid=${user.uid}">${user.username}</a></span>&nbsp;|<span id="quit" style="color: #ffffff">退出&nbsp;</span>&nbsp;|&nbsp;
             </c:if>
             <c:if test="${user ==null|| user ==''}">
                 <input type="hidden" id="loginid" value="">
                 <span data-toggle="modal" data-target="#login" style="color: #ffffff">登陆&nbsp;|&nbsp;</span>
             </c:if>
-            <a style="color: #ffffff" href="/interflow/user/toregister">注册</a>
+            <a style="color: #ffffff" href="/user/toregister">注册</a>
 
         </div>
 
@@ -89,22 +98,13 @@
                     <button type="button" id="but" class="btn btn-primary">登陆</button>
                 </form>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">关闭
-                </button>
-                <button type="button" class="btn btn-primary">
-                    提交更改
-                </button>
-            </div>
+
         </div>
         <!-- /.modal-content -->
     </div>
     <!-- /.modal -->
 </div>
-
-
 <script>
-
     $(function () {
 
         $("#but").click(function () {
@@ -113,24 +113,20 @@
             var password = document.getElementById("password").value;
             $.ajax({
                 type: "post",
-                url: "/interflow/user/login",
+                url: "/user/login",
                 dataType: "text",
                 data: {
                     "username": username,
                     "password": password
                 },
                 success: function (Result) {
-
                     var dataObj = JSON.parse(Result);
-
                     if (dataObj.Status) {
-                        alert("登陆成功!");
                         if (dataObj.user == '1'){
-                            window.location.href='/interflow/user/toadmin';
+                            window.location.href='/user/toadmin';
                         }else {
                             location.reload();
                         }
-
                     } else {
                         $("#error").text("用户名或密码有误！请重新填写！");
                     }
@@ -145,18 +141,16 @@
             alert("退出?");
             $.ajax({
                 type: "get",
-                url: "/interflow/user/loginout",
+                url: "/user/loginout",
                 success: function (Result) {
                     var dataObj = JSON.parse(Result);
 
                     if (dataObj.Status) {
-                        if(test=="http://localhost:8080/interflow/user/toadmin" || test=="http://localhost:8080/interflow/user/userinfo?uid="+loginid){
-                            window.location.href='/interflow/index';
+                        if(test=="http://localhost:8080/user/toadmin" || test=="http://localhost:8080/user/userinfo?uid="+loginid){
+                            window.location.href='/index';
                         }else {
                         location.reload();
                         }
-                    } else {
-                        $("#error").text("用户名或密码有误！请重新填写！");
                     }
                 }
 

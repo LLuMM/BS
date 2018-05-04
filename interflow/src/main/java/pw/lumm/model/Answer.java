@@ -24,6 +24,24 @@ public class Answer {
     private String accept;
     private String qid;
     private String username;
+    private String toid;
+    private String questionTitle;
+
+    public String getQuestionTitle() {
+        return questionTitle;
+    }
+
+    public void setQuestionTitle(String questionTitle) {
+        this.questionTitle = questionTitle;
+    }
+
+    public String getToid() {
+        return toid;
+    }
+
+    public void setToid(String toid) {
+        this.toid = toid;
+    }
 
     public String getQid() {
         return qid;

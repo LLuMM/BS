@@ -16,12 +16,13 @@
 <body>
 <jsp:include page="../header.jsp"/>
 
-<div class="container"  style="margin-top: 80px">
+<div class="container"  style="margin-top: 100px">
 <c:if test="${newsExample != null}">
 <%--版块列表--%>
     <div class="row">
     <c:forEach items="${newsExample.forums}" var="forum" >
-        <span class="badge badge-primary" style="width: 100px;height: 20px;margin-left: 20px"><a href="/interflow/question/index?fid=${forum.fid}" style="color: white" >${forum.title}</a></span>
+        <span class="badge badge-primary" ><a href="/question/index?fid=${forum.fid}" style="color: white" >${forum.title}</a> <br> ${forum.content}</span>
+
     </c:forEach>
     </div>
 </c:if>
@@ -46,7 +47,7 @@
                                         </c:if>
                                     </div>
                                     <div class="col-sm-11">
-                                         <a href="/interflow/new/detail?n_id=${ns.n_id}"
+                                         <a href="/new/detail?n_id=${ns.n_id}"
                                                   >${ns.title}</a><br>
                                         <span>${ns.date}</span>
                                     </div>
@@ -80,24 +81,8 @@
             if ("" == loginid){
                 alert("请先登录！");
             } else {
-                window.location.href = "/interflow/question/add";
+                window.location.href = "/question/add";
             }
-           /* $.ajax({
-                type: "get",
-                url: "/interflow/user/check",
-                success: function (Result) {
-                    var dataObj = JSON.parse(Result);
-                    if (dataObj.Status) {
-                        alert("跳转了");
-                        window.location.href = "/interflow/question/add";
-                    }
-                    else {
-                        alert("亲，请先登录！");
-                    }
-                }
-
-            });
-*/
         });
 
     });

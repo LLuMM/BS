@@ -8,11 +8,8 @@ import java.util.Date;
 public class User {
     private String uid;
     private String username;
-    private String showname;
     private String password;
     private String email;
-    private String sex;
-    private String uwork;
     private int post;
     private String sign;
     private String face;
@@ -24,6 +21,24 @@ public class User {
     private int userhidden;
     private int userviews;
     private int privilege;
+    private int visits;
+    private String phone;
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public int getVisits() {
+        return visits;
+    }
+
+    public void setVisits(int visits) {
+        this.visits = visits;
+    }
 
     public int getPrivilege() {
         return privilege;
@@ -49,13 +64,6 @@ public class User {
         this.username = username;
     }
 
-    public String getShowname() {
-        return showname;
-    }
-
-    public void setShowname(String showname) {
-        this.showname = showname;
-    }
 
     public String getPassword() {
         return password;
@@ -71,23 +79,6 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getSex() {
-        return sex;
-    }
-
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
-
-
-    public String getUwork() {
-        return uwork;
-    }
-
-    public void setUwork(String uwork) {
-        this.uwork = uwork;
     }
 
     public int getPost() {

@@ -3,16 +3,9 @@ package pw.lumm.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
-import pw.lumm.dao.ForumMapper;
-import pw.lumm.dao.MessageMapper;
 import pw.lumm.dao.QuestionMapper;
-import pw.lumm.dao.UserMapper;
 import pw.lumm.model.*;
-import pw.lumm.service.inf.ForumService;
-import pw.lumm.service.inf.MessageService;
-import pw.lumm.service.inf.QuestionService;
-import pw.lumm.service.inf.UserService;
-import sun.plugin2.message.Message;
+import pw.lumm.service.inf.*;
 
 import java.util.Date;
 import java.util.List;
@@ -28,28 +21,25 @@ public class QuestionServiceImpl implements QuestionService {
     UserService userService;
     @Autowired
     MessageService messageService;
+    @Autowired
+    AnsewerServer ansewerServer;
 
-    @Override
-    public List<Forum> getForum(int type, int status) {
-        List<Forum> forumList = questionMapper.getForum(type, status);
-        return forumList;
-    }
 
-    @Override
-    public Forum getForumById(String id) {
-         Forum forum= forumService.getFourmById(id);
-        return forum;
+    String MSG_CONTENT = "您发布的文章被版主禁用，请联系版主！";
 
-    }
+
+
+
+
     @Override
     public List<Question> getQuestionByForunmId(String id) {
         List<Question> questions = questionMapper.getQuestionByForunmId(id);
         return questions;
-
     }
+
     @Override
     public void addForum(String loginid, int type, String ftitle, String fcontent) {
-        Forum forum =new Forum();
+        Forum forum = new Forum();
         Msg msg = new Msg();
         String id = UUID.randomUUID().toString();
         forum.setFid(id);
@@ -62,30 +52,33 @@ public class QuestionServiceImpl implements QuestionService {
 
         User user = userService.getUserById(loginid);
         msg.setId(UUID.randomUUID().toString());
-        msg.setFromname("申请人:"+user.getUsername());
+        msg.setFromname("申请人:" + user.getUsername());
         msg.setFid(id);
         msg.setFromid(loginid);
-        msg.setContent("申请版块："+ ftitle);
+        msg.setTitle("申请版块：" + ftitle);
+        msg.setContent(fcontent);
+        msg.setToname("admin");
         msg.setToid("2abe95d2-fa87-4af0-8e3b-b1ca70b9e7b7");
         msg.setTime(new Date());
         messageService.addMessage(msg);
         forumService.addForum(forum);
     }
 
-    @RequestMapping("/setForumStatus")
-    public void setForumStatus(String id,int type){
-        forumService.setForumStatus(id,type);
-
+    @Override
+    public void setForumStatus(String id, int type) {
+        forumService.setForumStatus(id, type);
+        Msg msg = new Msg();
+        msg.setFromid(id);
+        messageService.setMessasgeStatus(msg);
         Forum forum = forumService.getFourmById(id);
-        userService.setUserPrivilege(forum.getUid(),type);
+        userService.setUserPrivilege(forum.getUid(), type);
 
     }
 
     @Override
-    public void addQuestion(String loginid,  String fid, String title, String value_content) {
+    public void addQuestion(String loginid, String fid, String title, String value_content) {
         User user = userService.getUserById(loginid);
-        System.out.println(user.getUsername());
-        Question question =new Question();
+        Question question = new Question();
         question.setId(UUID.randomUUID().toString());
         question.setUserid(loginid);
         question.setFid(fid);
@@ -96,13 +89,14 @@ public class QuestionServiceImpl implements QuestionService {
         questionMapper.addQuestion(question);
     }
 
+
     @Override
     public Question getQuestionById(String id) {
         Question question = questionMapper.getQuestionById(id);
         int hit = question.getHits();
         ++hit;
         question.setHits(hit);
-        questionMapper.setHitById(id,hit);
+        questionMapper.setHitById(id, hit);
 
         return question;
     }
@@ -110,6 +104,51 @@ public class QuestionServiceImpl implements QuestionService {
     @Override
     public List<Answer> getAnswerByQid(String id) {
         List<Answer> answers = questionMapper.getAnswerByQid(id);
-        return answers;
+        if (answers != null && answers.size() > 0)
+            return answers;
+        else
+            return null;
+
     }
+
+    @Override
+    public void setTop(String id, int status) {
+        questionMapper.setTop(id, status);
+    }
+
+    @Override
+    public void setStatus(String id, int status) {
+        Question question = questionMapper.getQuestionById(id);
+        User user = userService.getUserById(question.getUserid());
+        Forum forum = forumService.getFourmById(question.getFid());
+        User fromUser = userService.getUserById(forum.getUid());
+        Msg msg = new Msg();
+        String mid = UUID.randomUUID().toString();
+        msg.setId(mid);
+        msg.setContent(MSG_CONTENT);
+        msg.setTime(new Date());
+        msg.setFromid(fromUser.getUid());
+        msg.setFromname(fromUser.getUsername());
+        msg.setToid(user.getUid());
+        msg.setToname(user.getUsername());
+        messageService.addMessage(msg);
+        questionMapper.setStatus(id, status);
+    }
+
+    @Override
+    public List<Question> getQuestionByUserId(String uid) {
+        List<Question> questions = questionMapper.getQuestionByUserId(uid);
+        if (questions != null && questions.size() > 0)
+            return questions;
+        else
+            return null;
+    }
+
+    @Override
+    public void deleteByQid(String id) {
+        questionMapper.deleteQuestionById(id);
+        ansewerServer.deleteByQid(id);
+    }
+
+
 }

@@ -2,9 +2,12 @@ package pw.lumm.dao;
 
 import pw.lumm.model.Answer;
 
+import java.util.List;
+
 public interface AnsewerMapper {
 
-    public void addAnswer(Answer answer);
-
-    void addAnswerToUser(Answer answer);
+    void addAnswer(Answer answer);
+    List<Answer> getAnswerByUserId(String uid);
+    List<Answer> getAnswerByNewId(String n_id);
+    void deleteByQid(String id);
 }

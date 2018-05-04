@@ -1,15 +1,19 @@
 package pw.lumm.service.inf;
 
 import pw.lumm.model.News;
-import pw.lumm.model.NsNewsExample;
-import pw.lumm.model.User;
+import pw.lumm.model.NsNews;
 
 import java.util.List;
 
 public interface NewsService {
 
-    public List<News> getHotNews(int type, int limi);
-    public NsNewsExample getNewsDetail(String n_id);
-    public int addAnswer(String uid, String nsid, String content,String username);
+     /*获取热门信息
+     * */
+     List<News> getHotNews(int type, int limi);
+
+     /*获取新闻具体信息
+     * */
+     NsNews getNewsDetail(String n_id);
+
 
 }

@@ -4,9 +4,9 @@
          xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee
 http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
     <display-name>interflow</display-name>
-    <welcome-file-list>
+    <!--<welcome-file-list>
         <welcome-file>index</welcome-file>
-    </welcome-file-list>
+    </welcome-file-list>-->
     <!--&lt;!&ndash; 配置spring -->
     <context-param>
         <param-name>contextConfigLocation</param-name>
@@ -49,8 +49,8 @@ http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
         <!-- 所有的请求都进入springMVC -->
         <url-pattern>/</url-pattern>
     </servlet-mapping>
-    <servlet-mapping>
+   <!-- <servlet-mapping>
         <servlet-name>interflow-web</servlet-name>
         <url-pattern>/index</url-pattern>
-    </servlet-mapping>
+    </servlet-mapping>-->
 </web-app>

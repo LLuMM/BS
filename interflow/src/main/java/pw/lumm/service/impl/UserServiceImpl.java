@@ -21,8 +21,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserMapper userMapper;
+
     @Override
-    public String register(User user)  {
+    public String register(User user) {
 
         user.setUid(UUID.randomUUID().toString());
         user.setJoindate(new Date());
@@ -31,9 +32,9 @@ public class UserServiceImpl implements UserService {
             user.setPassword(pwd);
             userMapper.insertUser(user);
             return "success";
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
-           return "error";
+            return "error";
         }
 
 
@@ -43,8 +44,8 @@ public class UserServiceImpl implements UserService {
     public User login(String username, String password) throws UnsupportedEncodingException, NoSuchAlgorithmException {
 
         String pwd = MD5.Encode(password);
-       List<User> list = userMapper.getByNameAndPwd(username, pwd);
-        if (list!=null)
+        List<User> list = userMapper.getByNameAndPwd(username, pwd);
+        if (list != null)
             return list.get(0);
         else
             return null;
@@ -58,12 +59,39 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getUserById(String id) {
-       User user = userMapper.getUserById(id);
-        return user;
+        User user = userMapper.getUserById(id);
+        if (user != null)
+            return user;
+        else
+            return null;
     }
 
     @Override
     public void setUserPrivilege(String id, int status) {
-        userMapper.setUserPrivilege(id,status);
+        userMapper.setUserPrivilege(id, status);
+    }
+
+    @Override
+    public Boolean checkUser(String username) {
+        User user = userMapper.checkUser(username);
+        if (user != null) {
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public void setVisits(int read) {
+        userMapper.setVisits(read);
+    }
+
+    @Override
+    public void updateUser(User user) {
+        userMapper.updateUser(user);
+    }
+
+    @Override
+    public void setFace(String uid, String url) {
+        userMapper.setface(uid,url);
     }
 }

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="pw.lumm.dao.AnsewerMapper" >
+
+    <insert id="addAnswer"  parameterType="pw.lumm.model.Answer" >
+        insert into answer
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="aid != null" >
+                aid,
+            </if>
+            <if test="content != null" >
+                content,
+            </if>
+            <if test="supportCnt != null" >
+                supportCnt,
+            </if>
+            <if test="opposeCnt != null" >
+                opposeCnt,
+            </if>
+            <if test="answerTo != null" >
+                answerTo,
+            </if>
+            <if test="time != null" >
+                time,
+            </if>
+            <if test="uid != null" >
+                uid,
+            </if>
+            <if test="accept != null" >
+                accept,
+            </if>
+            <if test="qid != null" >
+                qid,
+            </if>
+            <if test="username != null" >
+                username,
+            </if>
+            <if test="toid != null" >
+                toid,
+            </if>
+            <if test="questionTitle != null" >
+                questionTitle,
+            </if>
+
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="aid != null" >
+                #{aid,jdbcType=VARCHAR},
+            </if>
+            <if test="content != null" >
+                #{content,jdbcType=VARCHAR},
+            </if>
+            <if test="supportCnt != null" >
+                #{supportCnt,jdbcType=VARCHAR},
+            </if>
+            <if test="opposeCnt != null" >
+                #{opposeCnt,jdbcType=VARCHAR},
+            </if>
+            <if test="answerTo != null" >
+                #{answerTo,jdbcType=VARCHAR},
+            </if>
+            <if test="time != null" >
+                #{time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="uid != null" >
+                #{uid,jdbcType=VARCHAR},
+            </if>
+            <if test="accept != null">
+                #{accept,jdbcType=VARCHAR},
+            </if>
+            <if test="qid != null" >
+                #{qid,jdbcType=VARCHAR},
+            </if>
+
+            <if test="username != null" >
+                #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="toid != null" >
+                #{toid,jdbcType=VARCHAR},
+            </if>
+            <if test="questionTitle != null" >
+                #{questionTitle,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <select id="getAnswerByUserId" parameterType="String" resultType="pw.lumm.model.Answer">
+        select * from answer where uid = #{uid} order by time desc
+
+    </select>
+    <select id="getAnswerByNewId" parameterType="String"  resultType="pw.lumm.model.Answer">
+        select * from answer where qid = #{n_id} order by time
+    </select>
+    <delete id="deleteByQid" parameterType="String">
+        delete from answer where qid = #{id}
+
+    </delete>
+
+</mapper>

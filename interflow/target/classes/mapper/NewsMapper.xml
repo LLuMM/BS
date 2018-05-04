@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="pw.lumm.dao.NewsMapper" >
+    <select id="getHotNews" resultType="pw.lumm.model.News">
+        select * from news where type = #{0} limit #{1}
+    </select>
+
+    <select id="getDetil" parameterType="String"  resultType="pw.lumm.model.NsNews">
+        select * from nsnews where nsid = #{n_id}
+    </select>
+
+
+    <insert id="insertAnswer"  parameterType="pw.lumm.model.Answer" >
+        insert into answer (aid, uid, qid, content, time, username) values (#{aid}, #{uid}, #{qid},#{content},#{time,jdbcType=TIMESTAMP},#{username})
+    </insert>
+
+</mapper>

@@ -27,7 +27,7 @@
 <body>
 <jsp:include page="header.jsp"/>
 
-<div class="container" style="margin-top: 80px">
+<div class="container" style="margin-top: 100px">
     <div class="row">
         <div id="demo" class="col-sm-8 carousel slide" data-ride="carousel">
             <!-- 指示符 -->
@@ -65,7 +65,7 @@
             <div class="list-group">
                 <c:if test="${indexinfo.news!=null}">
                     <c:forEach items="${indexinfo.news}" var="news">
-                        <a href="/interflow/new/detail?n_id=${news.n_id}"
+                        <a href="/new/detail?n_id=${news.n_id}"
                            class="list-group-item list-group-item-action">${news.title}</a>
 
                     </c:forEach>
@@ -104,8 +104,6 @@
                     <c:if test="${indexinfo.notics==null}">
                         <p id="nc">暂无公共！</p>
                     </c:if>
-
-
                 </div>
             </div>
         </div>

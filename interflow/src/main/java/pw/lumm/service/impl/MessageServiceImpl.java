@@ -13,6 +13,7 @@ import java.util.UUID;
 public class MessageServiceImpl implements MessageService {
     @Autowired
     private MessageMapper messageMapper;
+
     @Override
     public List<Msg> getMessageById(String id) {
         List<Msg> msgs = messageMapper.getMessageById(id);
@@ -36,7 +37,31 @@ public class MessageServiceImpl implements MessageService {
     @Override
     public List<Notic> getNotics() {
         List<Notic> notics = messageMapper.getNotices();
-        return notics;
+        if (notics != null && notics.size() > 0)
+            return notics;
+        else
+            return null;
     }
+
+    @Override
+    public void deleteNotice(String id) {
+        messageMapper.deleteNotice(id);
+    }
+
+    @Override
+    public void setMessasgeStatus(Msg msg) {
+        messageMapper.setMessageStauts(msg);
+    }
+
+    @Override
+    public void deleteByStatus(String id) {
+        messageMapper.deleteByStatus(id);
+    }
+
+    @Override
+    public void deleteMsgById(String id) {
+        messageMapper.deleteMsgById(id);
+    }
+
 
 }

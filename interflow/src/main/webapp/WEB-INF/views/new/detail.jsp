@@ -15,6 +15,7 @@
     <script charset="utf-8"
             src="${pageContext.request.contextPath}/resources/kindeditor/kindeditor-all-min.js"></script>
     <script charset="utf-8" src="${pageContext.request.contextPath}/resources/kindeditor/lang/zh_CN.js"></script>
+    <script charset="utf-8" src="${pageContext.request.contextPath}/resources/myjs/ktCreater.js"></script>
     <style>
         .xline {
             border-bottom: solid 1px wheat;
@@ -22,25 +23,10 @@
         }
 
     </style>
-    <script>
-        //简单模式初始化
-        var editor;
-        KindEditor.ready(function (K) {
-            editor = K.create('textarea[name="content"]', {
-                resizeType: 1,
-                allowPreviewEmoticons: false,
-                allowImageUpload: false,
-                items: [
-                    'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
-                    'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
-                    'insertunorderedlist', '|', 'emoticons', 'image', 'link']
-            });
-        });
-    </script>
 </head>
 <body>
 <jsp:include page="../header.jsp"/>
-<div class="container" style="margin-top: 80px">
+<div class="container" style="margin-top: 100px">
     <div class="row">
         <div class="card col-sm-9">
 
@@ -51,34 +37,41 @@
             </div>
         </div>
         <div class="card col-sm-3">
-            <div class="card-body">简单的卡片</div>
+            <div class="card-body">
+                <div class="container">
+                    <div class="card-body" style="height: 200px;">
+                        dsadasdasd
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="card-body" style="height: 200px">
+                        aaaaaaaaaaaaaaaaaaaa
+                    </div>
+                </div>
+
+            </div>
         </div>
 
     </div>
 </div>
-<div class="container">
 
-    <c:if test="${nsNewsExample.answers!=null}">
+
+<c:if test="${nsNewsExample.answers.size()>0}">
+    <div class="container">
         <c:forEach var="answer" items="${nsNewsExample.answers}">
-            <span>${answer.username}</span><br>
-
+            <span><a href="/user/userinfo?uid=${answer.uid}&who=">${answer.username}</a></span><br>
             <span>${answer.time}</span><br>
             <c:if test="${answer.answerTo!=null}">
-                <span>@<a href="/interflow/user/userinfo?id=${answer.answerTo}">${answer.answerTo}</a></span>
-
+                <span>@<a href="/user/userinfo?uid=${answer.answerTo}">${answer.answerTo}</a></span>
             </c:if>
             <span>${answer.content}</span>&nbsp;<br>
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#reply"
                     data-whatever="${answer.uid}" data-name="${answer.username}" style="color: white">回复
             </button>
-
-
             <div class="xline col-sm-9"></div>
         </c:forEach>
-    </c:if>
-
-
-</div>
+    </div>
+</c:if>
 <div class="container">
     <div class="row">
         <div class="card col-sm-9">
@@ -128,26 +121,24 @@
 </div>
 <script>
     $(function () {
-
         /*直接发表看法*/
+        var id = document.getElementById("loginid").value;
         $("#subutton").click(function () {
-            var username = document.getElementById("name").value;
-            var uid = document.getElementById("uid").value;
-            var nsid = document.getElementById("nsid").value;
-
-            editor.sync();
-            var content = $("#mul_input").val();
-
-            if ("" == uid) {
+            if ("" == id) {
                 alert("亲，请登录！");
             }
             else {
+                editor.sync();
+                var content = $("#mul_input").val();
                 if ("" == content) {
                     alert("您还没有添加内容呢^-^...");
                 } else {
+                    var username = document.getElementById("name").value;
+                    var uid = document.getElementById("uid").value;
+                    var nsid = document.getElementById("nsid").value;
                     $.ajax({
                         type: "post",
-                        url: "/interflow/new/addAnswer",
+                        url: "/new/addAnswer",
                         dataType: "text",
                         data: {
                             "uid": uid,
@@ -159,7 +150,7 @@
                             var dataObj = JSON.parse(Result);
                             if (dataObj.Status) {
                                 alert("发表成功!");
-                                window.location.replace("/interflow/new/detail?n_id=" + nsid);
+                                window.location.replace("/new/detail?n_id=" + nsid);
                             } else {
                                 alert("网络异常！")
                             }
@@ -172,35 +163,41 @@
 
         /*对评论的回复*/
         $("#sreplybut").click(function () {
-            var toid = document.getElementById("aid").value;
-            var qid = document.getElementById("newsid").value;
-            var fromid = document.getElementById("uid").value;
-            editor.sync();
-            var content = $("#repyltext").val();
-            if ("" == fromid) {
+            var id = document.getElementById("loginid").value;
+            if ("" == id) {
                 alert("亲，请登录！");
+                $('#reply').modal('hide');
             } else {
-                $.ajax({
-                    type: "post",
-                    url: "/interflow/answer/addAnswerToUser",
-                    dataType: "text",
-                    data: {
-                        "qid": qid,
-                        "toid": toid,
-                        "fromid": fromid,
-                        "content": content,
-
-                    },
-                    success: function (Result) {
-                        var dataObj = JSON.parse(Result);
-                        if (dataObj.Status) {
-                            alert("回复成功!");
-                            location.reload();
-                        } else {
-                            alert(dataObj.Message);
+                var toid = document.getElementById("aid").value;
+                var qid = document.getElementById("newsid").value;
+                var fromid = document.getElementById("uid").value;
+                editor.sync();
+                var content = $("#repyltext").val();
+                if ("" == content) {
+                    alert("您还没有添加内容呢^-^...");
+                } else {
+                    $.ajax({
+                        type: "post",
+                        url: "/answer/addAnswerToUser",
+                        dataType: "text",
+                        data: {
+                            "qid": qid,
+                            "toid": toid,
+                            "fromid": fromid,
+                            "content": content,
+                            "type": 0
+                        },
+                        success: function (Result) {
+                            var dataObj = JSON.parse(Result);
+                            if (dataObj.Status) {
+                                alert("回复成功!");
+                                location.reload();
+                            } else {
+                                alert(dataObj.Message);
+                            }
                         }
-                    }
-                });
+                    });
+                }
             }
         });
 
@@ -208,7 +205,6 @@
 
     //绑定模态框展示的方法
     $('#reply').on('show.bs.modal', function (event) {
-
         KindEditor.ready(function (K) {
             editor = K.create('textarea[name="repylcontent"]', {
                 resizeType: 2,
@@ -222,7 +218,6 @@
         var button = $(event.relatedTarget) // 触发事件的按钮
         var recipient = button.data('whatever') // 解析出whatever内容
         var name = button.data('name') // 解析出whatever内容
-
         var modal = $(this)  //获得模态框本身
         modal.find('.modal-title').text('回复 -> ' + name)  //
         //更改将title的text

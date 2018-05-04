@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="pw.lumm.dao.ForumMapper" >
+
+    <insert id="addForum"  parameterType="pw.lumm.model.Forum" >
+        insert into forum (fid, title, content, type, uid, status, time) values(#{fid}, #{title}, #{content}, #{type},#{uid},#{status},#{time,jdbcType=TIMESTAMP})
+    </insert>
+    <update id="setForumStatus" >
+        update forum set status = #{0} where fid = #{1}
+    </update>
+    <select id="getFourmById" parameterType="String" resultType="pw.lumm.model.Forum">
+        select *from forum where fid =#{id}
+
+    </select>
+    <select id="getFourmByUserId" parameterType="String" resultType="pw.lumm.model.Forum">
+        select *from forum where uid =#{uid}
+    </select>
+    <select id="getForum" resultType="pw.lumm.model.Forum">
+        select * from forum where type = #{0} and status = #{1}
+    </select>
+</mapper>

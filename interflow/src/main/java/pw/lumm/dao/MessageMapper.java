@@ -10,4 +10,8 @@ public interface MessageMapper {
     void addMessage(Msg msg);
     void addNotic(Notic notic);
     List<Notic> getNotices();
+    void deleteNotice(String id);
+    void setMessageStauts(Msg msg);
+    void deleteByStatus(String id);
+    void deleteMsgById(String id);
 }

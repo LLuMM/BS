@@ -12,9 +12,9 @@
     <title>Title</title>
 
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/kindeditor/themes/default/default.css"/>
-    <script charset="utf-8"
-            src="${pageContext.request.contextPath}/resources/kindeditor/kindeditor-all-min.js"></script>
+    <script charset="utf-8" src="${pageContext.request.contextPath}/resources/kindeditor/kindeditor-all-min.js"></script>
     <script charset="utf-8" src="${pageContext.request.contextPath}/resources/kindeditor/lang/zh_CN.js"></script>
+    <script charset="utf-8" src="${pageContext.request.contextPath}/resources/myjs/ktCreater.js"></script>
     <style>
         .xline {
             border-bottom: solid 1px wheat;
@@ -22,25 +22,11 @@
         }
 
     </style>
-    <script>
-        //简单模式初始化
-        var editor;
-        KindEditor.ready(function (K) {
-            editor = K.create('textarea[name="content"]', {
-                resizeType: 1,
-                allowPreviewEmoticons: false,
-                allowImageUpload: false,
-                items: [
-                    'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
-                    'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
-                    'insertunorderedlist', '|', 'emoticons', 'image', 'link']
-            });
-        });
-    </script>
+
 </head>
 <body>
 <jsp:include page="../header.jsp"/>
-<div class="container" style="margin-top: 80px">
+<div class="container" style="margin-top: 100px">
     <div class="row">
         <div class="card col-sm-9">
 
@@ -63,10 +49,10 @@
 
     <c:if test="${questionExample.answers!=null}">
         <c:forEach var="answer" items="${questionExample.answers}">
-            <span>${answer.username}</span><br>
+            <span><a href="/user/userinfo?uid=${answer.uid}&who=">${answer.username}</a></span></span><br>
             <span>${answer.time}</span><br>
             <c:if test="${answer.answerTo!=null}">
-                <span>@<a href="/interflow/user/userinfo?id=${answer.answerTo}">${answer.answerTo}</a></span>
+                <span>@<a href="/user/userinfo?uid=${answer.answerTo}&who=">${answer.answerTo}</a></span>
 
             </c:if>
             <span>${answer.content}</span>&nbsp;<br>
@@ -132,22 +118,23 @@
 <script>
     $(function () {
         $("#subutton").click(function () {
-            var username = document.getElementById("name").value;
-            var uid = document.getElementById("uid").value;
-            var id = document.getElementById("id").value;
-
-            editor.sync();
-            var content = $("#mul_input").val();
-            if ("" == uid) {
+            var id = document.getElementById("loginid").value;
+            if ("" == id ) {
                 alert("亲，请登录！");
             } else {
 
+                editor.sync();
+                var content = $("#mul_input").val();
                 if ("" == content) {
                     alert("您还没有添加内容呢^-^...");
                 } else {
+                    var username = document.getElementById("name").value;
+                    var uid = document.getElementById("uid").value;
+                    var id = document.getElementById("id").value;
+
                     $.ajax({
                         type: "post",
-                        url: "/interflow/answer/addAnswer",
+                        url: "/answer/addAnswer",
                         dataType: "text",
                         data: {
                             "uid": uid,
@@ -161,7 +148,7 @@
 
                             if (dataObj.Status) {
                                 alert("发表成功!");
-                                window.location.replace("/interflow/question/detail?id=" + id);
+                                window.location.replace("/question/detail?id=" + id);
                             } else {
                                 alert("网络异常！")
                             }
@@ -174,28 +161,26 @@
 
         /*对评论的回复*/
         $("#sreplybut").click(function () {
-
-            var toid = document.getElementById("aid").value;
-            alert("toid:" + toid)
-            var qid = document.getElementById("qid").value;
-            alert(qid);
-            var fromid = document.getElementById("uid").value;
-            editor.sync();
-            var content = $("#repyltext").val();
-            alert(content);
-
-            if ("" == fromid) {
+            var id = document.getElementById("loginid").value;
+            if ("" == id) {
                 alert("亲，请登录！");
+                $('#reply').modal('hide');
             } else {
+                var toid = document.getElementById("aid").value;
+                var qid = document.getElementById("qid").value;
+                var fromid = document.getElementById("uid").value;
+                var content = $("#repyltext").val();
+
                 $.ajax({
                     type: "post",
-                    url: "/interflow/answer/addAnswerToUser",
+                    url: "/answer/addAnswerToUser",
                     dataType: "text",
                     data: {
                         "qid": qid,
                         "toid": toid,
                         "fromid": fromid,
                         "content": content,
+                        "type":1
 
                     },
                     success: function (Result) {
@@ -233,10 +218,7 @@
         modal.find('.modal-title').text('回复 -> ' + name)  //
         //更改将title的text
         modal.find('.modal-body input').val(recipient)
-
     });
-
-
 </script>
 
 

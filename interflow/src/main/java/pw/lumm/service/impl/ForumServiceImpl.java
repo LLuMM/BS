@@ -5,10 +5,14 @@ import org.springframework.stereotype.Service;
 import pw.lumm.dao.ForumMapper;
 import pw.lumm.model.Forum;
 import pw.lumm.service.inf.ForumService;
+
+import java.util.List;
+
 @Service
 public class ForumServiceImpl implements ForumService {
     @Autowired
     private ForumMapper forumMapper;
+
     @Override
     public void addForum(Forum forum) {
         forumMapper.addForum(forum);
@@ -16,12 +20,30 @@ public class ForumServiceImpl implements ForumService {
 
     @Override
     public void setForumStatus(String id, int type) {
-        forumMapper.setForumStatus(type,id);
+        forumMapper.setForumStatus(type, id);
     }
 
     @Override
     public Forum getFourmById(String id) {
         Forum forum = forumMapper.getFourmById(id);
-        return forum;
+        if (forum != null)
+            return forum;
+        else {
+            return null;
+        }
+    }
+
+    @Override
+    public List<Forum> getFourmByUserId(String uid) {
+        List<Forum> forums = forumMapper.getFourmByUserId(uid);
+        if (forums != null && forums.size() > 0)
+            return forums;
+        else
+            return null;
+    }
+    @Override
+    public List<Forum> getForum(int type, int status) {
+        List<Forum> forumList = forumMapper.getForum(type, status);
+        return forumList;
     }
 }

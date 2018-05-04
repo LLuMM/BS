@@ -16,4 +16,11 @@ public interface UserMapper {
     User getUserById(String id);
 
     void setUserPrivilege(String id, int status);
+
+    User checkUser(String username);
+
+    void setVisits(int read);
+
+    void updateUser(User user);
+    void setface(String uid,String url);
 }

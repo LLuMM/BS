@@ -18,4 +18,14 @@ public interface QuestionMapper {
     List<Answer> getAnswerByQid(String id);
 
     void setHitById(String id, int hit);
+
+    void setStatus(String id, int status);
+
+    void setTop(String id, int status);
+
+    List<Question> getQuestionByUserId(String uid);
+
+    void deleteQuestionById(String id);
+
+
 }
