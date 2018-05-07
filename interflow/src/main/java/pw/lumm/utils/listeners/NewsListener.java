@@ -1,29 +1,28 @@
 package pw.lumm.utils.listeners;
 
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
-import pw.lumm.model.News;
-import pw.lumm.model.NewsExample;
-import pw.lumm.model.Notic;
-import pw.lumm.service.inf.MessageService;
-import pw.lumm.service.inf.NewsService;
+import pw.lumm.service.inf.SearchService;
+import pw.lumm.utils.thrift.NewsFresh;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
-import java.util.List;
-
 public class NewsListener implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent event) {
+        try{
+            NewsFresh.getNews();
+            ServletContext sc=event.getServletContext();
+            WebApplicationContext ctx=WebApplicationContextUtils.getWebApplicationContext(sc);
+            SearchService searchService = (SearchService) ctx.getBean("searchService");
+            searchService.deleteAllNews();
+            searchService.importAllTitle();
 
-      /*  ServletContext sc=event.getServletContext();
-        WebApplicationContext ctx=WebApplicationContextUtils.getWebApplicationContext(sc);
-        NewsService newsService = (NewsService) ctx.getBean("newsService");
-        MessageService messageService = (MessageService) ctx.getBean("messageService");*/
-
+        }catch (Exception e){
+            System.out.println("thrift服务未开或搜索服务没启动！");
+        }
     }
 
     @Override

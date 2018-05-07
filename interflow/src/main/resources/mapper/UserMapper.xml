@@ -59,6 +59,13 @@
                 </if>
         </set>
     </update>
-
-
+    <insert id="addfriend" parameterType="pw.lumm.model.Friends">
+        insert into friends (id, userid, friendid, status, date) values (#{id}, #{userid},#{friendid},#{status},#{date,jdbcType=TIMESTAMP})
+    </insert>
+    <update id="setFriendStatus">
+        update friends set status = #{1} where id = #{0}
+    </update>
+    <select id="getFriendId" resultType="String">
+      SELECT id FROM friends WHERE userid = #{1} and friendid = #{0}
+    </select>
 </mapper>

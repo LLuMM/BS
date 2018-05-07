@@ -163,7 +163,6 @@ public class QuestionController extends BaseController {
             FastDFSClient fastDFSClient = new FastDFSClient("classpath:conf/client.conf");
             String path = fastDFSClient.uploadFile(uploadFile.getBytes(), extName);
             String url = IMAGE_SERVER_URL + path;
-            System.out.println(url);
             out.getWriter().write(gson.toJson(url));
         } catch (Exception e) {
             e.printStackTrace();

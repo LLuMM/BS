@@ -195,10 +195,42 @@ public class UserController extends BaseController {
             String path = fastDFSClient.uploadFile(uploadFile.getBytes(), extName);
             String url = IMAGE_SERVER_URL + path;
             userService.setFace(uid,url);
+            questionService.setFrompic(uid,url);
         } catch (Exception e) {
             e.printStackTrace();
         }
         return "user/index";
     }
 
+    @RequestMapping(value = "/addfriend")
+    public void addfriend( HttpServletResponse out, String userid, String friendid, String msg) throws IOException {
+        out.setContentType("text/html; charset=utf-8");
+            try{
+                userService.addfriend(userid,friendid,msg);
+                response.Status = true;
+                response.Message = "发送成功";
+
+            }catch (Exception e){
+
+            }
+
+
+            out.getWriter().write(gson.toJson(response));
+    }
+
+    @RequestMapping(value = "/friendRequest")
+    public void friendRequest( HttpServletResponse out, String fromid, String toid, int status) throws IOException {
+        out.setContentType("text/html; charset=utf-8");
+        try{
+            userService.friendRequest(fromid,toid,status);
+            response.Status = true;
+            response.Message = "发送成功";
+
+        }catch (Exception e){
+
+        }
+
+
+        out.getWriter().write(gson.toJson(response));
+    }
 }

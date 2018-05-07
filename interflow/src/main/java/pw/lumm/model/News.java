@@ -5,10 +5,36 @@ import java.util.Date;
 public class News {
     private String nid;
     private String title;
-    private String pic;
     private String n_id;
     private int type;
     private Date date;
+    private String url;
+    private String source;
+    private String imgurl;
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public String getSource() {
+        return source;
+    }
+
+    public void setSource(String source) {
+        this.source = source;
+    }
+
+    public String getImgurl() {
+        return imgurl;
+    }
+
+    public void setImgurl(String imgurl) {
+        this.imgurl = imgurl;
+    }
 
     public String getNid() {
         return nid;
@@ -26,13 +52,6 @@ public class News {
         this.title = title;
     }
 
-    public String getPic() {
-        return pic;
-    }
-
-    public void setPic(String pic) {
-        this.pic = pic;
-    }
 
     public String getN_id() {
         return n_id;

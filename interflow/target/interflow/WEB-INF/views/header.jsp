@@ -24,7 +24,7 @@
             </a>
         </div>
         <!-- Links -->
-        <div class="col-sm-6">
+        <div class="col-sm-5">
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link" href="/new/index?type=0">热点新闻&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
@@ -41,16 +41,16 @@
             </ul>
         </div>
         <div class="col-sm-4">
-            <form class="form-inline" style="margin-top: 15px">
-                <input class="form-control" type="text" placeholder="Search">
-                <button class="btn btn-primary" type="button">Search</button>
+            <form class="form-inline" style="margin-top: 15px" action="/search/keyword">
+                <input class="form-control" type="text" name="keyword" placeholder="输入关键词">
+                <button class="btn btn-primary" type="submit" id="search">搜索</button>
             </form>
         </div>
-
-        <div class="col-sm-2">
+        <div class="col-sm-3">
             <c:if test="${user !=null&&user !=''}">
                 <input type="hidden" id="loginid" value="${user.uid}">
-                <span style="color: #ffffff"> 嗨！<a href="/user/userindex?uid=${user.uid}">${user.username}</a></span>&nbsp;|<span id="quit" style="color: #ffffff">退出&nbsp;</span>&nbsp;|&nbsp;
+                <span style="color: #ffffff"> 嗨！<a href="/user/userindex?uid=${user.uid}">${user.username}</a>&nbsp;|
+                </span><span id="quit" style="color: #ffffff">退出&nbsp;&nbsp;|&nbsp;</span>
             </c:if>
             <c:if test="${user ==null|| user ==''}">
                 <input type="hidden" id="loginid" value="">
@@ -62,7 +62,6 @@
 
     </div>
 </nav>
-
 
 <!-- 模态框（Modal） -->
 <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -81,7 +80,7 @@
                 <form>
                     <div class="form-group">
                         <label>用户名:</label>
-                        <input type="text" class="form-control" id="username" placeholder="Enter email">
+                        <input type="text" class="form-control" id="username" placeholder="Enter username">
                     </div>
                     <div class="form-group">
                         <label>密码:</label>
@@ -89,7 +88,7 @@
                     </div>
                     <div class="form-check">
                         <label class="form-check-label">
-                            <input class="form-check-input" type="checkbox"> 记住我
+                            <input class="form-check-input" type="checkbox">记住我
                         </label>
                     </div>
                     <div class="form-group">
@@ -146,20 +145,16 @@
                     var dataObj = JSON.parse(Result);
 
                     if (dataObj.Status) {
-                        if(test=="http://localhost:8080/user/toadmin" || test=="http://localhost:8080/user/userinfo?uid="+loginid){
-                            window.location.href='/index';
+                        if(test=="http://localhost:8080/user/toadmin" || test=="http://localhost:8080/user/userinfo?uid="+loginid||
+                            test=="http://localhost:8080/user/userindex?uid="+loginid
+                        ){
+                           location.href='/index';
                         }else {
                         location.reload();
                         }
                     }
                 }
-
             });
-
         });
-
-
     });
-
-
 </script>

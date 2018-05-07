@@ -20,11 +20,8 @@
             <button id="upquestion" type="button" class="btn btn-primary" style="margin-left: 5px">发表新帖</button>
         </div>
         <div class="col-sm-6"></div>
-
-
     </div>
 </div>
-
 <div class="container">
     <div class="row">
         <div class="col-sm-8">
@@ -34,15 +31,24 @@
                         <div class="card-body">
                             <div class="container">
                                 <div class="row">
-                                    <div class="col-sm-1"><a class="nav-link" href="/user/userinfo?uid=${question.userid}&who=">
-                                            ${question.uname}</a></div>
-                                    <div class="col-sm-11">
-                                        <a href="/question/detail?id=${question.id}"
-                                        >${question.title}</a><br>
-                                        <span>${question.time}</span>&nbsp;&nbsp;
-                                        <span>浏览量：${question.hits}</span>
-                                        <button style="margin-left: 10px" class="badge badge-pill badge-primary" value="${question.id}" onclick="setTop(this)">置顶</button>
-                                        <button class="badge badge-pill badge-danger" value="${question.id}" onclick="setFine(this)">置精</button>
+                                    <div class="col-sm-2">
+                                        <a class="nav-link" href="/user/userinfo?uid=${question.userid}&who=">
+                                           <img src="${question.frompic}" style="width: 50px;height: 50px"/>
+                                        </a>
+                                    </div>
+                                    <div class="col-sm-10" style="margin-top: 15px">
+                                        <span style="color: #9fcdff">${question.uname}</span>&nbsp;&nbsp;
+                                        <a href="/question/detail?id=${question.id}">
+                                                ${question.title}
+                                        </a><br>
+                                        <span> ${question.time}</span>&nbsp;&nbsp;
+                                        <span>浏览量：${question.hits}</span>&nbsp;&nbsp;
+                                        <c:if test="${question.stick == 1}">
+                                        <span style="margin-left: 10px" class="badge badge-pill badge-primary" >置顶</span>
+                                        </c:if>
+                                        <c:if test="${question.status == 1}">
+                                        <span class="badge badge-pill badge-danger" >置精</span>
+                                        </c:if>
                                     </div>
                                 </div>
 
@@ -83,7 +89,7 @@
         });
 
     });
-    function setTop(event){
+   /* function setTop(event){
         var id = event.value;
         $.ajax({
             type: "post",
@@ -126,7 +132,7 @@
             }
 
         });
-    }
+    }*/
 
 </script>
 </html>

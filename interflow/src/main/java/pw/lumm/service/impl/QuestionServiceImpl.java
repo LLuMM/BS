@@ -23,9 +23,11 @@ public class QuestionServiceImpl implements QuestionService {
     MessageService messageService;
     @Autowired
     AnsewerServer ansewerServer;
+    @Autowired
+    SearchService searchService;
 
-
-    String MSG_CONTENT = "您发布的文章被版主禁用，请联系版主！";
+    String MSG_BAN= "您发布的文章被版主禁用，请联系版主！";
+    String MSG_ALLOW = "管理员已同意！";
 
 
 
@@ -82,10 +84,13 @@ public class QuestionServiceImpl implements QuestionService {
         question.setId(UUID.randomUUID().toString());
         question.setUserid(loginid);
         question.setFid(fid);
+        question.setFrompic(user.getFace());
         question.setUname(user.getUsername());
         question.setContent(value_content);
         question.setTitle(title);
         question.setTime(new Date());
+
+        searchService.importQuestion(question);
         questionMapper.addQuestion(question);
     }
 
@@ -125,12 +130,17 @@ public class QuestionServiceImpl implements QuestionService {
         Msg msg = new Msg();
         String mid = UUID.randomUUID().toString();
         msg.setId(mid);
-        msg.setContent(MSG_CONTENT);
+
+        if (status == 2){
+            msg.setContent(MSG_BAN);
+        }else
+            msg.setContent(MSG_ALLOW);
         msg.setTime(new Date());
         msg.setFromid(fromUser.getUid());
         msg.setFromname(fromUser.getUsername());
         msg.setToid(user.getUid());
         msg.setToname(user.getUsername());
+        msg.setType(2);
         messageService.addMessage(msg);
         questionMapper.setStatus(id, status);
     }
@@ -148,6 +158,18 @@ public class QuestionServiceImpl implements QuestionService {
     public void deleteByQid(String id) {
         questionMapper.deleteQuestionById(id);
         ansewerServer.deleteByQid(id);
+        searchService.deleteQuestionById(id);
+    }
+
+    @Override
+    public List<Question> getAllQuestion() {
+        List<Question> questions = questionMapper.getAllQuestion();
+        return questions;
+    }
+
+    @Override
+    public void setFrompic(String uid, String url) {
+        questionMapper.setFrompic(uid, url);
     }
 
 

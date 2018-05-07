@@ -34,6 +34,9 @@
             <if test="fid != null">
                 fid,
             </if>
+            <if test="type != null">
+                type,
+            </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="id != null">
@@ -62,6 +65,9 @@
             </if>
             <if test="fid != null">
                 #{fid,jdbcType=VARCHAR},
+            </if>
+            <if test="type != null">
+                #{type},
             </if>
         </trim>
     </insert>

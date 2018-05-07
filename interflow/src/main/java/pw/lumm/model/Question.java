@@ -16,6 +16,16 @@ public class Question {
     private String fid;
     private String uname;
 
+    public String getFrompic() {
+        return frompic;
+    }
+
+    public void setFrompic(String frompic) {
+        this.frompic = frompic;
+    }
+
+    private String frompic;
+
 
     public String getCommentTo() {
         return commentTo;

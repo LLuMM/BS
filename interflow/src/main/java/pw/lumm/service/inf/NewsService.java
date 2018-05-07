@@ -16,4 +16,7 @@ public interface NewsService {
      NsNews getNewsDetail(String n_id);
 
 
+    List<News> getAllNews();
+
+    News getNewsById(String n_id);
 }

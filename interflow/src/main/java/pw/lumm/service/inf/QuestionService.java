@@ -51,4 +51,7 @@ public interface QuestionService {
     * */
     void deleteByQid(String id);
 
+    List<Question> getAllQuestion();
+
+    void setFrompic(String uid, String url);
 }

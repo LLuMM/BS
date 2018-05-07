@@ -15,7 +15,7 @@
         }
 
         #nc{
-            width:20em;/*保证文字不会被半汉字截断,显示10个文字*/
+           /* width:20em;*//*保证文字不会被半汉字截断,显示10个文字*/
             overflow:hidden;/*超出长度的文字隐藏*/
             text-overflow:ellipsis;/*文字隐藏以后添加省略号*/
             white-space:nowrap;/*强制不换行*/
@@ -35,18 +35,44 @@
                 <li data-target="#demo" data-slide-to="0" class="active"></li>
                 <li data-target="#demo" data-slide-to="1"></li>
                 <li data-target="#demo" data-slide-to="2"></li>
+                <li data-target="#demo" data-slide-to="4"></li>
+                <li data-target="#demo" data-slide-to="5"></li>
             </ul>
             <!-- 轮播图片 -->
             <div class="carousel-inner">
+
                 <div class="carousel-item active">
-                    <img src="https://static.runoob.com/images/mix/img_fjords_wide.jpg">
+                    <img src="http://static.runoob.com/images/mix/img_fjords_wide.jpg">
+                    <div class="carousel-caption">
+                        <h3>欢迎使用本系统</h3>
+                    </div>
+                </div>
+                    <c:if test='${indexinfo.news.get("new2")!=null}'>
+                        <c:forEach items='${indexinfo.news.get("new2")}' var="news">
+                        <div class="carousel-item">
+                            <a href="/new/detail?n_id=${news.n_id}"> <img src="${news.imgurl}"  style="height:255px;width: 800px"></a>
+                            <div class="carousel-caption">
+                                <h3>${news.title}</h3>
+                            </div>
+                        </div>
+                        </c:forEach>
+                    </c:if>
+
+<%--
+                <div class="carousel-item">
+                    <img src="http://static.runoob.com/images/mix/img_nature_wide.jpg">
+                    <div class="carousel-caption">
+                        <h3>第二张图片描述标题</h3>
+                        <p>描述文字!</p>
+                    </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="https://static.runoob.com/images/mix/img_nature_wide.jpg">
-                </div>
-                <div class="carousel-item">
-                    <img src="https://static.runoob.com/images/mix/img_mountains_wide.jpg">
-                </div>
+                    <img src="http://static.runoob.com/images/mix/img_mountains_wide.jpg">
+                    <div class="carousel-caption">
+                        <h3>第三张图片描述标题</h3>
+                        <p>描述文字!</p>
+                    </div>
+                </div>--%>
             </div>
             <!-- 左右切换按钮 -->
             <a class="carousel-control-prev" href="#demo" data-slide="prev">
@@ -59,18 +85,18 @@
         <div class="col-sm-4">
             <ul class="nav nav-tabs">
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">热点新闻</a>
+                    <a class="nav-link active" href="#">热点技术</a>
                 </li>
             </ul>
             <div class="list-group">
-                <c:if test="${indexinfo.news!=null}">
-                    <c:forEach items="${indexinfo.news}" var="news">
+                <c:if test='${indexinfo.news.get("new1")!=null}'>
+                    <c:forEach items='${indexinfo.news.get("new1")}' var="news">
                         <a href="/new/detail?n_id=${news.n_id}"
                            class="list-group-item list-group-item-action">${news.title}</a>
 
                     </c:forEach>
                 </c:if>
-                <c:if test="${indexinfo.news==null}">
+                <c:if test='${indexinfo.news.get("new1")==null}'>
                     暂无内容！
                 </c:if>
             </div>
@@ -82,11 +108,19 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-8">
-            <h4>热门话题</h4>
+            <h4>热门新闻</h4>
             <div class="list-group ">
-                <a href="#" class="list-group-item list-group-item-action">First item</a>
-                <a href="#" class="list-group-item list-group-item-action">Second item</a>
-                <a href="#" class="list-group-item list-group-item-action">Third item</a>
+                <c:if test='${indexinfo.news.get("new2")!=null}'>
+                    <c:forEach items='${indexinfo.news.get("new2")}' var="news">
+
+                        <a href="/new/detail?n_id=${news.n_id}"
+                           class="list-group-item list-group-item-action">${news.title}</a>
+
+                    </c:forEach>
+                </c:if>
+                <c:if test='${indexinfo.news.get("new2")==null}'>
+                    暂无内容！
+                </c:if>
 
             </div>
         </div>

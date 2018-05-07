@@ -13,6 +13,16 @@ public class Msg {
     private Date time;
     private String fid;
     private int readstatus;
+    private int type;
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
     public int getReadstatus() {
         return readstatus;
     }

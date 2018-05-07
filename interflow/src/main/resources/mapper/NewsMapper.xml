@@ -8,10 +8,16 @@
     <select id="getDetil" parameterType="String"  resultType="pw.lumm.model.NsNews">
         select * from nsnews where nsid = #{n_id}
     </select>
-
+    <select id="getNewsById" parameterType="String"  resultType="pw.lumm.model.News">
+        select * from news where nid = #{n_id}
+    </select>
 
     <insert id="insertAnswer"  parameterType="pw.lumm.model.Answer" >
         insert into answer (aid, uid, qid, content, time, username) values (#{aid}, #{uid}, #{qid},#{content},#{time,jdbcType=TIMESTAMP},#{username})
     </insert>
+
+    <select id="getAllNews" parameterType="String"  resultType="pw.lumm.model.News">
+        select * from news
+    </select>
 
 </mapper>

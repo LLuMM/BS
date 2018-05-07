@@ -3,11 +3,11 @@
 <mapper namespace="pw.lumm.dao.QuestionMapper" >
 
     <select id="getQuestionByForunmId" parameterType="String"  resultType="pw.lumm.model.Question">
-        select * from question where fid = #{id} and status != 2 order by time desc
+        select * from question where fid = #{id} and status != 2 order by stick, hits, time desc
     </select>
 
     <insert id="addQuestion"  parameterType="pw.lumm.model.Question" >
-        insert into question (id, userid, fid, title, content, time,uname) values (#{id},#{userid}, #{fid}, #{title},#{content},#{time,jdbcType=TIMESTAMP},#{uname})
+        insert into question (id, userid, fid, title, content, time,uname,frompic) values (#{id},#{userid}, #{fid}, #{title},#{content},#{time,jdbcType=TIMESTAMP},#{uname},#{frompic})
     </insert>
 
     <select id="getQuestionById" parameterType="String"  resultType="pw.lumm.model.Question">
@@ -35,4 +35,12 @@
     <delete id="deleteQuestionById" parameterType="String">
         delete from question where id = #{id}
     </delete>
+    <select id="getAllQuestion" parameterType="String" resultType="pw.lumm.model.Question">
+        select * from question
+
+    </select>
+    <update id="setFrompic">
+        update question set frompic = #{1} where userid = #{0}
+    </update>
+
 </mapper>

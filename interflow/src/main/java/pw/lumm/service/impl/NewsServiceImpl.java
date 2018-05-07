@@ -31,5 +31,20 @@ public class NewsServiceImpl implements NewsService {
             return null;
     }
 
+    @Override
+    public List<News> getAllNews() {
+        List<News> newsList = newsMapper.getAllNews();
+        return newsList;
+    }
+
+    @Override
+    public News getNewsById(String n_id) {
+        News news = newsMapper.getNewsById(n_id);
+        if (news!=null)
+            return news;
+        else
+            return null;
+    }
+
 
 }

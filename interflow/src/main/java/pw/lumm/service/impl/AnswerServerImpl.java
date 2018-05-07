@@ -95,6 +95,7 @@ public class AnswerServerImpl implements AnsewerServer {
         msg.setTime(date);
         msg.setFromid(fromUser.getUid());
         msg.setToid(toUser.getUid());
+
         messageService.addMessage(msg);
     }
 

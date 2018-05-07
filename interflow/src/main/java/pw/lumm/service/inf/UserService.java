@@ -45,4 +45,8 @@ public interface UserService {
     void updateUser(User user);
 
     void setFace(String uid, String url);
+
+    void addfriend(String userid, String friendid, String msg);
+
+    void friendRequest(String fromid, String toid, int status);
 }

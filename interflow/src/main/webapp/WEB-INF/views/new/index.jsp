@@ -32,24 +32,26 @@
     <div class="row">
         <div class="col-sm-8">
 
-            <c:if test="${newsExample != null}">
+            <c:if test='${newsExample.news.get("new")!= null}'>
 
-
-                <c:forEach items="${newsExample.news}" var="ns" >
+                <c:forEach items='${newsExample.news.get("new")}' var="ns" >
 
                     <div class="card bg-light text-dark " style="margin-top: 5px">
                         <div class="card-body">
                             <div class="container">
                                 <div class="row">
-                                    <div class="col-sm-1">
-                                        <c:if test="${ns.pic!=null}">
-                                            <img src="#"/>
+                                    <div class="col-sm-2">
+                                        <c:if test="${ns.imgurl!=null}">
+                                            <img src="${ns.imgurl}" style="width: 60px;height: 60px"/>
+                                        </c:if>
+
+                                        <c:if test="${ns.imgurl==null}">
+                                            <img src="../img/jishu.jpg" style="width: 60px;height: 60px"/>
                                         </c:if>
                                     </div>
-                                    <div class="col-sm-11">
-                                         <a href="/new/detail?n_id=${ns.n_id}"
-                                                  >${ns.title}</a><br>
-                                        <span>${ns.date}</span>
+                                    <div class="col-sm-10">
+                                         <a href="/new/detail?n_id=${ns.n_id}">${ns.title}</a><br>
+                                        <span style="font-size: 8px">${ns.source}&nbsp;&nbsp;</span><span>${ns.date}</span>
                                     </div>
                                 </div>
 
@@ -58,6 +60,9 @@
                     </div>
                 </c:forEach>
             </c:if>
+<c:if test='${newsExample.news.get("new")== null}'>
+    暂无数据！
+</c:if>
         </div>
         <div class="col-sm-4">
             <div class="card bg-light text-dark" style="margin-top: 5px">

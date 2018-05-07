@@ -156,6 +156,7 @@
                         <th>来自</th>
                         <th>内容</th>
                         <th>时间</th>
+                        <th>类型</th>
                         <th></th>
                     </tr>
                     </thead>
@@ -165,6 +166,22 @@
                             <td><a href="/user/userinfo?uid=${ms.fromid}&who=">${ms.fromname}</a></td>
                             <td>${ms.content}</td>
                             <td>${ms.time}</td>
+                            <td>
+                                <c:if test="${ms.type == 0}">普通回复</c:if>
+                                <c:if test="${ms.type == 1}">
+
+                                    好友申请&nbsp;&nbsp;
+                                    <c:if test="${ms.readstatus == 0}">
+                                        <button type="button" class="btn btn-primary" id="agree" value="${ms.fromid}"
+                                                onclick="friendRequest(this,1)">同意
+                                        </button>
+                                        <button type="button" class="btn btn-warning" id="refuse" value="${ms.fromid}"
+                                                onclick="friendRequest(this,2)">拒绝
+                                        </button>
+                                    </c:if>
+                                </c:if>
+                                <c:if test="${ms.type == 2}">管理员回复</c:if>
+                            </td>
                             <td>
                                 <c:if test="${ms.readstatus!=1}">
                                     <button value="${ms.id}" class="btn btn-success"
@@ -277,9 +294,6 @@
 
 
    */
-
-
-
 
 
         $("#apply").click(function () {
@@ -443,33 +457,62 @@
         }
         reader.readAsDataURL(file.files[0]);
     }
-   /*上传图片
-   * */
-   /* $(function() {
-        $("#doSave").click(function() {
-            alert("sdasd");
-                    $("#uploadForm").ajaxSubmit(
-                            {
-                                type : 'post',
-                                url : "/user/upimg",
-                                //data:  //注意只要是写在表单里面的，都不需要加这个属性。在controller中可以根据@RequestParam String str获取到属性值。
-                                contentType : "application/x-www-form-urlencoded; charset=utf-8",
-                                success: function(data) {
-                                    //接受到的data还只是一个字符串，需要转成json对象
-                                    var obj = JSON.parse(data);
-                                    if(obj.flag==true){
-                                        alert("上传成功");
-                                    }else{
-                                        alert("error");
-                                    }
-                                },
-                                error: function (data)//服务器响应失败处理函数
-                                {
-                                    alert("出错");
-                                }
-                            });
-                });
-    });*/
+
+    /*上传图片
+    * */
+    /* $(function() {
+         $("#doSave").click(function() {
+             alert("sdasd");
+                     $("#uploadForm").ajaxSubmit(
+                             {
+                                 type : 'post',
+                                 url : "/user/upimg",
+                                 //data:  //注意只要是写在表单里面的，都不需要加这个属性。在controller中可以根据@RequestParam String str获取到属性值。
+                                 contentType : "application/x-www-form-urlencoded; charset=utf-8",
+                                 success: function(data) {
+                                     //接受到的data还只是一个字符串，需要转成json对象
+                                     var obj = JSON.parse(data);
+                                     if(obj.flag==true){
+                                         alert("上传成功");
+                                     }else{
+                                         alert("error");
+                                     }
+                                 },
+                                 error: function (data)//服务器响应失败处理函数
+                                 {
+                                     alert("出错");
+                                 }
+                             });
+                 });
+     });*/
+
+
+    function friendRequest(event, status) {
+
+        var toid = event.value;
+        var fromid = document.getElementById("loginid").value;
+        $.ajax({
+            type: "post",
+            url: "/user/friendRequest",
+            dataType: "text",
+            data: {
+                "fromid": fromid,
+                "toid": toid,
+                "status": status
+            },
+            success: function (Result) {
+                var dataObj = JSON.parse(Result);
+                if (dataObj.Status) {
+                    alert("!");
+                    location.reload();
+                } else {
+                    alert("网络异常！");
+                }
+            }
+
+        });
+    }
+
 
 </script>
 

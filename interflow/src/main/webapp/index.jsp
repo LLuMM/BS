@@ -8,9 +8,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
 </head>
+<meta http-equiv="refresh" content="0;url=/index" />
 <body>
-<a href="/index">主页</a>
 </body>
 </html>

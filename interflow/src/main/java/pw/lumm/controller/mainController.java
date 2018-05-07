@@ -10,7 +10,9 @@ import pw.lumm.model.Notic;
 import pw.lumm.service.inf.MessageService;
 import pw.lumm.service.inf.NewsService;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by LM on 2018/4/19.
@@ -26,11 +28,16 @@ public class mainController {
 
     @RequestMapping(value = "/index")
     public String toIndex(Model model){
-        List<News> newsList = newsService.getHotNews(1,4);
+        List<News> news1= newsService.getHotNews(1,4);
+        List<News> news2 = newsService.getHotNews(0,5);
         List<Notic> notics = messageService.getNotics();
         NewsExample indexinfo = new NewsExample();
+        HashMap<String,List<News>> mapnews = new HashMap<>();
+
+        mapnews.put("new1",news1);
+        mapnews.put("new2",news2);
+        indexinfo.setNews(mapnews);
         indexinfo.setNotics(notics);
-        indexinfo.setNews(newsList);
         model.addAttribute("indexinfo", indexinfo);
         return "index";
     }

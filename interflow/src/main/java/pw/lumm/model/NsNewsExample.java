@@ -6,6 +6,15 @@ public class NsNewsExample{
 
     private NsNews nsNews;
     private List<Answer> answers;
+    private News news;
+
+    public News getNews() {
+        return news;
+    }
+
+    public void setNews(News news) {
+        this.news = news;
+    }
 
     public NsNews getNsNews() {
         return nsNews;

@@ -20,9 +20,7 @@
             border-bottom: solid 1px wheat;
             height: 5px;
         }
-
     </style>
-
 </head>
 <body>
 <jsp:include page="../header.jsp"/>
@@ -213,7 +211,6 @@
         var button = $(event.relatedTarget) // 触发事件的按钮
         var recipient = button.data('whatever') // 解析出whatever内容
         var name = button.data('name') // 解析出whatever内容
-
         var modal = $(this)  //获得模态框本身
         modal.find('.modal-title').text('回复 -> ' + name)  //
         //更改将title的text

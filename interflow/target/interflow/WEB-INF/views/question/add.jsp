@@ -10,7 +10,7 @@
     <script charset="utf-8"
             src="${pageContext.request.contextPath}/resources/kindeditor/kindeditor-all-min.js"></script>
     <script charset="utf-8" src="${pageContext.request.contextPath}/resources/kindeditor/lang/zh_CN.js"></script>
-  <%--  <script charset="utf-8" src="${pageContext.request.contextPath}/resources/myjs/ktCreater.js"></script>--%>
+    <script charset="utf-8" src="${pageContext.request.contextPath}/resources/myjs/ktCreater.js"></script>
 </head>
 <body>
 <jsp:include page="../header.jsp"></jsp:include>
@@ -92,13 +92,13 @@
             }
         });
     });*/
-    var KE;
+  /*  var KE;
     KindEditor.ready(function(K) {
 
         KE = K.create('textarea[name="content"]',{
             uploadJson : '/question/upimg',
             fileManagerJson : 'kindeditor/asp/file_manager_json.asp',
-           /* allowImageUpload: true,*/ //多图上传
+           /!* allowImageUpload: true,*!/ //多图上传
             allowFileManager : true, //浏览图片空间
             filterMode : false, //HTML特殊代码过滤
             afterBlur: function(){ this.sync(); }, //编辑器失去焦点(blur)时执行的回调函数（将编辑器的HTML数据同步到textarea）
@@ -113,7 +113,7 @@
                 }
             }
         });
-    });
+    });*/
 
 </script>
 </html>

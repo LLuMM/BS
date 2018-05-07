@@ -28,4 +28,7 @@ public interface QuestionMapper {
     void deleteQuestionById(String id);
 
 
+    List<Question> getAllQuestion();
+
+    void setFrompic(String uid, String url);
 }

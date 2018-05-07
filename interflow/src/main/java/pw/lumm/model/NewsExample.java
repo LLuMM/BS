@@ -1,11 +1,20 @@
 package pw.lumm.model;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class NewsExample {
-    List<News> news;
     List<Forum> forums;
     List<Notic> notics;
+    HashMap<String,List<News>> news;
+
+    public HashMap<String, List<News>> getNews() {
+        return news;
+    }
+
+    public void setNews(HashMap<String, List<News>> news) {
+        this.news = news;
+    }
 
     public List<Notic> getNotics() {
         return notics;
@@ -15,13 +24,7 @@ public class NewsExample {
         this.notics = notics;
     }
 
-    public List<News> getNews() {
-        return news;
-    }
 
-    public void setNews(List<News> news) {
-        this.news = news;
-    }
 
     public List<Forum> getForums() {
         return forums;

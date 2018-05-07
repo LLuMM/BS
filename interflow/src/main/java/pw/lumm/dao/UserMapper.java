@@ -1,5 +1,6 @@
 package pw.lumm.dao;
 
+import pw.lumm.model.Friends;
 import pw.lumm.model.User;
 
 import java.util.List;
@@ -23,4 +24,10 @@ public interface UserMapper {
 
     void updateUser(User user);
     void setface(String uid,String url);
+
+    void addfriend(Friends friends);
+
+    void setFriendStatus(String id,int status);
+
+    String getFriendId(String fromid, String toid);
 }
