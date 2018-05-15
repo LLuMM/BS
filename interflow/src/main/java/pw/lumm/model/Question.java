@@ -6,7 +6,7 @@ public class Question {
     private String id;
     private String title;
     private String content;
-    private Date time;
+    private String time;
     private String userid;
     private String commentTo;
 
@@ -69,11 +69,11 @@ public class Question {
         this.content = content;
     }
 
-    public Date getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(Date time) {
+    public void setTime(String time) {
         this.time = time;
     }
 

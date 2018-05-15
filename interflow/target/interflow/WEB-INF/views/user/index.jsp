@@ -9,10 +9,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
-
     <title>用户中心-${user.username}</title>
-    <script charset="utf-8" src="${pageContext.request.contextPath}/resources/myjs/jquery.form.js"></script>
-    <script charset="utf-8" src="${pageContext.request.contextPath}/resources/myjs/jquery-ui.js"></script>
+
 </head>
 <body>
 <jsp:include page="../header.jsp"/>
@@ -24,6 +22,9 @@
     <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item">
             <a class="nav-link" href="/user/userinfo?uid=${user.uid}&who=1">个人主页</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/user/friendchat?uid=${user.uid}&who=1">好友中心</a>
         </li>
         <li class="nav-item">
             <a class="nav-link active" data-toggle="tab" href="#home">基本设置</a>
@@ -54,6 +55,7 @@
             <p><input type="file"/></p>
             <h5>用户名</h5>
             <c:if test="${user!=null}">
+                <form id="form1">
                 <p><input type="text" id="showname" name="showname" value="${user.username}"
                           placeholder="输入显示名"></p>
                 <h5>密码</h5>
@@ -63,27 +65,26 @@
                 <h5>用户名邮箱:</h5>
                 <p><input type="email" id="email" name="email" value="${user.email}"
                           placeholder="用于取回密码,请填写正确的常用邮箱"></p>
-                <p>
-                    <button type="submit">修改</button>
+                <h5>签名:</h5>
+                <p><input type="text" id="sign" name="sign" value="${user.sign}"></p>
+                <h5>城市:</h5>
+                <p><input type="text" id="city" name="city" value="${user.city}"
+                ></p>
+                <button type="button" onclick="updateUser()" class="btn btn-outline-primary">修改</button>
                 </p>
+                </form>
             </c:if>
         </div>
         <div id="menu1" class="container tab-pane fade"><br>
-            <h5>头像上传</h5>
+
             <form id="uploadForm" name="uploadForm" action="/user/upimg" method="post" enctype="multipart/form-data">
-                <img id="image" src="" style="width: 100px;height: 100px"/>
+                <img id="image" src=""  style="width: 100px;height: 100px;" hidden/>
                 <br/>
                 <input type="hidden" value="${userindex.user.uid}" name="uid">
                 <input type="file" name="uploadFile" onchange="selectImage(this);"/>
-                <br/>
-                <input type="submit" id="doSave" value="提交"/>
+                <br><br>
+                <input type="submit" id="doSave" value="提交" class="btn btn-outline-primary"/>
             </form>
-            <%--<form id="uploadForm" name="uploadForm"
-                  enctype="multipart/form-data">
-                <input name="messageContent" value="多个参数的情况下">
-                <label>文件</label> <input type="file" name="file">
-                <button class="btn" type="button" id="doSave">提交</button>
-            </form>--%>
         </div>
 
         <div id="menu2" class="container tab-pane fade"><br>
@@ -107,17 +108,34 @@
                             <c:forEach items="${fm.value}" var="question">
                                 <tr>
                                     <td>${question.uname}</td>
-                                    <td><a href="?id=${question.id}">${question.title}</a></td>
+                                    <td><a href="/question/detail?id=${question.id}">${question.title}</a></td>
                                     <td>${ms.time}</td>
                                     <td>
                                         <c:if test="${question.status!=2}">
-                                            <button style="margin-left: 10px" class="badge badge-pill badge-primary"
-                                                    value="${question.id}" onclick="setTop(this)">置顶
-                                            </button>
-                                            <button class="badge badge-pill badge-danger" value="${question.id}"
-                                                    onclick="setQustionStatus(this,1)">置精
-                                            </button>
 
+                                            <c:if test="${question.stick!=1}">
+                                                <button style="margin-left: 10px" class="badge badge-pill badge-primary"
+                                                        value="${question.id}" onclick="setTop(this)">置顶
+                                                </button>
+                                            </c:if>
+
+                                            <c:if test="${question.stick==1}">
+                                                <button style="margin-left: 10px"
+                                                        class="badge badge-pill  badge-secondary" disabled
+                                                        value="${question.id}" onclick="setTop(this)">置顶
+                                                </button>
+                                            </c:if>
+                                            <c:if test="${question.status==1}">
+                                                <button style="margin-left: 10px"
+                                                        class="badge badge-pill  badge-secondary" disabled
+                                                        value="${question.id}" onclick="setTop(this)">置精
+                                                </button>
+                                            </c:if>
+                                            <c:if test="${question.status!=1}">
+                                                <button class="badge badge-pill badge-danger" value="${question.id}"
+                                                        onclick="setQustionStatus(this,1)">置精
+                                                </button>
+                                            </c:if>
                                             <button class="badge badge-pill badge-warning" value="${question.id}"
                                                     onclick="setQustionStatus(this,2)">禁用
                                             </button>
@@ -154,6 +172,7 @@
                     <thead>
                     <tr>
                         <th>来自</th>
+                        <th>标题</th>
                         <th>内容</th>
                         <th>时间</th>
                         <th>类型</th>
@@ -163,7 +182,9 @@
                     <tbody>
                     <c:forEach items="${userindex.msgs}" var="ms">
                         <tr>
+
                             <td><a href="/user/userinfo?uid=${ms.fromid}&who=">${ms.fromname}</a></td>
+                            <td>${ms.title}</td>
                             <td>${ms.content}</td>
                             <td>${ms.time}</td>
                             <td>
@@ -180,7 +201,19 @@
                                         </button>
                                     </c:if>
                                 </c:if>
-                                <c:if test="${ms.type == 2}">管理员回复</c:if>
+                                <c:if test="${ms.type == 2}">
+                                    聊天邀请
+                                    <c:if test="${ms.readstatus == 0}">
+                                        <a href="/chat/friendchat?id=${ms.id}" target="_blank" class="btn btn-primary"
+                                           id="agree" value="${ms.fromid}">进入聊天
+                                        </a>
+                                        <button type="button" class="btn btn-warning" id="refuse" value="${ms.fromid}"
+                                                onclick="friendRequest(this,2)">拒绝回复
+                                        </button>
+                                    </c:if>
+                                </c:if>
+
+                                <c:if test="${ms.type == 3}">管理员回复</c:if>
                             </td>
                             <td>
                                 <c:if test="${ms.readstatus!=1}">
@@ -263,39 +296,6 @@
 
 
     $(function () {
-        /*   $("#doSave")
-               .click(
-                   function() {
-                       alert("asdasd");
-                       $("#uploadForm")
-                           .ajaxSubmit(
-                               {
-                                   type : 'post',
-                                   url : "/user/upimg",
-                                   //data: //注意只要是写在表单里面的，都不需要加这个属性。在controller中可以根据@RequestParam String str获取到属性值。
-                                   contentType : "application/x-www-form-urlencoded; charset=utf-8",
-                                   success: function(data) {
-                                       //接受到的data还只是一个字符串，需要转成json对象
-                                       var obj = JSON.parse(data);
-                                       if(obj.flag==true){
-                                           alert("上传成功");
-                                       }else{
-                                           alert("error");
-                                       }
-                                   },
-                                   error: function (data)//服务器响应失败处理函数
-                                   {
-                                       alert("出错");
-                                   }
-                               });
-                   });
-
-
-
-
-   */
-
-
         $("#apply").click(function () {
             var loginid = document.getElementById("loginid").value;
             var type = $("input[name='type']:checked").val();
@@ -365,7 +365,9 @@
                 var dataObj = JSON.parse(Result);
                 if (dataObj.Status) {
                     alert("设置成功!");
-                    location.reload();
+                    event.setAttribute("disabled", true);
+                    event.setAttribute("class", "badge badge-pill badge-secondary");
+
                 } else {
                     $("#error").text("网络异常！");
                 }
@@ -389,7 +391,8 @@
                 var dataObj = JSON.parse(Result);
                 if (dataObj.Status) {
                     alert("设置成功!");
-                    location.reload();
+                    event.setAttribute("disabled", true);
+                    event.setAttribute("class", "badge badge-pill badge-secondary");
                 } else {
                     alert("网络异常！");
                 }
@@ -453,39 +456,12 @@
         var reader = new FileReader();
         reader.onload = function (evt) {
             document.getElementById('image').src = evt.target.result;
+            document.getElementById('image').removeAttribute("hidden");
             image = evt.target.result;
+
         }
         reader.readAsDataURL(file.files[0]);
     }
-
-    /*上传图片
-    * */
-    /* $(function() {
-         $("#doSave").click(function() {
-             alert("sdasd");
-                     $("#uploadForm").ajaxSubmit(
-                             {
-                                 type : 'post',
-                                 url : "/user/upimg",
-                                 //data:  //注意只要是写在表单里面的，都不需要加这个属性。在controller中可以根据@RequestParam String str获取到属性值。
-                                 contentType : "application/x-www-form-urlencoded; charset=utf-8",
-                                 success: function(data) {
-                                     //接受到的data还只是一个字符串，需要转成json对象
-                                     var obj = JSON.parse(data);
-                                     if(obj.flag==true){
-                                         alert("上传成功");
-                                     }else{
-                                         alert("error");
-                                     }
-                                 },
-                                 error: function (data)//服务器响应失败处理函数
-                                 {
-                                     alert("出错");
-                                 }
-                             });
-                 });
-     });*/
-
 
     function friendRequest(event, status) {
 
@@ -503,13 +479,33 @@
             success: function (Result) {
                 var dataObj = JSON.parse(Result);
                 if (dataObj.Status) {
-                    alert("!");
-                    location.reload();
+                    event.setAttribute("disabled", true);
+                    event.setAttribute("class", "btn btn-secondary");
+
                 } else {
                     alert("网络异常！");
                 }
             }
 
+        });
+    }
+
+    function updateUser() {
+        $.ajax({
+            //几个参数需要注意一下
+            type: "POST",//方法类型
+            dataType: "json",//预期服务器返回的数据类型
+            url: "/user/updateUser",//url
+            data: $('#form1').serialize(),
+            success: function (result) {
+                console.log(result);//打印服务端返回的数据(调试用)
+                if (result.resultCode == 200) {
+                    alert("SUCCESS");
+                }
+            },
+            error : function() {
+                alert("异常！");
+            }
         });
     }
 

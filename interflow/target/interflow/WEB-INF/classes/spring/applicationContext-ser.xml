@@ -18,4 +18,27 @@
     <bean id="server" class="org.apache.solr.client.solrj.impl.HttpSolrServer">
         <constructor-arg index="0" value="http://192.168.202.129:8080/solr/collection1"/>
     </bean>
+
+    <!--调度器，每分钟刷新新闻-->
+    <bean id = "schedule" class="pw.lumm.utils.thrift.NewsFresh"></bean>
+    <bean id="SpringQuartzJobMethod" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject">
+            <ref bean="schedule"/>
+        </property>
+        <property name="targetMethod">
+            <value>getNews</value>
+        </property>
+    </bean>
+    <bean id="cronTriggerFactoryBean" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean ">
+        <property name="jobDetail" ref="SpringQuartzJobMethod"></property>
+        <property name="cronExpression" value="0 */5 * * * ?"></property>
+    </bean>
+    <bean id="SpringJobSchedulerFactoryBean" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="triggers">
+            <list>
+                <ref bean="cronTriggerFactoryBean"></ref>
+            </list>
+        </property>
+
+    </bean>
 </beans>

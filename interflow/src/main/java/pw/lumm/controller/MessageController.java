@@ -76,5 +76,17 @@ public class MessageController extends BaseController{
         }
         out.getWriter().write(gson.toJson(response));
     }
+    @RequestMapping("/chatMessage")
+    public void chatMessage(HttpServletResponse out,String fromid, String toid) throws IOException {
+        try{
+
+            messageService.chatMessage(fromid,toid);
+            response.Status = true;
+        }catch (Exception e){
+            response.Status = false;
+            e.printStackTrace();
+        }
+        out.getWriter().write(gson.toJson(response));
+    }
 
 }

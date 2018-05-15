@@ -22,17 +22,18 @@ import java.util.List;
 @Controller
 @RequestMapping("/question")
 public class QuestionController extends BaseController {
-    private String IMAGE_SERVER_URL="http://192.168.202.200/";
+    private String IMAGE_SERVER_URL = "http://192.168.202.200/";
     @Autowired
     private QuestionService questionService;
 
     @Autowired
     private ForumService forumService;
+
     @RequestMapping("/index")
-    public String toIndex(@RequestParam String fid, Model model) {
+    public String toIndex(@RequestParam String fid, Model model) throws Exception {
         List<Question> questions = questionService.getQuestionByForunmId(fid);
-        Forum forum = new Forum();
-        forum.setFid(fid);
+
+        Forum forum = forumService.getFourmById(fid);
         ForumExample forumExample = new ForumExample();
         forumExample.setForum(forum);
         forumExample.setQuestions(questions);
@@ -42,16 +43,15 @@ public class QuestionController extends BaseController {
 
 
     @RequestMapping("/add")
-    public String toAdd(String id, Model model) {
+    public String toAdd(String id, Model model) throws Exception {
         Forum forum = forumService.getFourmById(id);
         model.addAttribute("forum", forum);
         return "question/add";
     }
 
 
-
     @RequestMapping("/addForum")
-    public void addForum(HttpServletResponse out, String loginid, int type, String ftitle, String fcontent) throws IOException {
+    public void addForum(HttpServletResponse out, String loginid, int type, String ftitle, String fcontent) throws Exception {
         out.setContentType("text/html; charset=utf-8");
         try {
             questionService.addForum(loginid, type, ftitle, fcontent);
@@ -65,7 +65,7 @@ public class QuestionController extends BaseController {
     }
 
     @RequestMapping("/addQuestion")
-    public void addQuestion(HttpServletResponse out,  String loginid, String fid, String title, String value_content) throws IOException {
+    public void addQuestion(HttpServletResponse out, String loginid, String fid, String title, String value_content) throws IOException {
         out.setContentType("text/html; charset=utf-8");
         try {
             questionService.addQuestion(loginid, fid, title, value_content);
@@ -80,22 +80,36 @@ public class QuestionController extends BaseController {
 
 
     @RequestMapping("/detail")
-    public String toDetail(@RequestParam String id, Model model) {
+    public String toDetail(@RequestParam String id, Model model) throws Exception {
         Question question = questionService.getQuestionById(id);
         List<Answer> answers = questionService.getAnswerByQid(id);
         QuestionExample questionExample = new QuestionExample();
         questionExample.setAnswers(answers);
         questionExample.setQuestion(question);
-        model.addAttribute("questionExample",questionExample);
+        model.addAttribute("questionExample", questionExample);
         return "question/detail";
     }
 
+    @RequestMapping("/toemotion")
+    public String toemotion(@RequestParam int type, Model model) throws Exception {
+        QuestionExample questionExample = new QuestionExample();
+        List<Forum> forumList = forumService.getForum(type, 1);
+        questionExample.setForums(forumList);
+        if (forumList != null && forumList.size() > 0) {
+            for (int i = 0; i < forumList.size(); i++) {
+                List<Question> questions = questionService.getQuestionByForunmId(forumList.get(i).getFid());
+                questionExample.setQuestions(questions);
+            }
+        }
+        model.addAttribute("questionExample",questionExample);
+        return "question/emotionindex";
+    }
 
     @RequestMapping("/setForumStatus")
     public void setForumStatus(HttpServletResponse out, int status, String id) throws IOException {
         out.setContentType("text/html; charset=utf-8");
         try {
-            questionService.setForumStatus(id,status);
+            questionService.setForumStatus(id, status);
             response.Status = true;
         } catch (Exception e) {
             response.Status = false;
@@ -106,11 +120,12 @@ public class QuestionController extends BaseController {
 
 
     }
+
     @RequestMapping("/setTop")
-    public void setTop(HttpServletResponse out, String id,int status) throws IOException {
+    public void setTop(HttpServletResponse out, String id, int status) throws IOException {
         out.setContentType("text/html; charset=utf-8");
         try {
-            questionService.setTop(id,status);
+            questionService.setTop(id, status);
             response.Status = true;
         } catch (Exception e) {
             response.Status = false;
@@ -123,12 +138,12 @@ public class QuestionController extends BaseController {
     }
 
     @RequestMapping("/setStatus")
-    public void setStatus(HttpServletResponse out, String id,int status) throws IOException {
-        System.out.println(status);
+    public void setStatus(HttpServletResponse out, String id, int status) throws IOException {
+
 
         out.setContentType("text/html; charset=utf-8");
         try {
-            questionService.setStatus(id,status);
+            questionService.setStatus(id, status);
             response.Status = true;
         } catch (Exception e) {
             response.Status = false;
@@ -141,7 +156,7 @@ public class QuestionController extends BaseController {
     }
 
     @RequestMapping("/delete")
-    public void deleteByQid(HttpServletResponse out,String id) throws IOException {
+    public void deleteByQid(HttpServletResponse out, String id) throws IOException {
 
         out.setContentType("text/html; charset=utf-8");
         try {
@@ -155,8 +170,8 @@ public class QuestionController extends BaseController {
         out.getWriter().write(gson.toJson(response));
     }
 
-    @RequestMapping(value = "/upimg",method=RequestMethod.POST)
-    public void imgUpload(@RequestParam MultipartFile uploadFile,HttpServletResponse out){
+    @RequestMapping(value = "/upimg", method = RequestMethod.POST)
+    public void imgUpload(@RequestParam MultipartFile uploadFile, HttpServletResponse out) {
         String originalFilename = uploadFile.getOriginalFilename();
         String extName = originalFilename.substring(originalFilename.lastIndexOf(".") + 1);
         try {
@@ -169,9 +184,7 @@ public class QuestionController extends BaseController {
         }
 
 
-
     }
-
 
 
 }

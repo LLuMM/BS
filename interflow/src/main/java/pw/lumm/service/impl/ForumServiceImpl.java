@@ -14,17 +14,17 @@ public class ForumServiceImpl implements ForumService {
     private ForumMapper forumMapper;
 
     @Override
-    public void addForum(Forum forum) {
+    public void addForum(Forum forum) throws Exception  {
         forumMapper.addForum(forum);
     }
 
     @Override
-    public void setForumStatus(String id, int type) {
+    public void setForumStatus(String id, int type) throws Exception  {
         forumMapper.setForumStatus(type, id);
     }
 
     @Override
-    public Forum getFourmById(String id) {
+    public Forum getFourmById(String id)  throws Exception {
         Forum forum = forumMapper.getFourmById(id);
         if (forum != null)
             return forum;
@@ -34,7 +34,7 @@ public class ForumServiceImpl implements ForumService {
     }
 
     @Override
-    public List<Forum> getFourmByUserId(String uid) {
+    public List<Forum> getFourmByUserId(String uid)  throws Exception {
         List<Forum> forums = forumMapper.getFourmByUserId(uid);
         if (forums != null && forums.size() > 0)
             return forums;
@@ -42,8 +42,10 @@ public class ForumServiceImpl implements ForumService {
             return null;
     }
     @Override
-    public List<Forum> getForum(int type, int status) {
+    public List<Forum> getForum(int type, int status)  throws Exception {
         List<Forum> forumList = forumMapper.getForum(type, status);
         return forumList;
     }
+
+
 }

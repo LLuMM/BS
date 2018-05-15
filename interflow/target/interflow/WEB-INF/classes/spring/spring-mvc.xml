@@ -26,11 +26,16 @@
     <mvc:interceptors>
         <mvc:interceptor>
             <mvc:mapping path="/"/>
-            <bean class="pw.lumm.interceptors.LoginInterceptor"></bean>
 
+            <bean class="pw.lumm.interceptors.LoginInterceptor">
+
+            </bean>
         </mvc:interceptor>
+            <bean class="pw.lumm.interceptors.MessageInterceptor">
+            </bean>
 
     </mvc:interceptors>
+
 
 
 </beans>

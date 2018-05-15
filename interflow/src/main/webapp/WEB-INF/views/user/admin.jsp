@@ -40,17 +40,30 @@
             <a class="nav-link" data-toggle="tab" href="#menu2">。。。。</a>
         </li>
     </ul>
-
     <!-- Tab panes -->
     <div class="tab-content">
         <div id="home" class="container tab-pane active"><br>
             <h3>版主用户</h3>
             <c:if test="${adminExample!=null}">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>版主</th>
+                    <th>管理板块列表</th>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
                 <c:forEach items="${adminExample.users}" var="us">
-                    <p>${us.username}&nbsp;</p>
-
+                    <tr>
+                        <td>${us.username}</td>
+                        <td></td>
+                    </tr>
                 </c:forEach>
-            </c:if>
+
+                </tbody>
+            </table>
+                </c:if>
         </div>
 
         <div id="menu1" class="container tab-pane fade"><br>

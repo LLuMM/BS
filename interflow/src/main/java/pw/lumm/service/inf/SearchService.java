@@ -5,9 +5,9 @@ import pw.lumm.model.SearchItemExample;
 
 public interface SearchService {
 
-    void importAllTitle();
-    SearchItemExample search(String keyword);
-    void importQuestion(Question question);
-    void deleteQuestionById(String id);
-    void deleteAllNews();
+    void importAllTitle() throws Exception ;
+    SearchItemExample search(String keyword) throws Exception ;
+    void importQuestion(Question question) throws Exception ;
+    void deleteQuestionById(String id) throws Exception ;
+    void deleteAllNews() throws Exception ;
 }

@@ -30,4 +30,8 @@ public interface UserMapper {
     void setFriendStatus(String id,int status);
 
     String getFriendId(String fromid, String toid);
+
+    List<Friends> getFriendsidByUid(String uid);
+
+    void setStatus(String username, int status);
 }

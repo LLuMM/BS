@@ -12,7 +12,8 @@
     <title>Title</title>
 
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/kindeditor/themes/default/default.css"/>
-    <script charset="utf-8" src="${pageContext.request.contextPath}/resources/kindeditor/kindeditor-all-min.js"></script>
+    <script charset="utf-8"
+            src="${pageContext.request.contextPath}/resources/kindeditor/kindeditor-all-min.js"></script>
     <script charset="utf-8" src="${pageContext.request.contextPath}/resources/kindeditor/lang/zh_CN.js"></script>
     <script charset="utf-8" src="${pageContext.request.contextPath}/resources/myjs/ktCreater.js"></script>
     <style>
@@ -43,37 +44,44 @@
 
     </div>
 </div>
+<br>
 <div class="container">
-
     <c:if test="${questionExample.answers!=null}">
         <c:forEach var="answer" items="${questionExample.answers}">
-            <span><a href="/user/userinfo?uid=${answer.uid}&who=">${answer.username}</a></span></span><br>
-            <span>${answer.time}</span><br>
+            <c:if test="${answer.userface==null}">
+                <img src="../img/user.jpg">
+            </c:if>
+            <span>
+                <a href="/user/userinfo?uid=${answer.uid}&who=">${answer.username}</a>
+            </span><br>
             <c:if test="${answer.answerTo!=null}">
                 <span>@<a href="/user/userinfo?uid=${answer.answerTo}&who=">${answer.answerTo}</a></span>
-
             </c:if>
             <span>${answer.content}</span>&nbsp;<br>
             <input type="hidden" id="un" value="${answer.username}">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#reply"
-                    data-whatever="${answer.uid}" data-name="${answer.username}" style="color: white">回复
-            </button>
+            <div style="margin-right: 20px">
+                <span style="font-size: 13px">${answer.time}</span>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#reply"
+                        data-whatever="${answer.uid}" data-name="${answer.username}" style="color: white">回复
+                </button>
+            </div>
             <div class="xline col-sm-9"></div>
         </c:forEach>
     </c:if>
 
 
 </div>
+<br>
 <div class="container">
     <div class="row">
-        <div class="card col-sm-9">
+        <div class="col-sm-9">
             <textarea id="mul_input" name="content" style="width:700px;height:200px;"></textarea>
             <c:if test="${user !=null&&user !=''}">
                 <input type="hidden" id="uid" value="${user.uid}"/>
                 <input type="hidden" id="name" value="${user.username}"/>
                 <input type="hidden" id="id" value="${questionExample.question.id}"/>
             </c:if>
-            <button type="button" id="subutton">立即发表</button>
+            <button type="button" style="margin-top: 10px" class="btn btn-outline-primary" id="subutton">立即发表</button>
         </div>
         <div class="col-sm-3">
 
@@ -117,7 +125,7 @@
     $(function () {
         $("#subutton").click(function () {
             var id = document.getElementById("loginid").value;
-            if ("" == id ) {
+            if ("" == id) {
                 alert("亲，请登录！");
             } else {
 
@@ -167,30 +175,34 @@
                 var toid = document.getElementById("aid").value;
                 var qid = document.getElementById("qid").value;
                 var fromid = document.getElementById("uid").value;
+                editor.sync();
                 var content = $("#repyltext").val();
+                if ("" == content) {
+                    alert("您还没有添加内容呢^-^...");
+                } else {
+                    $.ajax({
+                        type: "post",
+                        url: "/answer/addAnswerToUser",
+                        dataType: "text",
+                        data: {
+                            "qid": qid,
+                            "toid": toid,
+                            "fromid": fromid,
+                            "content": content,
+                            "type": 1
 
-                $.ajax({
-                    type: "post",
-                    url: "/answer/addAnswerToUser",
-                    dataType: "text",
-                    data: {
-                        "qid": qid,
-                        "toid": toid,
-                        "fromid": fromid,
-                        "content": content,
-                        "type":1
-
-                    },
-                    success: function (Result) {
-                        var dataObj = JSON.parse(Result);
-                        if (dataObj.Status) {
-                            alert("回复成功!");
-                            location.reload();
-                        } else {
-                            alert(dataObj.Message);
+                        },
+                        success: function (Result) {
+                            var dataObj = JSON.parse(Result);
+                            if (dataObj.Status) {
+                                alert("回复成功!");
+                                location.reload();
+                            } else {
+                                alert(dataObj.Message);
+                            }
                         }
-                    }
-                });
+                    });
+                }
             }
         });
 

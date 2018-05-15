@@ -13,16 +13,20 @@
 </head>
 <body>
 <jsp:include page="../header.jsp"/>
-<div class="container"  style="margin-top: 100px">
+<div class="container" style="margin-top: 100px">
 
     <div class="row">
         <div class="col-sm-2">
             <button id="upquestion" type="button" class="btn btn-primary" style="margin-left: 5px">发表新帖</button>
         </div>
-        <div class="col-sm-6"></div>
+
+        <div class="col-sm-10">
+            <mark style="font-size: 20px"> ${forumExample.forum.content}</mark>
+
+        </div>
     </div>
 </div>
-<div class="container">
+<div class="container" style="margin-top: 5px">
     <div class="row">
         <div class="col-sm-8">
             <c:if test="${forumExample.questions != null}">
@@ -33,22 +37,25 @@
                                 <div class="row">
                                     <div class="col-sm-2">
                                         <a class="nav-link" href="/user/userinfo?uid=${question.userid}&who=">
-                                           <img src="${question.frompic}" style="width: 50px;height: 50px"/>
+                                            <img src="${question.frompic}" style="width: 50px;height: 50px"/>
                                         </a>
                                     </div>
                                     <div class="col-sm-10" style="margin-top: 15px">
                                         <span style="color: #9fcdff">${question.uname}</span>&nbsp;&nbsp;
                                         <a href="/question/detail?id=${question.id}">
                                                 ${question.title}
-                                        </a><br>
-                                        <span> ${question.time}</span>&nbsp;&nbsp;
-                                        <span>浏览量：${question.hits}</span>&nbsp;&nbsp;
-                                        <c:if test="${question.stick == 1}">
-                                        <span style="margin-left: 10px" class="badge badge-pill badge-primary" >置顶</span>
-                                        </c:if>
+                                        </a><c:if test="${question.stick == 1}">
+                                            <span style="margin-left: 10px"
+                                                  class="badge badge-pill badge-primary">置顶</span>
+                                    </c:if>
                                         <c:if test="${question.status == 1}">
-                                        <span class="badge badge-pill badge-danger" >置精</span>
+                                            <span class="badge badge-pill badge-danger">精帖</span>
                                         </c:if>
+                                        <br>
+                                        <span style="font-size: 8px"> ${question.time}&nbsp;&nbsp;
+                                       <img src="../img/liulan.jpg"
+                                            style="width: 20px;height: 20px"/>&nbsp;&nbsp;${question.hits}</span>&nbsp;&nbsp;
+
                                     </div>
                                 </div>
 
@@ -89,50 +96,5 @@
         });
 
     });
-   /* function setTop(event){
-        var id = event.value;
-        $.ajax({
-            type: "post",
-            url: "/question/setTop",
-            dataType: "text",
-            data: {
-                "id":id,
-                "status":1
-            },
-            success: function (Result) {
-                var dataObj = JSON.parse(Result);
-                if (dataObj.Status) {
-                    alert("设置成功!");
-                    location.reload();
-                } else {
-                    $("#error").text("网络异常！");
-                }
-            }
-
-        });
-    }
-    function setFine(event){
-        var id = event.value;
-        $.ajax({
-            type: "post",
-            url: "/question/setFine",
-            dataType: "text",
-            data: {
-                "id":id,
-                "status":1
-            },
-            success: function (Result) {
-                var dataObj = JSON.parse(Result);
-                if (dataObj.Status) {
-                    alert("设置成功!");
-                    location.reload();
-                } else {
-                    $("#error").text("网络异常！");
-                }
-            }
-
-        });
-    }*/
-
 </script>
 </html>

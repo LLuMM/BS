@@ -18,4 +18,5 @@
     <select id="getForum" resultType="pw.lumm.model.Forum">
         select * from forum where type = #{0} and status = #{1}
     </select>
+
 </mapper>

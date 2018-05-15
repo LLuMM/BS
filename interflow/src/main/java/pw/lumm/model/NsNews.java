@@ -1,15 +1,22 @@
 package pw.lumm.model;
 
-import java.util.Date;
-
 public class NsNews {
     private String nsid;
     private String title;
     private String content;
     private String pic;
-    private Date date;
+    private String date;
     private int views;
     private String source;
+    private String nid;
+
+    public String getNid() {
+        return nid;
+    }
+
+    public void setNid(String nid) {
+        this.nid = nid;
+    }
 
     public String getNsid() {
         return nsid;
@@ -43,11 +50,11 @@ public class NsNews {
         this.pic = pic;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 

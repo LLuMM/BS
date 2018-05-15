@@ -1,19 +1,72 @@
 package pw.lumm.model;
 
+import com.google.gson.annotations.Expose;
+
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Msg {
+
     private String id;
     private String title;
+    @Expose
     private String fromid;
     private String toid;
+    @Expose
     private String content;
+    @Expose
     private String fromname;
+    @Expose
     private String toname;
-    private Date time;
+    @Expose
+    private String time;
     private String fid;
     private int readstatus;
     private int type;
+
+    @Expose
+    private String to;
+
+    @Override
+    public String toString() {
+        return "Msg{" +
+                "id='" + id + '\'' +
+                ", title='" + title + '\'' +
+                ", fromid='" + fromid + '\'' +
+                ", toid='" + toid + '\'' +
+                ", content='" + content + '\'' +
+                ", fromname='" + fromname + '\'' +
+                ", toname='" + toname + '\'' +
+                ", time=" + time +
+                ", fid='" + fid + '\'' +
+                ", readstatus=" + readstatus +
+                ", type=" + type +
+                ", to='" + to + '\'' +
+                ", userList=" + userList +
+                '}';
+    }
+
+    @Expose
+    List<User> userList = new ArrayList<>();
+
+    public String getTo() {
+        return to;
+    }
+
+    public void setTo(String to) {
+        this.to = to;
+    }
+
+
+
+    public List<User> getUserList() {
+        return userList;
+    }
+
+    public void setUserList(List<User> userList) {
+        this.userList = userList;
+    }
 
     public int getType() {
         return type;
@@ -31,20 +84,6 @@ public class Msg {
         this.readstatus = readstatus;
     }
 
-    @Override
-    public String toString() {
-        return "Msg{" +
-                "id='" + id + '\'' +
-                ", title='" + title + '\'' +
-                ", fromid='" + fromid + '\'' +
-                ", toid='" + toid + '\'' +
-                ", content='" + content + '\'' +
-                ", fromname='" + fromname + '\'' +
-                ", toname='" + toname + '\'' +
-                ", time=" + time +
-                ", fid='" + fid + '\'' +
-                '}';
-    }
 
     public String getFromid() {
         return fromid;
@@ -103,11 +142,11 @@ public class Msg {
         this.toname = toname;
     }
 
-    public Date getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(Date time) {
+    public void setTime(String time) {
         this.time = time;
     }
 

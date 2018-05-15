@@ -24,17 +24,16 @@
 
         </div>
         <div class="container">
-
             <label>标题:</label>
             <input type="text" class="form-control" id="title" placeholder="">
 
         </div>
-        <div class="container">
+        <div class="container" style="margin-top: 10px">
             <textarea id="mul_input" name="content" style="width:700px;height:200px;"></textarea>
 
         </div>
-        <div class="container">
-            <button id="sub">立即发布</button>
+        <div class="container" style="margin-top: 10px">
+            <button id="sub"  class="btn btn-outline-primary">立即发布</button>
         </div>
     </div>
 </div>
@@ -64,6 +63,8 @@
                     var dataObj = JSON.parse(Result);
                     if (dataObj.Status) {
                         alert("发表成功");
+                        //清空kindeditor内容
+                        KindEditor.html("#mul_input","");
                         location.reload();
                     } else {
                         $("#error").text("网络异常！");

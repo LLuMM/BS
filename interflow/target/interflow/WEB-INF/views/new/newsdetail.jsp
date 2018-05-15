@@ -27,12 +27,13 @@
 <body>
 <jsp:include page="../header.jsp"/>
 <div class="container" style="margin-top: 90px">
+    <div class="row">
             <div class="card-body">
                 <c:if test="${nsNewsExample.news!=null}">
                 <iframe src="${nsNewsExample.news.url}" scrolling="auto" width="100%" height="100%"></iframe>
                 </c:if>
             </div>
-</div>
+    </div>
 
 
 <c:if test="${nsNewsExample.answers.size()>0}">
@@ -51,16 +52,17 @@
         </c:forEach>
     </div>
 </c:if>
-<div class="container">
+
     <div class="row">
-        <div class="card col-sm-9">
+        <div class="col-sm-9">
             <textarea id="mul_input" name="content" style="width:700px;height:200px;"></textarea>
             <c:if test="${user !=null&&user !=''}">
                 <input type="hidden" id="uid" value="${user.uid}"/>
                 <input type="hidden" id="name" value="${user.username}"/>
                 <input type="hidden" id="nsid" value="${nsNewsExample.nsNews.nsid}"/>
             </c:if>
-            <button type="button" id="subutton">立即发表</button>
+            <br>
+            <button type="button" style="margin-top: 10px"  class="btn btn-outline-primary" id="subutton">立即发表</button>
         </div>
         <div class="col-sm-3">
         </div>
@@ -88,7 +90,6 @@
 
             </div>
             <div class="modal-footer">
-
                 <button type="button" id="sreplybut" class="btn btn-primary">
                     提交
                 </button>

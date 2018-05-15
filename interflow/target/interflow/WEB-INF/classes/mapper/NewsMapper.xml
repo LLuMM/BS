@@ -20,4 +20,7 @@
         select * from news
     </select>
 
+    <update id="updateRead">
+        update news set readnum = #{1} where nid=#{0}
+    </update>
 </mapper>

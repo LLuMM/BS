@@ -7,13 +7,13 @@ public class Friends {
     private String userid;
     private String friendid;
     private int status;
-    private Date date;
+    private String date;
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 

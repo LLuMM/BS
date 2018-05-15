@@ -19,13 +19,22 @@ public class Answer {
   private String supportCnt;
     private String opposeCnt;
     private String answerTo;
-    private Date time;
+    private String time;
     private String uid;
     private String accept;
     private String qid;
     private String username;
     private String toid;
     private String questionTitle;
+    private String userface;
+
+    public String getUserface() {
+        return userface;
+    }
+
+    public void setUserface(String userface) {
+        this.userface = userface;
+    }
 
     public String getQuestionTitle() {
         return questionTitle;
@@ -103,11 +112,11 @@ public class Answer {
     }
 
 
-    public Date getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(Date time) {
+    public void setTime(String time) {
         this.time = time;
     }
 

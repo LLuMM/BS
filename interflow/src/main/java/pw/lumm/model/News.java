@@ -7,10 +7,19 @@ public class News {
     private String title;
     private String n_id;
     private int type;
-    private Date date;
+    private String date;
     private String url;
     private String source;
     private String imgurl;
+    private int readnum;
+
+    public int getReadnum() {
+        return readnum;
+    }
+
+    public void setReadnum(int readnum) {
+        this.readnum = readnum;
+    }
 
     public String getUrl() {
         return url;
@@ -69,11 +78,11 @@ public class News {
         this.type = type;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 }

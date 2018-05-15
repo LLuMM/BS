@@ -26,38 +26,47 @@
     <update id="setVisits" parameterType="int">
       update tb_user set visits = #{read}
     </update>
-    <update id="setface" >
+    <update id="setface">
       update tb_user set face = #{1} where uid = #{0}
     </update>
 
     <update id="updateUser" parameterType="pw.lumm.model.User">
         update tb_user
         <set>
-                <if test="username != null">
-                    username = #{username},
-                </if>
-                <if test="password != null">
-                    password = #{password},
-                </if>
-                <if test="email != null">
-                    email= #{email},
-                </if>
-                <if test="face != null">
-                    face= #{face},
-                </if>
-                <if test="privilege != null">
-                    privilege= #{privilege},
-                </if>
-                <if test="lastlogin != null">
-                    lastlogin= #{lastlogin,jdbcType=TIMESTAMP},
-                </if>
-                <if test="visits != null">
-                    visits= #{visits},
-                </if>
-                <if test="phone != null">
-                    phone= #{phone},
-                </if>
+            <if test="username != null">
+                username = #{username},
+            </if>
+            <if test="password != null">
+                password = #{password},
+            </if>
+            <if test="email != null">
+                email= #{email},
+            </if>
+            <if test="face != null">
+                face= #{face},
+            </if>
+            <if test="privilege != null">
+                privilege= #{privilege},
+            </if>
+            <if test="lastlogin != null">
+                lastlogin= #{lastlogin,jdbcType=TIMESTAMP},
+            </if>
+            <if test="visits != null">
+                visits= #{visits},
+            </if>
+            <if test="phone != null">
+                phone= #{phone},
+            </if>
+            <if test="sign != null">
+                sign= #{sign},
+            </if>
+            <if test="city != null">
+                city= #{city},
+            </if>
         </set>
+        <where>
+            uid = ${uid}
+        </where>
     </update>
     <insert id="addfriend" parameterType="pw.lumm.model.Friends">
         insert into friends (id, userid, friendid, status, date) values (#{id}, #{userid},#{friendid},#{status},#{date,jdbcType=TIMESTAMP})
@@ -68,4 +77,11 @@
     <select id="getFriendId" resultType="String">
       SELECT id FROM friends WHERE userid = #{1} and friendid = #{0}
     </select>
+
+    <select id="getFriendsidByUid" resultType="pw.lumm.model.Friends">
+      SELECT * FROM friends WHERE (userid = #{uid} or friendid =#{uid}) and status = 1
+    </select>
+    <update id="setStatus">
+      update tb_user set status = #{1} where username = #{0}
+    </update>
 </mapper>

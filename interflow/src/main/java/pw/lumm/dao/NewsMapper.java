@@ -13,4 +13,6 @@ public interface NewsMapper {
     List<News> getAllNews();
 
     News getNewsById(String n_id);
+
+    void updateRead(String nid,int read);
 }

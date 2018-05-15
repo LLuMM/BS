@@ -1,20 +1,24 @@
 package pw.lumm.model;
 
+import com.google.gson.annotations.Expose;
+
 import java.util.Date;
 
 /**
  * Created by LM on 2018/4/12.
  */
-public class User {
+public class User{
+    @Expose
     private String uid;
+    @Expose
     private String username;
     private String password;
     private String email;
     private int post;
     private String sign;
     private String face;
-    private Date joindate;
-    private Date lastlogin;
+    private String joindate;
+    private String lastlogin;
     private int isbest;
     private String userfav;
     private String userinfo;
@@ -23,6 +27,33 @@ public class User {
     private int privilege;
     private int visits;
     private String phone;
+    private int status;
+    private String city;
+    private String verifycode;
+
+    public String getVerifycode() {
+        return verifycode;
+    }
+
+    public void setVerifycode(String verifycode) {
+        this.verifycode = verifycode;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
 
     public String getPhone() {
         return phone;
@@ -105,19 +136,19 @@ public class User {
         this.face = face;
     }
 
-    public Date getJoindate() {
+    public String getJoindate() {
         return joindate;
     }
 
-    public void setJoindate(Date joindate) {
+    public void setJoindate(String joindate) {
         this.joindate = joindate;
     }
 
-    public Date getLastlogin() {
+    public String getLastlogin() {
         return lastlogin;
     }
 
-    public void setLastlogin(Date lastlogin) {
+    public void setLastlogin(String lastlogin) {
         this.lastlogin = lastlogin;
     }
 
@@ -160,4 +191,6 @@ public class User {
     public void setUserviews(int userviews) {
         this.userviews = userviews;
     }
+
+
 }

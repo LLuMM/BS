@@ -11,11 +11,10 @@
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/bootstrap/css/bootstrap.min.css">
 <script src="${pageContext.request.contextPath}/resources/bootstrap/js/jquery.js"></script>
-<%--<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>--%>
 <script src="${pageContext.request.contextPath}/resources/bootstrap/js/bootstrap.min.js"></script>
 
 
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark navbar-dark fixed-top" >
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark navbar-dark fixed-top">
     <div class="container">
         <div class="col-sm-2 ">
             <!-- Brand/logo -->
@@ -33,10 +32,10 @@
                     <a class="nav-link" href="/new/index?type=1">技术专区&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/new/index?type=2">情感专区&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                    <a class="nav-link" href="/question/toemotion?type=2">情感专区&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/new/index?type=3">讨论区&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                    <a class="nav-link" id="tochat" <%--href="/user/friendchat?uid=${user.uid}&who=1"--%>>讨论区&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
                 </li>
             </ul>
         </div>
@@ -121,9 +120,9 @@
                 success: function (Result) {
                     var dataObj = JSON.parse(Result);
                     if (dataObj.Status) {
-                        if (dataObj.user == '1'){
-                            window.location.href='/user/toadmin';
-                        }else {
+                        if (dataObj.user == '1') {
+                            window.location.href = '/user/toadmin';
+                        } else {
                             location.reload();
                         }
                     } else {
@@ -145,16 +144,24 @@
                     var dataObj = JSON.parse(Result);
 
                     if (dataObj.Status) {
-                        if(test=="http://localhost:8080/user/toadmin" || test=="http://localhost:8080/user/userinfo?uid="+loginid||
-                            test=="http://localhost:8080/user/userindex?uid="+loginid
-                        ){
-                           location.href='/index';
-                        }else {
-                        location.reload();
+                        if (test == "http://localhost:8080/user/toadmin" || test == "http://localhost:8080/user/userinfo?uid=" + loginid ||
+                            test == "http://localhost:8080/user/userindex?uid=" + loginid
+                        ) {
+                            location.href = '/index';
+                        } else {
+                            location.reload();
                         }
                     }
                 }
             });
+        });
+        $("#tochat").click(function () {
+            var loginid = document.getElementById("loginid").value;
+            if (loginid == "" || loginid == null) {
+                alert("请先登录！");
+            } else {
+                window.location.href="/user/friendchat?uid="+loginid+"&who=1";
+            }
         });
     });
 </script>

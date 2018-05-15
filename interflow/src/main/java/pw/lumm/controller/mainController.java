@@ -27,7 +27,7 @@ public class mainController {
 
 
     @RequestMapping(value = "/index")
-    public String toIndex(Model model){
+    public String toIndex(Model model) throws Exception{
         List<News> news1= newsService.getHotNews(1,4);
         List<News> news2 = newsService.getHotNews(0,5);
         List<Notic> notics = messageService.getNotics();

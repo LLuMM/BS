@@ -36,32 +36,43 @@ public class NewsController extends BaseController {
 
 
     @RequestMapping("/index")
-    public String toIndex(@RequestParam int type, Model model) {
-        List<News> newsLists = newsService.getHotNews(type, 10);
-        List<Forum> forumList = forumService.getForum(type, 1);
+    public String toIndex(@RequestParam int type, Model model) throws Exception {
+
         NewsExample newsExample = new NewsExample();
+        List<Forum> forumList = forumService.getForum(type, 1);
+        HashMap<String, List<News>> mapnews = new HashMap<>();
+
+        List<News> newsLists = newsService.getHotNews(type, 10);
         newsExample.setForums(forumList);
-        /*NewsFresh.getNews();*/
-        HashMap<String,List<News>> mapnews = new HashMap<>();
-        mapnews.put("new",newsLists);
+
+        mapnews.put("new", newsLists);
         newsExample.setNews(mapnews);
         model.addAttribute("newsExample", newsExample);
         return "new/index";
     }
 
     @RequestMapping("/detail")
-    public String todetail(@RequestParam String n_id, Model model) {
+    public String todetail(@RequestParam String n_id, Model model) throws Exception {
         NsNewsExample nsNewsExample = new NsNewsExample();
         News news = newsService.getNewsById(n_id);
-        if (news!=null){
+
+        if (news != null) {
+            int read = news.getReadnum();
+            read += 1;
+            news.setReadnum(read);
+            newsService.updateRead(n_id, read);
             List<Answer> answers = ansewerServer.getAnswerByNewsId(n_id);
             nsNewsExample.setNews(news);
             nsNewsExample.setAnswers(answers);
             model.addAttribute("nsNewsExample", nsNewsExample);
             return "new/newsdetail";
-        }
-        else {
+        } else {
             NsNews nsNews = newsService.getNewsDetail(n_id);
+            News news1 = newsService.getNewsById(nsNews.getNid());
+            int read = news1.getReadnum();
+            read += 1;
+            news1.setReadnum(read);
+            newsService.updateRead(nsNews.getNid(), read);
             List<Answer> answers = ansewerServer.getAnswerByNewsId(n_id);
             nsNewsExample.setAnswers(answers);
             nsNewsExample.setNsNews(nsNews);
@@ -69,8 +80,9 @@ public class NewsController extends BaseController {
             return "new/detail";
         }
     }
+
     @RequestMapping("/addAnswer")
-    public void addAnswer(HttpServletResponse out, String uid, String nsid, String content, String username) throws IOException {
+    public void addAnswer(HttpServletResponse out, String uid, String nsid, String content, String username) throws Exception {
         out.setContentType("text/html; charset=utf-8");
         try {
             ansewerServer.addAnswerToNews(uid, nsid, content, username);

@@ -9,13 +9,13 @@ public class Forum {
     private int type;
     private String uid;
     private int status;
-    private Date time;
+    private String time;
 
-    public Date getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(Date time) {
+    public void setTime(String time) {
         this.time = time;
     }
 

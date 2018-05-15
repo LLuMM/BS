@@ -72,17 +72,18 @@
         </c:forEach>
     </div>
 </c:if>
-<div class="container">
+<div class="container" style="margin-top: 15px;">
     <div class="row">
-        <div class="card col-sm-9">
-            <textarea id="mul_input" name="content" style="width:700px;height:200px;"></textarea>
+        <div class="col-sm-9">
+            <textarea  id="mul_input" name="content" style="width:700px;height:200px;"></textarea>
             <c:if test="${user !=null&&user !=''}">
                 <input type="hidden" id="uid" value="${user.uid}"/>
                 <input type="hidden" id="name" value="${user.username}"/>
                 <input type="hidden" id="nsid" value="${nsNewsExample.nsNews.nsid}"/>
             </c:if>
-            <button type="button" id="subutton">立即发表</button>
+            <button type="button" style="margin-top: 10px"  class="btn btn-outline-primary" id="subutton">立即发表</button>
         </div>
+
         <div class="col-sm-3">
         </div>
 

@@ -5,7 +5,7 @@ import java.util.Date;
 public class Notic {
     private String id;
     private String content;
-    private Date time;
+    private String time;
 
     public String getId() {
         return id;
@@ -23,11 +23,11 @@ public class Notic {
         this.content = content;
     }
 
-    public Date getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(Date time) {
+    public void setTime(String time) {
         this.time = time;
     }
 }

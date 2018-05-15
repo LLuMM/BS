@@ -23,8 +23,10 @@
                          style="width: 80px">
                     <br>
                     <h3>${userExample.user.username}</h3><h5><c:if test="${userExample.user.privilege==1}">(版主)</c:if></h5>
-                    签名：<br>
-                    <button data-toggle="modal" data-target="#sendMsg"  data-whatever="${userExample.user.uid}" >加好友</button>
+                    <button data-toggle="modal" class="btn btn-outline-success" data-target="#sendMsg"  data-whatever="${userExample.user.uid}" ><span style="font-size: 8px">加好友</span></button><br>
+                    <c:if test="${userExample.user.sign!=null}"> <pre>${userExample.user.sign}</pre></c:if>
+                    <c:if test="${userExample.user.sign==null}"><pre>这个家伙什么都没留下</pre></c:if><br>
+
                 </center>
             </div>
         </div>

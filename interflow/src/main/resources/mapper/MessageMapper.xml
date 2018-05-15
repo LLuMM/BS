@@ -84,7 +84,7 @@
     </delete>
 
     <update id="setMessageStauts" parameterType="String">
-        update message set readstatus = 1
+        update message set readstatus = 1 where id= #{id}
         <where>
             <if test="fid != null">
                fid = #{fid}

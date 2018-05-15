@@ -18,7 +18,27 @@ public class NewsFresh {
             TProtocol protocol = new TBinaryProtocol(transport);
             getHotNews.Client client = new getHotNews.Client(protocol);
             String news1 = client.getNews1();
-           /* String news2 = client.getNews2();*/
+            String news2 = client.getNews2();
+            if ("true".equals(news1)&&"true".equals(news2)){
+                System.out.println("成功");
+            }
+
+            transport.close();
+        } catch (TTransportException e) {
+            e.printStackTrace();
+        } catch (TException e) {
+            e.printStackTrace();
+        }
+    }
+    public static void getHotNews() {
+        //配置服务端的请求信息
+        TTransport transport = new TSocket("192.168.202.129", 9090);
+        try {
+            transport.open();
+            TProtocol protocol = new TBinaryProtocol(transport);
+            getHotNews.Client client = new getHotNews.Client(protocol);
+            String news1 = client.getNews1();
+            /* String news2 = client.getNews2();*/
             if ("true".equals(news1)/*&&"true".equals(news2)*/){
                 System.out.println("成功");
             }
