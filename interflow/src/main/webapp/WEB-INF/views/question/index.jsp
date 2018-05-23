@@ -22,7 +22,7 @@
 
         <div class="col-sm-10">
             <mark style="font-size: 20px"> ${forumExample.forum.content}</mark>
-
+            <mark style="font-size: 20px"> 版主<a href="/user/userinfo?uid=${forumExample.user.uid}&who=">${forumExample.user.username}</a></mark>
         </div>
     </div>
 </div>
@@ -80,21 +80,28 @@
 </div>
 
 <jsp:include page="../footer.jsp"/>
-</body>
-
 <script>
     $(function () {
 
         $("#upquestion").click(function () {
-            var loginid = document.getElementById("loginid").value;
-            if ("" == loginid) {
-                alert("请先登录！");
-            } else {
-                window.location.href = "/question/add?id=${forumExample.forum.fid}";
-            }
+                $.ajax({
+                    url: "/question/add",
+                    type: "get",
+                    async: false,
+                    success : function(Result) {  //当请求之后调用。传入返回后的数据，以及包含成功代码的字符串。
+                        window.location.href = "/question/add?id=${forumExample.forum.fid}";
+                    },
+                    error : function(Result) {
+                        if (Result.status==600){
+                            alert("您还没登陆，请登录！");
+                        }
+                    }
 
-        });
-
+                });
+            });
     });
 </script>
+
+</body>
+
 </html>

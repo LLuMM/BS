@@ -10,12 +10,11 @@
 <html>
 <head>
     <title>用户中心-${user.username}</title>
-
 </head>
 <body>
 <jsp:include page="../header.jsp"/>
 
-<div class="container" style="margin-top: 80px">
+<div class="container" style="margin-top: 80px;height:500px">
 
     <br>
     <!-- Nav tabs -->
@@ -33,9 +32,11 @@
             <a class="nav-link" data-toggle="tab" href="#menu1">头像上传</a>
         </li>
 
-        <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#menu2">用户中心</a>
-        </li>
+        <c:if test="${userindex.user.privilege==1}">
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#menu2">用户中心</a>
+            </li>
+        </c:if>
         <li class="nav-item">
             <a class="nav-link" data-toggle="tab" href="#menu3">我的消息</a>
         </li>
@@ -43,7 +44,7 @@
             <a class="nav-link" data-toggle="tab" href="#menu4">我的帖子</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#menu5">版主申请</a>
+            <a class="nav-link" data-toggle="tab" href="#menu5">版块管理</a>
         </li>
 
     </ul>
@@ -52,33 +53,33 @@
     <div class="tab-content">
         <div id="home" class="container tab-pane active"><br>
 
-            <p><input type="file"/></p>
-            <h5>用户名</h5>
+            <h6>用户名</h6>
             <c:if test="${user!=null}">
-                <form id="form1">
-                <p><input type="text" id="showname" name="showname" value="${user.username}"
-                          placeholder="输入显示名"></p>
-                <h5>密码</h5>
-                <p><input type="password" id="password" name="password" value="${user.password}"
-                          placeholder="密码长度6-16位字符，由数字、字母组成"></p>
+                <form id="form1" onsubmit="return false" action="##" method="post">
+                    <input type="hidden" id="uid" name="uid" value="${userindex.user.uid}"/>
+                    <p><input type="text" id="username" name="username" value="${user.username}"
+                              placeholder="输入显示名"></p>
+                    <h6>密码</h6>
+                    <p><input type="password" id="password" name="password" value="${user.password}"
+                              placeholder="密码长度6-16位字符，由数字、字母组成"></p>
 
-                <h5>用户名邮箱:</h5>
-                <p><input type="email" id="email" name="email" value="${user.email}"
-                          placeholder="用于取回密码,请填写正确的常用邮箱"></p>
-                <h5>签名:</h5>
-                <p><input type="text" id="sign" name="sign" value="${user.sign}"></p>
-                <h5>城市:</h5>
-                <p><input type="text" id="city" name="city" value="${user.city}"
-                ></p>
-                <button type="button" onclick="updateUser()" class="btn btn-outline-primary">修改</button>
-                </p>
+                    <h6>用户名邮箱:</h6>
+                    <p><input type="email" id="email" name="email" value="${user.email}"
+                              placeholder="用于取回密码,请填写正确的常用邮箱"></p>
+                    <h6>签名:</h6>
+                    <p><input type="text" id="sign" name="sign" value="${user.sign}"></p>
+                    <h6>城市:</h6>
+                    <p><input type="text" id="city" name="city" value="${user.city}"
+                    ></p>
+                    <button type="button" onclick="updateUser()" class="btn btn-outline-primary">修改</button>
+                    </p>
                 </form>
             </c:if>
         </div>
         <div id="menu1" class="container tab-pane fade"><br>
 
             <form id="uploadForm" name="uploadForm" action="/user/upimg" method="post" enctype="multipart/form-data">
-                <img id="image" src=""  style="width: 100px;height: 100px;" hidden/>
+                <img id="image" src="" style="width: 100px;height: 100px;" hidden/>
                 <br/>
                 <input type="hidden" value="${userindex.user.uid}" name="uid">
                 <input type="file" name="uploadFile" onchange="selectImage(this);"/>
@@ -92,10 +93,14 @@
             <c:if test="${userindex.user.privilege!=1}">
                 <p>您还不是版主，暂时没有信息！</p>
             </c:if>
+
+
             <c:if test="${userindex.user.privilege == 1}">
+
                 <table class="table table-hover">
                     <thead>
                     <tr>
+                        <th>所属版块</th>
                         <th>用户</th>
                         <th>标题</th>
                         <th>时间</th>
@@ -107,6 +112,7 @@
                         <c:forEach items="${userindex.forumListMap}" var="fm">
                             <c:forEach items="${fm.value}" var="question">
                                 <tr>
+                                    <td>${fm.key}</td>
                                     <td>${question.uname}</td>
                                     <td><a href="/question/detail?id=${question.id}">${question.title}</a></td>
                                     <td>${ms.time}</td>
@@ -166,8 +172,9 @@
             </c:if>
         </div>
         <div id="menu3" class="container tab-pane fade"><br>
-            <h3>最新消息</h3>
-            <c:if test="${userindex.msgs.size()>0}">
+
+            <c:if test="${userindex.msgs.size()>0&&userindex.msgs!=null}">
+                <h3>最新消息</h3>
                 <table class="table table-hover">
                     <thead>
                     <tr>
@@ -193,7 +200,7 @@
 
                                     好友申请&nbsp;&nbsp;
                                     <c:if test="${ms.readstatus == 0}">
-                                        <button type="button" class="btn btn-primary" id="agree" value="${ms.fromid}"
+                                        <button type="button" class="btn btn-primary" id="agree" value="${ms.id}"
                                                 onclick="friendRequest(this,1)">同意
                                         </button>
                                         <button type="button" class="btn btn-warning" id="refuse" value="${ms.fromid}"
@@ -245,7 +252,7 @@
 
         <div id="menu4" class="container tab-pane fade"><br>
 
-            <c:if test="${userindex.questions.size()>0}">
+            <c:if test="${userindex.questions.size()>0&&userindex.questions!=null}">
                 <table class="table table-hover">
                     <thead>
                     <tr>
@@ -273,21 +280,69 @@
                     </tbody>
                 </table>
             </c:if>
-            <c:if test="${userindex.questions.size()==0}">
+            <c:if test="${userindex.questions==null||userindex.questions.size()==0}">
                 暂无文章，赶快去找喜欢的专区发文吧！
             </c:if>
         </div>
 
         <div id="menu5" class="container tab-pane fade"><br>
-            类别:
-            <label><input type="radio" name="type" value="1">技术</label>
-            <label><input type="radio" name="type" value="2">情感</label>
-            <h5>版块名：</h5>
-            <p><input type="text" id="ftitle"/></p>
-            <h5>介绍：</h5>
-            <textarea name="fcontent" id="fcontent" cols="20" rows="10" placeholder="20字内的描述"></textarea><br>
-            <button id="apply">申请</button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#applymodal">版块申请</button>
+            <c:if test="${userindex.forums!=null&&userindex.forums.size()>0}">
+                <table class="table table-hover">
+                    <thead>
+                    <th>版块名</th>
+                    <th>简介</th>
+                    <th>时间</th>
+                    <th></th>
+                    </thead>
+                    <tbody>
+                    <c:forEach items="${userindex.forums}" var="forum">
+                        <tr>
+                            <td><a href="/question/index?fid=${forum.fid}">${forum.title}</a></td>
+                            <td>${forum.content}</td>
+                            <td>${forum.time}</td>
+                            <td><button id="deleteforum" type="button"
+                            >删除</button><button id="update" type="button"
+                            >编辑</button></td>
+                        </tr>
+                    </c:forEach>
+                    </tbody>
+                </table>
+            </c:if>
+
+            <%--模态框--%>
+            <div class="modal fade" id="applymodal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+
+                        <!-- 模态框头部 -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">帖子列表</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <!-- 模态框主体 -->
+                        <div class="modal-body">
+
+                            类别:
+                            <label><input type="radio" name="type" value="1">技术</label>
+                            <label><input type="radio" name="type" value="2">情感</label>
+                            <h5>版块名：</h5>
+                            <p><input type="text" id="ftitle"/></p>
+                            <h5>介绍：</h5>
+                            <textarea name="fcontent" id="fcontent" cols="20" rows="10" placeholder="20字内的描述"></textarea><br>
+                            <button id="apply">申请</button>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
         </div>
+
+
     </div>
 </div>
 
@@ -464,8 +519,7 @@
     }
 
     function friendRequest(event, status) {
-
-        var toid = event.value;
+        var mid = event.value;
         var fromid = document.getElementById("loginid").value;
         $.ajax({
             type: "post",
@@ -473,7 +527,7 @@
             dataType: "text",
             data: {
                 "fromid": fromid,
-                "toid": toid,
+                "mid": mid,
                 "status": status
             },
             success: function (Result) {
@@ -481,12 +535,10 @@
                 if (dataObj.Status) {
                     event.setAttribute("disabled", true);
                     event.setAttribute("class", "btn btn-secondary");
-
                 } else {
                     alert("网络异常！");
                 }
             }
-
         });
     }
 
@@ -496,18 +548,20 @@
             type: "POST",//方法类型
             dataType: "json",//预期服务器返回的数据类型
             url: "/user/updateUser",//url
-            data: $('#form1').serialize(),
+            data: $('#form1').serializeArray(),
+            contentype: "application/x-www-form-urlencoded",
             success: function (result) {
-                console.log(result);//打印服务端返回的数据(调试用)
-                if (result.resultCode == 200) {
-                    alert("SUCCESS");
+                var dataObj = JSON.parse(Result);
+                if (dataObj.Status) {
+                    alert("修改成功！");
                 }
-            },
-            error : function() {
-                alert("异常！");
+                else {
+                    alert("异常！");
+                }
             }
         });
     }
+
 
 
 </script>

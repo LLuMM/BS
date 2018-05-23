@@ -43,13 +43,14 @@ public class MessageController extends BaseController{
      * 删除所有已读信息(参数：用户id)
      * */
     @RequestMapping("/deleteByStatus")
-    public void deleteByStatus(@RequestParam String id)  {
+    public void deleteByStatus(HttpServletResponse out, @RequestParam String id) throws IOException {
         try {
+            response.Status = true;
             messageService.deleteByStatus(id);
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+        out.getWriter().write(gson.toJson(response));
 
     }
     @RequestMapping("/deleteMsgById")

@@ -25,14 +25,19 @@
      <mvc:resources mapping="/kindeditor/**" location="/Resources/kindeditor/" />-->
     <mvc:interceptors>
         <mvc:interceptor>
-            <mvc:mapping path="/"/>
-
-            <bean class="pw.lumm.interceptors.LoginInterceptor">
-
-            </bean>
+            <mvc:mapping path="/question/add"/>
+            <mvc:mapping path="/user/friendchat"/>
+            <bean class="pw.lumm.interceptors.LoginInterceptor"/>
         </mvc:interceptor>
-            <bean class="pw.lumm.interceptors.MessageInterceptor">
-            </bean>
+    <mvc:interceptor>
+        <mvc:mapping path="/user/**"/>
+        <mvc:mapping path="/question/**"/>
+        <mvc:mapping path="/index"/>
+        <mvc:mapping path="/answer/**"/>
+        <bean class="pw.lumm.interceptors.MessageInterceptor">
+    </bean>
+    </mvc:interceptor>
+
 
     </mvc:interceptors>
 

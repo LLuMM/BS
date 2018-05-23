@@ -20,12 +20,12 @@
                 <span id="regerror" style="color: red"></span>
                 <div class="form-group">
                     用户名:
-                    <input type="text" class="form-control" id="regusername" name="regusername"
+                    <input type="text" class="form-control" id="username" name="username"
                            placeholder="长度1-20位字符，中文、数字、_ 、字母"/>
                 </div>
                 <div class="form-group">
                     密码:
-                    <input type="password" class="form-control" id="regpassword" name="regpassword"
+                    <input type="password" class="form-control" id="password" name="password"
                            placeholder="密码长度6-16位字符，由数字、字母组成">
                 </div>
                 <div class="form-group">
@@ -51,7 +51,7 @@
                 </div>
                 <div class="form-group">
                     验证码:
-                    <input type="text" class="form-control" id="verifycode" id="verifycode" placeholder="请输入验证码">
+                    <input type="text" class="form-control" id="verifycode" name="verifycode" placeholder="请输入验证码">
                 </div>
                 <button  type="button" id="register" class="btn btn-primary" onclick="registerUser()" style="width: 100%">注册</button>
             </form>
@@ -62,15 +62,15 @@
 
 <script>
     $(function () {
-        $("#regusername").blur(function () {
-            var regusername = document.getElementById("regusername").value;
-            if (regusername == null || $.trim(regusername) == '') {
+        $("#username").blur(function (){
+            var username = document.getElementById("username").value;
+            if (username == null || $.trim(username) == '') {
                 $("#regerror").text("用户名不能为空！");
-            } else if (regusername.indexOf(" ") > -1) {
+            } else if (username.indexOf(" ") > -1) {
                 $("#regerror").text("用户名不能含有空格！");
-            } else if (regusername.length < 1) {
+            } else if (username.length < 1) {
                 $("#regerror").text("用户名长度不能小于1个字符！");
-            } else if (regusername.length > 20) {
+            } else if (username.length > 20) {
                 $("#regerror").text("用户名长度不能大于20个字符！");
             } else {
                 $("#regerror").text("");
@@ -79,7 +79,7 @@
                     url: "/user/checkUsername",
                     dataType: "text",
                     data: {
-                        "username": regusername
+                        "username": username
                     },
                     success: function (Result) {
                         var dataObj = JSON.parse(Result);
@@ -93,29 +93,28 @@
         });
 
 
-        $("#regpassword").blur(function () {
+        $("#password").blur(function () {
             var passwordreg = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,16}$/;
-            var regpassword = document.getElementById("regpassword").value;
-
-            if (regpassword == null || $.trim(regpassword) == '') {
+            var password = document.getElementById("password").value;
+            if (password == null || $.trim(password) == '') {
                 $("#regerror").text("密码不能是空串");
-            } else if (regpassword.indexOf(" ") > -1) {
+            } else if (password.indexOf(" ") > -1) {
                 $("#regerror").text("密码不能含有空格");
-            } else if (regpassword.length < 6) {
+            } else if (password.length < 6) {
                 $("#regerror").text("密码长度不能小于6个字符");
-            } else if (regpassword.length > 16) {
+            } else if (password.length > 16) {
                 $("#regerror").text("密码长度不能大于16个字符");
             }
-            else if (!passwordreg.test(regpassword)) {
+            else if (!passwordreg.test(password)) {
                 $("#regerror").text("密码必须含有字母和数字");
             } else {
                 $("#regerror").text("");
             }
         });
         $("#confirmPassword").blur(function () {
-            var regpassword = document.getElementById("regpassword").value;
+            var password = document.getElementById("password").value;
             var confirmPassword = document.getElementById("confirmPassword").value;
-            if (confirmPassword != regpassword) {
+            if (confirmPassword != password) {
                 $("#regerror").text("两次密码不一致！");
             } else {
                 $("#regerror").text("");
@@ -144,7 +143,7 @@
 
        /* $("#register").click(function () {
             var regusername = document.getElementById("regusername").value;
-            var password = document.getElementById("regpassword").value;
+            var password = document.getElementById("password").value;
             var email = document.getElementById("email").value;
             var phone = document.getElementById("phone").value;
             var verifycode = document.getElementById("verifycode").value;
@@ -218,8 +217,6 @@
 
         }
     }
-
-
     function registerUser() {
         alert("sada");
         alert($('#re').serializeArray());
@@ -231,13 +228,13 @@
             data: $('#re').serializeArray(),
             contentype:"application/x-www-form-urlencoded",
             success: function (result) {
-                console.log(result);//打印服务端返回的数据(调试用)
-                if (result.resultCode == 200) {
-                    alert("SUCCESS");
+                var dataObj = JSON.parse(Result);
+                if (dataObj.Status) {
+                    alert("注册成功！请重新登陆！");
                 }
-            },
-            error : function() {
-                alert("异常！");
+                else {
+                    alert("异常！");
+                }
             }
         });
     }

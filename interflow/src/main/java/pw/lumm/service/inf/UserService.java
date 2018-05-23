@@ -48,7 +48,7 @@ public interface UserService {
 
     void addfriend(String userid, String friendid, String msg) throws Exception ;
 
-    void friendRequest(String fromid, String toid, int status) throws Exception ;
+    void friendRequest(String mid, int status) throws Exception ;
 
     List<User> getFriendsById(String uid) throws Exception ;
 

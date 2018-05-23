@@ -28,7 +28,7 @@
 
 <div style="background-color: #fcfffa">
     <jsp:include page="header.jsp"/>
-    <div class="container" style="margin-top: 80px;">
+    <div class="container" style="margin-top: 100px;">
         <div class="row">
             <div id="demo" class="col-sm-8 carousel slide" data-ride="carousel">
                 <!-- 指示符 -->

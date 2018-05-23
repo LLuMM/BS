@@ -5,6 +5,15 @@ import java.util.List;
 public class ForumExample {
     private Forum forum;
     private List<Question> questions;
+    private User user;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public Forum getForum() {
         return forum;

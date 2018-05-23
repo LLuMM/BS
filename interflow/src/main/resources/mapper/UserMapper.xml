@@ -30,6 +30,7 @@
       update tb_user set face = #{1} where uid = #{0}
     </update>
 
+
     <update id="updateUser" parameterType="pw.lumm.model.User">
         update tb_user
         <set>
@@ -49,7 +50,7 @@
                 privilege= #{privilege},
             </if>
             <if test="lastlogin != null">
-                lastlogin= #{lastlogin,jdbcType=TIMESTAMP},
+                lastlogin= #{lastlogin},
             </if>
             <if test="visits != null">
                 visits= #{visits},
@@ -64,9 +65,9 @@
                 city= #{city},
             </if>
         </set>
-        <where>
-            uid = ${uid}
-        </where>
+
+            where uid = #{uid}
+
     </update>
     <insert id="addfriend" parameterType="pw.lumm.model.Friends">
         insert into friends (id, userid, friendid, status, date) values (#{id}, #{userid},#{friendid},#{status},#{date,jdbcType=TIMESTAMP})
@@ -75,7 +76,7 @@
         update friends set status = #{1} where id = #{0}
     </update>
     <select id="getFriendId" resultType="String">
-      SELECT id FROM friends WHERE userid = #{1} and friendid = #{0}
+      SELECT id FROM friends WHERE userid = #{0} and friendid = #{1}
     </select>
 
     <select id="getFriendsidByUid" resultType="pw.lumm.model.Friends">

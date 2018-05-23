@@ -24,7 +24,7 @@ public interface QuestionService {
 
     /*添加文章
     * */
-    void addQuestion(String loginid,  String fid, String title, String value_content) throws Exception ;
+    void addQuestion(String loginid,  String fid, String title, String value_content, String filepath, String filename) throws Exception ;
 
     /*通过文章id获取文章信息
     * */

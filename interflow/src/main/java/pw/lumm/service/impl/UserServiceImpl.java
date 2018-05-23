@@ -1,5 +1,6 @@
 package pw.lumm.service.impl;
 
+import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pw.lumm.dao.UserMapper;
@@ -136,13 +137,17 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void friendRequest(String fromid, String toid, int status) throws Exception  {
+    public void friendRequest(String mid, int status) throws Exception  {
 
 
 
+        Msg msg1 = messageService.getMessageById(mid);
+        msg1.setReadstatus(1);
+        messageService.setMessasgeStatus(msg1);
         Date date = new Date();
-        User fromuser = userMapper.getUserById(fromid);
-        User touser = userMapper.getUserById(toid);
+        User fromuser = userMapper.getUserById(msg1.getToid());
+
+        User touser = userMapper.getUserById(msg1.getFromid());
         Msg msg = new Msg();
         msg.setId(UUID.randomUUID().toString());
         msg.setToname(touser.getUsername());
@@ -157,7 +162,7 @@ public class UserServiceImpl implements UserService {
         }
         try {
             messageService.addMessage(msg);
-            String id = userMapper.getFriendId(fromid, toid);
+            String id = userMapper.getFriendId(msg1.getFromid(), msg1.getToid());
             userMapper.setFriendStatus(id, status);
         } catch (Exception e) {
 
@@ -189,5 +194,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public void setStatus(String username, int status) throws Exception{
         userMapper.setStatus(username, status);
+    }
+
+    @Test
+    public void test() throws UnsupportedEncodingException, NoSuchAlgorithmException {
+        System.out.println(MD5.Encode("123"));
     }
 }

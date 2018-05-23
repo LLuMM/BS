@@ -20,9 +20,15 @@ public class MessageServiceImpl implements MessageService {
     UserService userService;
 
     @Override
-    public List<Msg> getMessageById(String id) throws Exception{
-        List<Msg> msgs = messageMapper.getMessageById(id);
+    public List<Msg> getMessageByUid(String id) throws Exception{
+        List<Msg> msgs = messageMapper.getMessageByUid(id);
         return msgs;
+    }
+
+    @Override
+    public Msg getMessageById(String id) {
+        Msg msg = messageMapper.getMessageById(id);
+        return msg;
     }
 
     @Override
@@ -89,6 +95,22 @@ public class MessageServiceImpl implements MessageService {
         }
 
 
+    }
+
+    @Override
+    public String getMessageByfid(String fid) {
+       String id= messageMapper.getMessageByfid(fid);
+        return id;
+    }
+
+    @Override
+    public boolean getMessageByUidWithStatus(String uid) {
+       List<Msg> msgs= messageMapper.getMessageByUidWithStatus(uid);
+       if (msgs!=null&&msgs.size()>0)
+       {
+           return true;
+       }else
+        return false;
     }
 
 

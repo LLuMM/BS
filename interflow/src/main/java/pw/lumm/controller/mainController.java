@@ -33,7 +33,6 @@ public class mainController {
         List<Notic> notics = messageService.getNotics();
         NewsExample indexinfo = new NewsExample();
         HashMap<String,List<News>> mapnews = new HashMap<>();
-
         mapnews.put("new1",news1);
         mapnews.put("new2",news2);
         indexinfo.setNews(mapnews);

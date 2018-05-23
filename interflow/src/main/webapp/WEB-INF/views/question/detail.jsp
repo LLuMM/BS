@@ -31,15 +31,19 @@
 
             <div class="card-body">
                 <c:if test="${questionExample!=null}">
-                    <h1>${questionExample.question.title}</h1>
-                    <p>作者：${questionExample.question.uname}</p>
+                    <h3>${questionExample.question.title}</h3>
+                    <p>作者：${questionExample.question.uname}&nbsp;&nbsp;
+                        <c:if test="${questionExample.question.filepath!=null}">
+                            <span>${questionExample.question.filename}</span><a target="_blank" href="${questionExample.question.filepath}">预览</a><button type="button"  value="${questionExample.question.filepath}" onclick="down(this)">下载</button>
+                        </c:if>
+                    </p>
                     <span>${questionExample.question.content}</span>
                     <input type="hidden" id="qid" value="${questionExample.question.id}">
                 </c:if>
             </div>
         </div>
         <div class="card col-sm-3">
-            <div class="card-body">简单的卡片</div>
+            <div class="card-body"></div>
         </div>
 
     </div>
@@ -49,7 +53,10 @@
     <c:if test="${questionExample.answers!=null}">
         <c:forEach var="answer" items="${questionExample.answers}">
             <c:if test="${answer.userface==null}">
-                <img src="../img/user.jpg">
+                <img src="../img/user.jpg" style="width: 30px;height: 30px">
+            </c:if>
+            <c:if test="${answer.userface!=null}">
+                <img src="${answer.userface}" style="width: 30px;height:30px">
             </c:if>
             <span>
                 <a href="/user/userinfo?uid=${answer.uid}&who=">${answer.username}</a>
@@ -208,6 +215,26 @@
 
     });
 
+         function down(event) {
+             var filename = event.value;
+            $.ajax({
+                type: "post",
+                url: "/question/downFile",
+                dataType: "text",
+                data: {
+                    "filename": filename
+                },
+                success: function (Result) {
+                    if (Result.status==200) {
+                        alert("正在下载!");
+                    } else {
+
+                    }
+                }
+            });
+    }
+
+
     //绑定模态框展示的方法
     $('#reply').on('show.bs.modal', function (event) {
         KindEditor.ready(function (K) {
@@ -228,6 +255,9 @@
         //更改将title的text
         modal.find('.modal-body input').val(recipient)
     });
+
+
+
 </script>
 
 

@@ -9,7 +9,10 @@ public interface MessageService {
 
     /*通过用户id获取信息列表
     * */
-    List<Msg> getMessageById(String id) throws Exception ;
+    List<Msg> getMessageByUid(String id) throws Exception ;
+
+    Msg getMessageById(String id);
+
     /*添加信息
     * */
     void addMessage(Msg msg) throws Exception ;
@@ -33,4 +36,8 @@ public interface MessageService {
     void deleteMsgById(String id)  throws Exception ;
 
     void chatMessage(String fromid,String toid)  throws Exception ;
+
+    String getMessageByfid(String fid);
+
+    boolean getMessageByUidWithStatus(String uid);
 }

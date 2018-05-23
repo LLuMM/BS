@@ -7,7 +7,8 @@
     </select>
 
     <insert id="addQuestion"  parameterType="pw.lumm.model.Question" >
-        insert into question (id, userid, fid, title, content, time,uname,frompic) values (#{id},#{userid}, #{fid}, #{title},#{content},#{time,jdbcType=TIMESTAMP},#{uname},#{frompic})
+        insert into question (id, userid, fid, title, content, time,uname,frompic, filepath, filename)
+        values (#{id},#{userid}, #{fid}, #{title},#{content},#{time,jdbcType=TIMESTAMP},#{uname},#{frompic},#{filepath},#{filename})
     </insert>
 
     <select id="getQuestionById" parameterType="String"  resultType="pw.lumm.model.Question">

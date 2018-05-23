@@ -29,7 +29,6 @@ public class ChatWebSocketHandler implements WebSocketHandler {
 	
 	//在线用户的SOCKETsession(存储了所有的通信通道)
 	public static final Map<String, WebSocketSession> USER_SOCKETSESSION_MAP;
-	
 	//存储所有的在线用户
 	static {
 		USER_SOCKETSESSION_MAP = new HashMap<String, WebSocketSession>();
@@ -222,7 +221,6 @@ public class ChatWebSocketHandler implements WebSocketHandler {
 					}
 
 				}).start();
-				
 			}
 		}
 	}

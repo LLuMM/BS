@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by LM on 2018/4/12.
@@ -65,26 +66,19 @@ public class UserController extends BaseController {
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public void register( @RequestBody User user,HttpServletRequest request,HttpServletResponse out) throws Exception {
+    public void register(User user,HttpServletRequest request,HttpServletResponse out) throws Exception {
         String code = (String) request.getSession().getAttribute("code");
-        System.out.println(user.toString());
-       /* System.out.println("code:"+code);
-        if (!"".equals() && code.equals(verifycode)) {
+        System.out.println("code:"+code);
+        if (!"".equals(user.getVerifycode()) && code.equals(user.getVerifycode())) {
 
-            System.out.println("verifycode:"+verifycode);
-
-            User user = new User();
-            user.setUsername(username);
-            user.setPassword(password);
-            user.setEmail(email);
-            user.setPhone(phone);
+            System.out.println("verifycode:"+user.getVerifycode());
             userService.register(user);
             response.Status = true;
         } else {
             response.Status = false;
             response.Message = "验证码有误！";
         }
-        out.getWriter().write(gson.toJson(response));*/
+        out.getWriter().write(gson.toJson(response));
 
     }
 
@@ -115,9 +109,15 @@ public class UserController extends BaseController {
     @RequestMapping(value = "/toadmin")
     public String toadmin(Model model) throws Exception {
         List<User> users = userService.getAllUserByForum();
-        List<Msg> msgs = messageService.getMessageById("2abe95d2-fa87-4af0-8e3b-b1ca70b9e7b7");
+        List<Msg> msgs = messageService.getMessageByUid("2abe95d2-fa87-4af0-8e3b-b1ca70b9e7b7");
+        Map<String,List<Forum>> userForum = new HashMap<>();
         AdminExample adminExample = new AdminExample();
         adminExample.setUsers(users);
+        //获取相关用户的管理版块
+        for (int i = 0; i<users.size();i++){
+            userForum.put(users.get(i).getUsername(),forumService.getFourmByUserId(users.get(i).getUid()));
+        }
+        adminExample.setUserForum(userForum);
         adminExample.setMsgs(msgs);
         List<Notic> noticList = messageService.getNotics();
         adminExample.setNotics(noticList);
@@ -135,9 +135,8 @@ public class UserController extends BaseController {
         out.getWriter().write(gson.toJson(response));
     }
     @RequestMapping(value = "/updateUser")
-    public void updateUser( HttpServletResponse out,@RequestBody User user) throws Exception {
+    public void updateUser( HttpServletResponse out,User user) throws Exception {
         try {
-            System.out.println(user.toString());
             userService.updateUser(user);
             response.Status = true;
         }catch (Exception e){
@@ -151,11 +150,11 @@ public class UserController extends BaseController {
         if ("2abe95d2-fa87-4af0-8e3b-b1ca70b9e7b7".equals(uid)) {
             return "redirect:toadmin";
         }
-        List<Msg> msgs = messageService.getMessageById(uid);
+        List<Msg> msgs = messageService.getMessageByUid(uid);
         List<Question> selfquestions = questionService.getQuestionByUserId(uid);
         UserExample userindex = new UserExample();
         List<Forum> forums = forumService.getFourmByUserId(uid);
-
+        userindex.setForums(forums);
         if (forums != null && forums.size() > 0) {
             HashMap<String, List<Question>> forumListMap = new HashMap<>();
             for (int i = 0; i < forums.size(); i++) {
@@ -245,10 +244,10 @@ public class UserController extends BaseController {
     }
 
     @RequestMapping(value = "/friendRequest")
-    public void friendRequest( HttpServletResponse out, String fromid, String toid, int status) throws IOException {
+    public void friendRequest( HttpServletResponse out,String mid, int status) throws IOException {
         out.setContentType("text/html; charset=utf-8");
         try{
-            userService.friendRequest(fromid,toid,status);
+            userService.friendRequest(mid,status);
             response.Status = true;
             response.Message = "发送成功";
 

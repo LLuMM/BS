@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="pw.lumm.dao.MessageMapper">
-    <select id="getMessageById" parameterType="String" resultType="pw.lumm.model.Msg">
+    <select id="getMessageByUid" parameterType="String" resultType="pw.lumm.model.Msg">
         select * from message where toid = #{id} order by time desc
+    </select>
+    <select id="getMessageById" parameterType="String" resultType="pw.lumm.model.Msg">
+        select * from message where id = #{id}
+    </select>
+    <select id="getMessageByUidWithStatus" parameterType="String" resultType="pw.lumm.model.Msg">
+        select * from message where toid = #{uid} and readstatus = 0
     </select>
     <insert id="addMessage" parameterType="pw.lumm.model.Msg">
         insert into message
@@ -84,7 +90,7 @@
     </delete>
 
     <update id="setMessageStauts" parameterType="String">
-        update message set readstatus = 1 where id= #{id}
+        update message set readstatus = 1
         <where>
             <if test="fid != null">
                fid = #{fid}
@@ -96,9 +102,14 @@
     </update>
 
     <delete id="deleteByStatus" parameterType="String">
-        delete from message where toid = #{id} where readstatus = 1
+        delete from message where toid = #{id} and readstatus = 1
     </delete>
     <delete id="deleteMsgById" parameterType="String">
         delete from message where id = #{id}
     </delete>
+
+    <select id="getMessageByfid" resultType="String">
+        select id from message where fid = #{fid}
+    </select>
+
 </mapper>

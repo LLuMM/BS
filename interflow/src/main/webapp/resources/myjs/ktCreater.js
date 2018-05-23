@@ -3,8 +3,9 @@ var editor;
 KindEditor.ready(function (K) {
     editor = K.create('textarea[name="content"]', {
         resizeType: 1,
-        allowPreviewEmoticons: false,
-        allowImageUpload: false,
+        /*allowPreviewEmoticons: false,
+        allowImageUpload: false,*/
+        allowImageUpload : true, //打开本地上传图片功能
         items: [
             'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
             'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',

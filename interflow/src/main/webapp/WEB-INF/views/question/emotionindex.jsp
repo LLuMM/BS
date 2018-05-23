@@ -15,7 +15,7 @@
 
 <body>
 <jsp:include page="../header.jsp"/>
-<div class="container" style="margin-top: 100px">
+<div class="container" style="margin-top: 100px;">
     <c:if test="${questionExample != null&&questionExample.forums.size()>0}">
         <%--版块列表--%>
     <a href="#demo" class="btn btn-primary" data-toggle="collapse">版块列表</a>
@@ -32,7 +32,7 @@
 </c:if>
 
 </div>
-<div class="container" style="margin-top: 15px">
+<div class="container" style="margin-top: 15px;height:800px ">
     <div class="row">
         <div class="col-sm-8">
             <c:if test='${questionExample.questions!= null}'>
@@ -73,7 +73,7 @@
             </div>
         </div>
     </div>
-    <div class="row" style="margin-top: 10px">
+    <%--<div class="row" style="margin-top: 10px">
         <div class="mx-auto" style="width:300px">
             <ul class="pagination">
                 <li class="page-item"><a class="page-link" href="#">上一页</a></li>
@@ -83,7 +83,7 @@
                 <li class="page-item"><a class="page-link" href="#">下一页</a></li>
             </ul>
         </div>
-    </div>
+    </div>--%>
 </div>
 <jsp:include page="../footer.jsp"/>
 </body>

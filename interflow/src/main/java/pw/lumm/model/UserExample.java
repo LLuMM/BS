@@ -8,6 +8,16 @@ public class UserExample {
     private List<Question> questions;
     private List<Answer> answers;
     private List<Msg> msgs;
+    List<Forum> forums;
+
+    public List<Forum> getForums() {
+        return forums;
+    }
+
+    public void setForums(List<Forum> forums) {
+        this.forums = forums;
+    }
+
     HashMap<String,List<Question>> forumListMap;
 
     public HashMap<String, List<Question>> getForumListMap() {

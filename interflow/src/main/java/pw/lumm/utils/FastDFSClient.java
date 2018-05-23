@@ -1,13 +1,13 @@
 package pw.lumm.utils;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.UUID;
 
+import org.apache.commons.io.IOUtils;
 import org.csource.common.NameValuePair;
-import org.csource.fastdfs.ClientGlobal;
-import org.csource.fastdfs.StorageClient1;
-import org.csource.fastdfs.StorageServer;
-import org.csource.fastdfs.TrackerClient;
-import org.csource.fastdfs.TrackerServer;
+import org.csource.fastdfs.*;
+import org.springframework.web.bind.annotation.RequestParam;
 
 public class FastDFSClient {
 
@@ -26,8 +26,6 @@ public class FastDFSClient {
 		storageServer = null;
 		storageClient = new StorageClient1(trackerServer, storageServer);
 	}
-	
-	
 	public String uploadFile(String fileName, String extName, NameValuePair[] metas) throws Exception {
 		String result = storageClient.upload_file1(fileName, extName, metas);
 		return result;
@@ -88,5 +86,21 @@ public class FastDFSClient {
             e.printStackTrace();  
         }  
         return  result;  
-    }  
+    }
+	public void downFile(String filename) {
+		try {
+			int i = filename.indexOf("/",21);
+			String group = filename.substring(i+1,i+7);
+			String file = filename.substring(i+7);
+			int j = filename.lastIndexOf(".");
+			String type = filename.substring(j);
+			TrackerClient tracker = new TrackerClient();
+			byte[] b = storageClient.download_file(group, file);
+			System.out.println(b);
+			IOUtils.write(b, new FileOutputStream("D:/"+UUID.randomUUID().toString()+type));
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }

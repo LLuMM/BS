@@ -9,14 +9,13 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page isELIgnored="false" %>
 
+<link rel="shortcut icon" href="../../img/Logomini.ico"/>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/bootstrap/css/bootstrap.min.css">
 <script src="${pageContext.request.contextPath}/resources/bootstrap/js/jquery.js"></script>
 <script src="${pageContext.request.contextPath}/resources/bootstrap/js/bootstrap.min.js"></script>
-
-
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark navbar-dark fixed-top">
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark navbar-dark fixed-top" style="height: 80px">
     <div class="container">
-        <div class="col-sm-2 ">
+        <div class="col-sm-2">
             <!-- Brand/logo -->
             <a class="navbar-brand" href="/index/">
                 <img src="../img/Logo.jpg" style="width:100px;height: 40px">
@@ -24,18 +23,21 @@
         </div>
         <!-- Links -->
         <div class="col-sm-5">
-            <ul class="navbar-nav">
+            <ul class="navbar-nav" style="margin-top: 15px">
                 <li class="nav-item">
-                    <a class="nav-link" href="/new/index?type=0">热点新闻&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                    <a class="nav-link" href="/new/index?type=0">热点新闻</a>&nbsp;&nbsp;&nbsp;
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/new/index?type=1">技术专区&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                    <a class="nav-link" href="/new/index?type=1">技术专区</a>&nbsp;&nbsp;&nbsp;
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/question/toemotion?type=2">情感专区&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                    <a class="nav-link" href="/question/toemotion?type=2">情感专区</a>&nbsp;&nbsp;&nbsp;
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="tochat" <%--href="/user/friendchat?uid=${user.uid}&who=1"--%>>讨论区&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                    <a class="nav-link" href="/question/add">问答</a>&nbsp;&nbsp;&nbsp;
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="tochat" >讨论区</a>
                 </li>
             </ul>
         </div>
@@ -48,14 +50,18 @@
         <div class="col-sm-3">
             <c:if test="${user !=null&&user !=''}">
                 <input type="hidden" id="loginid" value="${user.uid}">
+                <c:if test="${msg==true}" ><span data-toggle="tooltip" data-placement="top" title="您有新的消息!" style="color: red;font-size: 20px">*</span></c:if>
                 <span style="color: #ffffff"> 嗨！<a href="/user/userindex?uid=${user.uid}">${user.username}</a>&nbsp;|
-                </span><span id="quit" style="color: #ffffff">退出&nbsp;&nbsp;|&nbsp;</span>
+                </span><span id="quit" style="color: #ffffff">退出
+
+            </span>
             </c:if>
             <c:if test="${user ==null|| user ==''}">
                 <input type="hidden" id="loginid" value="">
                 <span data-toggle="modal" data-target="#login" style="color: #ffffff">登陆&nbsp;|&nbsp;</span>
+                <a style="color: #ffffff" href="/user/toregister">注册</a>
             </c:if>
-            <a style="color: #ffffff" href="/user/toregister">注册</a>
+
 
         </div>
 
@@ -102,9 +108,11 @@
     </div>
     <!-- /.modal -->
 </div>
-<script>
-    $(function () {
 
+<script>
+
+    $(function(){
+        $('[data-toggle="tooltip"]').tooltip();
         $("#but").click(function () {
 
             var username = document.getElementById("username").value;
@@ -155,13 +163,25 @@
                 }
             });
         });
+
         $("#tochat").click(function () {
             var loginid = document.getElementById("loginid").value;
-            if (loginid == "" || loginid == null) {
-                alert("请先登录！");
-            } else {
-                window.location.href="/user/friendchat?uid="+loginid+"&who=1";
-            }
+            $.ajax({
+                url: "/user/friendchat",
+                type: "get",
+                async: false,
+                success : function(Result) {  //当请求之后调用。传入返回后的数据，以及包含成功代码的字符串。
+                    window.location.href="/user/friendchat?uid="+loginid+"&who=1";
+                },
+                error : function(Result) {
+                    if (Result.status==600){
+                        alert("您还没登陆，请登录！");
+                    }
+                }
+
+            });
         });
+
     });
+
 </script>

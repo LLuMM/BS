@@ -13,7 +13,7 @@
 
     </select>
     <select id="getFourmByUserId" parameterType="String" resultType="pw.lumm.model.Forum">
-        select *from forum where uid =#{uid}
+        select *from forum where uid =#{uid} and status = 1
     </select>
     <select id="getForum" resultType="pw.lumm.model.Forum">
         select * from forum where type = #{0} and status = #{1}

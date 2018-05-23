@@ -21,86 +21,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="register.jsp" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/register.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="184">
-              <caret line="231" column="57" selection-start-line="231" selection-start-column="57" selection-end-line="231" selection-end-column="57" />
-              <folding>
-                <element signature="n#style#0;n#button#0;n#form#0;n#div#1;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/pw/lumm/controller/UserController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="308">
-              <caret line="74" lean-forward="true" selection-start-line="74" selection-end-line="74" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="User.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/pw/lumm/model/User.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="33" column="35" selection-start-line="33" selection-start-column="35" selection-end-line="33" selection-end-column="35" />
-              <folding>
-                <element signature="e#774#775#0" expanded="true" />
-                <element signature="e#826#827#0" expanded="true" />
-                <element signature="e#870#871#0" expanded="true" />
-                <element signature="e#704#705#0" expanded="true" />
-                <element signature="e#731#732#0" expanded="true" />
-                <element signature="e#771#772#0" expanded="true" />
-                <element signature="e#803#804#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserMapper.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="66" column="15" lean-forward="true" selection-start-line="66" selection-start-column="15" selection-end-line="66" selection-end-column="15" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/new/index.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-418">
-              <caret line="26" column="20" lean-forward="true" selection-start-line="26" selection-start-column="20" selection-end-line="26" selection-end-column="20" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="header.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/header.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="283">
-              <caret line="44" column="57" selection-start-line="44" selection-end-line="45" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/question/index.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-176">
-              <caret line="19" column="100" selection-start-line="19" selection-start-column="100" selection-end-line="19" selection-end-column="100" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="index.jsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/user/index.jsp">
           <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret line="25" column="55" selection-start-line="25" selection-start-column="55" selection-end-line="25" selection-end-column="55" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SearchServiceImpl.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/pw/lumm/service/impl/SearchServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="264">
-              <caret line="510" lean-forward="true" selection-start-line="491" selection-end-line="510" />
+              <caret line="72" column="41" selection-start-line="72" selection-start-column="35" selection-end-line="72" selection-end-column="41" />
             </state>
           </provider>
         </entry>
@@ -118,36 +52,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>from</find>
-      <find>uid</find>
-      <find>exitBtn</find>
-      <find>userList</find>
-      <find>loginUser</find>
-      <find>fromName</find>
-      <find>setStatus</find>
-      <find>setForumStatus</find>
-      <find>addAnswerToUser</find>
-      <find>public void addAnswer(HttpServletResponse out, String uid, String id, String content, String username) throws IOException {</find>
-      <find>repylcontent</find>
-      <find>repyltext</find>
-      <find>addAnswer</find>
-      <find>sreplybut</find>
-      <find>content</find>
-      <find>sendBtn</find>
-      <find>sendMsg</find>
-      <find>msg</find>
-      <find>contentUl</find>
-      <find>sub</find>
-      <find>NONCE</find>
-      <find>verifycode</find>
-      <find>getverifycode</find>
-      <find>regerror</find>
+      <find>regpassword</find>
+      <find>password</find>
+      <find>confirmPassword</find>
+      <find>but</find>
+      <find>test</find>
       <find>setMessasgeStatus</find>
-      <find>setMessageStauts</find>
+      <find>lo</find>
+      <find>setMsgStatus</find>
+      <find>quit</find>
+      <find>reply</find>
+      <find>list</find>
+      <find>标记</find>
       <find>friendRequest</find>
+      <find>getFriendId</find>
+      <find>tochat</find>
+      <find>&quot;&lt;input type='file'/&gt;&quot;</find>
+      <find>fileapi</find>
+      <find>upquestion</find>
       <find>menu1</find>
-      <find>search</find>
-      <find>selectImage</find>
+      <find>upimg</find>
+      <find>sendMessageToUser</find>
+      <find>sendMessage</find>
+      <find>downFile</find>
+      <find>sub</find>
+      <find>content</find>
+      <find>mul_input</find>
+      <find>storageClient</find>
+      <find>&quot;2abe95d2-fa87-4af0-8e3b-b1ca70b9e7b7&quot;</find>
+      <find>deleteByStatus</find>
+      <find>menu</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -156,57 +90,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/pw/lumm/utils/Quartzfun.java" />
-        <option value="$PROJECT_DIR$/src/main/java/pw/lumm/utils/thrift/NewsFresh.java" />
-        <option value="$PROJECT_DIR$/src/main/java/pw/lumm/controller/SearchController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/pw/lumm/model/Answer.java" />
-        <option value="$PROJECT_DIR$/src/main/java/pw/lumm/model/Forum.java" />
-        <option value="$PROJECT_DIR$/src/main/java/pw/lumm/model/Friends.java" />
-        <option value="$PROJECT_DIR$/src/main/java/pw/lumm/model/Msg.java" />
-        <option value="$PROJECT_DIR$/src/main/java/pw/lumm/model/Notic.java" />
-        <option value="$PROJECT_DIR$/src/main/java/pw/lumm/model/Question.java" />
-        <option value="$PROJECT_DIR$/src/main/java/pw/lumm/utils/DateUtil.java" />
-        <option value="$PROJECT_DIR$/src/main/java/pw/lumm/service/impl/AnswerServerImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/pw/lumm/service/impl/MessageServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/pw/lumm/service/impl/QuestionServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/pw/lumm/utils/websocket/ChatWebSocketHandler.java" />
-        <option value="$PROJECT_DIR$/src/main/java/pw/lumm/utils/listeners/NewsListener.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/question/add.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/pw/lumm/dao/ForumMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/pw/lumm/service/impl/ForumServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/mapper/ForumMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/pw/lumm/service/inf/ForumService.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/user/admin.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/pw/lumm/service/impl/SearchServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/user/friendchat.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/user/chatmain.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/new/detail.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/pw/lumm/utils/SendCode.java" />
-        <option value="$PROJECT_DIR$/src/main/java/pw/lumm/utils/CheckSumBuilder.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/spring/applicationContext-ser.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/pw/lumm/dao/NewsMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/pw/lumm/service/impl/NewsServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/pw/lumm/service/inf/NewsService.java" />
         <option value="$PROJECT_DIR$/src/main/java/pw/lumm/model/NsNews.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mapper/NewsMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/java/pw/lumm/model/News.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/new/index.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/new/emotionindex.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/pw/lumm/model/QuestionExample.java" />
         <option value="$PROJECT_DIR$/src/main/java/pw/lumm/controller/NewsController.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/header.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/pw/lumm/controller/QuestionController.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/question/emotionindex.jsp" />
-        <option value="$PROJECT_DIR$/src/main/resources/mapper/MessageMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/user/info.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/question/index.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/pw/lumm/service/impl/UserServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/user/index.jsp" />
-        <option value="$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/spring/applicationContext-ser.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/pw/lumm/utils/listeners/NewsListener.java" />
         <option value="$PROJECT_DIR$/src/main/java/pw/lumm/model/User.java" />
-        <option value="$PROJECT_DIR$/src/main/java/pw/lumm/controller/UserController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/register.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/pw/lumm/utils/duanxin/SDKDemo.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/question/emotionindex.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/new/index.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/pw/lumm/model/UserExample.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pw/lumm/service/inf/UserService.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/pw/lumm/service/impl/UserServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pw/lumm/service/inf/MessageService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pw/lumm/dao/MessageMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pw/lumm/service/impl/MessageServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/MessageMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/pw/lumm/interceptors/LoginInterceptor.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pw/lumm/interceptors/MessageInterceptor.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/resources/myjs/jquery.form.js" />
+        <option value="$PROJECT_DIR$/src/main/java/pw/lumm/utils/websocket/ChatWebSocketHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/spring/spring-mvc.xml" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/pw/lumm/utils/test.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/resources/myjs/ktCreater.js" />
+        <option value="$PROJECT_DIR$/src/main/java/pw/lumm/model/Question.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pw/lumm/service/inf/QuestionService.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/QuestionMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/question/add.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/question/detail.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/pw/lumm/utils/FastDFSClient.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pw/lumm/service/impl/QuestionServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pw/lumm/controller/MessageController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pw/lumm/controller/mainController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pw/lumm/model/AdminExample.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pw/lumm/controller/UserController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pw/lumm/model/ForumExample.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pw/lumm/controller/QuestionController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/question/index.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/user/admin.jsp" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/ForumMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/user/info.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/header.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/user/index.jsp" />
       </list>
     </option>
   </component>
@@ -226,9 +160,9 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
-    <option name="x" value="-172" />
-    <option name="y" value="67" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="49" />
+    <option name="y" value="-6" />
     <option name="width" value="1346" />
     <option name="height" value="683" />
   </component>
@@ -278,24 +212,6 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="lumm" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="interflow" type="b2602c69:ProjectViewProjectNode" />
-              <item name="interflow" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="lumm" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="interflow" type="b2602c69:ProjectViewProjectNode" />
-              <item name="interflow" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="lumm" type="462c0819:PsiDirectoryNode" />
               <item name="service" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -313,64 +229,7 @@
               <item name="interflow" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="lumm" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-              <item name="inf" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="interflow" type="b2602c69:ProjectViewProjectNode" />
-              <item name="interflow" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="lumm" type="462c0819:PsiDirectoryNode" />
-              <item name="utils" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="interflow" type="b2602c69:ProjectViewProjectNode" />
-              <item name="interflow" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="lumm" type="462c0819:PsiDirectoryNode" />
-              <item name="utils" type="462c0819:PsiDirectoryNode" />
-              <item name="listeners" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="interflow" type="b2602c69:ProjectViewProjectNode" />
-              <item name="interflow" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="lumm" type="462c0819:PsiDirectoryNode" />
-              <item name="utils" type="462c0819:PsiDirectoryNode" />
-              <item name="thrift" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="interflow" type="b2602c69:ProjectViewProjectNode" />
-              <item name="interflow" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="lumm" type="462c0819:PsiDirectoryNode" />
-              <item name="utils" type="462c0819:PsiDirectoryNode" />
-              <item name="websocket" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="interflow" type="b2602c69:ProjectViewProjectNode" />
-              <item name="interflow" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="interflow" type="b2602c69:ProjectViewProjectNode" />
-              <item name="interflow" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="mapper" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="interflow" type="b2602c69:ProjectViewProjectNode" />
@@ -393,32 +252,7 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="img" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="interflow" type="b2602c69:ProjectViewProjectNode" />
-              <item name="interflow" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="interflow" type="b2602c69:ProjectViewProjectNode" />
-              <item name="interflow" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
               <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="interflow" type="b2602c69:ProjectViewProjectNode" />
-              <item name="interflow" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="interflow" type="b2602c69:ProjectViewProjectNode" />
@@ -428,36 +262,6 @@
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
               <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="interflow" type="b2602c69:ProjectViewProjectNode" />
-              <item name="interflow" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="new" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="interflow" type="b2602c69:ProjectViewProjectNode" />
-              <item name="interflow" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="question" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="interflow" type="b2602c69:ProjectViewProjectNode" />
-              <item name="interflow" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="search" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="interflow" type="b2602c69:ProjectViewProjectNode" />
@@ -515,11 +319,11 @@
       <recent name="H:\bs\BS\interflow\src\main\java\pw\lumm\utils" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="H:\bs\BS\interflow\src\main\webapp\WEB-INF\views\new" />
       <recent name="H:\bs\BS\interflow\src\main\webapp\img" />
+      <recent name="H:\bs\BS\interflow\src\main\java\pw\lumm\utils\duanxin" />
       <recent name="H:\bs\BS\interflow\src\main\webapp\WEB-INF\lib" />
+      <recent name="H:\bs\BS\interflow\src\main\webapp\WEB-INF\views\new" />
       <recent name="H:\bs\BS\interflow\src\main\webapp\resources\chat\images" />
-      <recent name="H:\bs\BS\interflow\src\main\java\pw\lumm\utils\websocket" />
     </key>
     <key name="CreateClassDialog.RecentsKey">
       <recent name="pw.lumm.utils" />
@@ -539,13 +343,13 @@
     </option>
   </component>
   <component name="RunManager" selected="Tomcat Server.Unnamed">
-    <configuration name="NewsFresh" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="pw.lumm.utils.thrift.NewsFresh" />
+    <configuration name="SDKDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="pw.lumm.utils.duanxin.SDKDemo" />
       <module name="interflow" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="pw.lumm.utils.thrift.*" />
+          <option name="PATTERN" value="pw.lumm.utils.duanxin.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -598,13 +402,20 @@
       </option>
       <patterns />
     </configuration>
-    <configuration default="true" type="JUnit" factoryName="JUnit">
+    <configuration name="UserServiceImpl.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="interflow" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="pw.lumm.service.impl.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="PACKAGE_NAME" value="pw.lumm.service.impl" />
+      <option name="MAIN_CLASS_NAME" value="pw.lumm.service.impl.UserServiceImpl" />
+      <option name="METHOD_NAME" value="test" />
+      <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
@@ -614,20 +425,13 @@
       </option>
       <patterns />
     </configuration>
-    <configuration name="pw.lumm.service.inf in interflow" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="interflow" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="pw.lumm.service.inf.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="pw.lumm.service.inf" />
+      <option name="PACKAGE_NAME" />
       <option name="MAIN_CLASS_NAME" />
       <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="package" />
+      <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
@@ -801,19 +605,19 @@
     </configuration>
     <list>
       <item itemvalue="Tomcat Server.Unnamed" />
-      <item itemvalue="Application.NewsFresh" />
       <item itemvalue="Application.test" />
-      <item itemvalue="JUnit.pw.lumm.service.inf in interflow" />
       <item itemvalue="JUnit.SearchServiceImpl.test" />
       <item itemvalue="Application.SendCode" />
+      <item itemvalue="JUnit.UserServiceImpl.test" />
+      <item itemvalue="Application.SDKDemo" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.SendCode" />
         <item itemvalue="Application.test" />
+        <item itemvalue="JUnit.UserServiceImpl.test" />
+        <item itemvalue="Application.SDKDemo" />
+        <item itemvalue="Application.SendCode" />
         <item itemvalue="JUnit.SearchServiceImpl.test" />
-        <item itemvalue="JUnit.pw.lumm.service.inf in interflow" />
-        <item itemvalue="Application.NewsFresh" />
       </list>
     </recent_temporary>
   </component>
@@ -858,7 +662,14 @@
       <workItem from="1526111222478" duration="1195000" />
       <workItem from="1526199380409" duration="10466000" />
       <workItem from="1526259049007" duration="22771000" />
-      <workItem from="1526350695417" duration="13583000" />
+      <workItem from="1526350695417" duration="20994000" />
+      <workItem from="1526430903833" duration="20638000" />
+      <workItem from="1526471322736" duration="4218000" />
+      <workItem from="1526519365171" duration="15184000" />
+      <workItem from="1526715998881" duration="7537000" />
+      <workItem from="1526801676868" duration="8756000" />
+      <workItem from="1526877150362" duration="9759000" />
+      <workItem from="1526981747305" duration="1177000" />
     </task>
     <servers />
   </component>
@@ -869,17 +680,43 @@
     <history-entry file="SearchServiceImpl_test - 2018.05.05 at 17h 30m 26s.xml">
       <configuration name="SearchServiceImpl.test" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="UserServiceImpl_test - 2018.05.15 at 20h 28m 36s.xml">
+      <configuration name="UserServiceImpl.test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UserServiceImpl_test - 2018.05.15 at 20h 34m 21s.xml">
+      <configuration name="UserServiceImpl.test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UserServiceImpl_test - 2018.05.15 at 20h 34m 36s.xml">
+      <configuration name="UserServiceImpl.test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UserServiceImpl_test - 2018.05.15 at 20h 44m 37s.xml">
+      <configuration name="UserServiceImpl.test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UserServiceImpl_test - 2018.05.16 at 09h 56m 29s.xml">
+      <configuration name="UserServiceImpl.test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UserServiceImpl_test - 2018.05.16 at 10h 07m 57s.xml">
+      <configuration name="UserServiceImpl.test" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="410280000" />
+    <option name="totallyTimeSpent" value="484960000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-172" y="67" width="1346" height="683" extended-state="1" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="bottom" id="Event Log" order="14" side_tool="true" />
-      <window_info anchor="bottom" id="Application Servers" order="12" weight="0.3290938" />
+      <window_info anchor="bottom" id="Event Log" order="14" sideWeight="0.50073206" side_tool="true" weight="0.4054054" />
+      <window_info anchor="bottom" id="Application Servers" order="12" weight="0.32838285" />
       <window_info anchor="right" id="Maven Projects" order="9" />
       <window_info anchor="bottom" id="Database Changes" order="10" show_stripe_button="false" />
       <window_info id="Capture Tool" order="7" />
@@ -888,19 +725,19 @@
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="4" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3990461" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" order="13" weight="0.2718601" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49926794" weight="0.41254124" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32838285" />
+      <window_info anchor="bottom" id="Messages" order="13" weight="0.27062705" />
       <window_info anchor="right" id="Palette&#9;" order="6" />
       <window_info id="Image Layers" order="3" />
-      <window_info anchor="bottom" id="Java Enterprise" order="9" />
+      <window_info anchor="bottom" id="Java Enterprise" order="9" weight="0.32838285" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="bottom" id="Version Control" order="11" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3996479" />
-      <window_info anchor="bottom" id="Spring" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.7280702" visible="true" weight="0.29699248" />
-      <window_info id="Web" order="6" sideWeight="0.27192983" side_tool="true" weight="0.31625184" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.33333334" />
+      <window_info anchor="bottom" id="Spring" order="7" weight="0.32838285" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32838285" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.7260726" visible="true" weight="0.22541603" />
+      <window_info id="Web" order="6" sideWeight="0.2739274" side_tool="true" weight="0.2987897" />
       <window_info anchor="right" id="Theme Preview" order="7" />
       <window_info id="Favorites" order="5" side_tool="true" />
       <window_info anchor="right" id="Coverage" order="8" side_tool="true" weight="0.329429" />
@@ -920,420 +757,363 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="5" />
+      <option name="time" value="58" />
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory">
+        <watch expression="model" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/pw/lumm/model/SearchItem.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+        <state relative-caret-position="145">
+          <caret line="78" column="67" selection-start-line="78" selection-start-column="67" selection-end-line="78" selection-end-column="67" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pw/lumm/utils/DateUtil.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/pw/lumm/service/inf/UserService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="8" column="14" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="180">
+          <caret line="52" column="21" selection-start-line="52" selection-start-column="21" selection-end-line="52" selection-end-column="21" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pw/lumm/service/impl/AnswerServerImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/pw/lumm/dao/UserMapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="123">
-          <caret line="109" column="41" selection-start-line="109" selection-start-column="41" selection-end-line="109" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pw/lumm/service/impl/QuestionServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-88">
-          <caret line="162" column="48" selection-start-line="162" selection-start-column="48" selection-end-line="162" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pw/lumm/utils/websocket/ChatWebSocketHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1250">
-          <caret line="143" column="20" selection-start-line="143" selection-start-column="20" selection-end-line="143" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/question/add.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="66" column="57" lean-forward="true" selection-start-line="65" selection-start-column="22" selection-end-line="66" selection-end-column="57" />
-          <folding>
-            <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#textarea#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#3;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pw/lumm/dao/ForumMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="13" column="47" lean-forward="true" selection-start-line="13" selection-start-column="47" selection-end-line="13" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/ForumMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="20" selection-start-line="20" selection-end-line="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pw/lumm/service/impl/ForumServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="259">
-          <caret line="49" selection-start-line="49" selection-end-line="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pw/lumm/service/inf/ForumService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
-          <caret line="24" selection-start-line="24" selection-end-line="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/user/admin.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="45" column="25" lean-forward="true" selection-start-line="45" selection-start-column="25" selection-end-line="45" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pw/lumm/service/impl/SearchServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1124">
-          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pw/lumm/model/Msg.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="28" column="22" lean-forward="true" selection-start-line="28" selection-start-column="22" selection-end-line="28" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/user/friendchat.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-88">
-          <caret line="8" column="28" lean-forward="true" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/new/detail.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="77" column="22" selection-start-line="77" selection-start-column="22" selection-end-line="77" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/user/chatmain.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
-          <folding>
-            <element signature="n#style#0;n#span#0;n#li#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pw/lumm/utils/CheckSumBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pw/lumm/utils/listeners/NewsListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pw/lumm/utils/ComparatorUser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pw/lumm/dao/NewsMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="16" column="31" selection-start-line="16" selection-start-column="31" selection-end-line="16" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pw/lumm/service/inf/NewsService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="22" column="31" selection-start-line="22" selection-start-column="31" selection-end-line="22" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="91" column="28" lean-forward="true" selection-start-line="91" selection-start-column="28" selection-end-line="91" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pw/lumm/model/NsNews.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="2" selection-start-line="2" selection-end-line="2" />
-          <folding>
-            <element signature="e#300#301#0" expanded="true" />
-            <element signature="e#326#327#0" expanded="true" />
-            <element signature="e#364#365#0" expanded="true" />
-            <element signature="e#394#395#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/QuestionMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="42" column="55" selection-start-line="42" selection-start-column="49" selection-end-line="42" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pw/lumm/service/impl/NewsServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="117">
-          <caret line="50" selection-start-line="50" selection-end-line="50" />
-          <folding>
-            <element signature="e#1299#1300#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/spring/applicationContext-ser.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="33" column="52" selection-start-line="33" selection-start-column="52" selection-end-line="33" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/spring/spring-mvc.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-66" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pw/lumm/model/News.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="15" column="29" lean-forward="true" selection-start-line="15" selection-start-column="29" selection-end-line="15" selection-end-column="29" />
-          <folding>
-            <element signature="e#352#353#0" expanded="true" />
-            <element signature="e#395#396#0" expanded="true" />
-            <element signature="e#433#434#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pw/lumm/controller/NewsController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="46" lean-forward="true" selection-start-line="46" selection-end-line="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pw/lumm/controller/QuestionController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="100" column="54" selection-start-line="100" selection-start-column="45" selection-end-line="100" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pw/lumm/model/QuestionExample.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="10" column="42" selection-start-line="10" selection-start-column="42" selection-end-line="10" selection-end-column="42" />
-          <folding>
-            <element signature="e#256#257#0" expanded="true" />
-            <element signature="e#314#315#0" expanded="true" />
-            <element signature="e#356#357#0" expanded="true" />
-            <element signature="e#394#395#0" expanded="true" />
-            <element signature="e#423#424#0" expanded="true" />
-            <element signature="e#472#473#0" expanded="true" />
-            <element signature="e#508#509#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pw/lumm/model/NsNewsExample.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pw/lumm/controller/ChatController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
-          <caret line="30" column="39" lean-forward="true" selection-start-line="30" selection-start-column="39" selection-end-line="30" selection-end-column="39" />
+        <state relative-caret-position="94">
+          <caret line="31" column="22" selection-start-line="31" selection-start-column="11" selection-end-line="31" selection-end-column="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/pw/lumm/service/impl/MessageServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="57" column="32" lean-forward="true" selection-start-line="57" selection-start-column="32" selection-end-line="57" selection-end-column="32" />
+        <state relative-caret-position="136">
+          <caret line="108" selection-start-line="108" selection-end-line="108" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pw/lumm/dao/MessageMapper.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/pw/lumm/controller/NewsController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="13" column="25" selection-start-line="13" selection-start-column="9" selection-end-line="13" selection-end-column="25" />
+        <state relative-caret-position="-1211">
+          <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/NewsMapper.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/pw/lumm/controller/SearchController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="332">
-          <caret line="23" column="31" selection-start-line="23" selection-start-column="24" selection-end-line="23" selection-end-column="31" />
+        <state relative-caret-position="-23">
+          <caret line="15" column="31" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/MessageMapper.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/pw/lumm/controller/BaseController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1892">
-          <caret line="86" column="56" selection-start-line="86" selection-start-column="56" selection-end-line="86" selection-end-column="56" />
+        <state relative-caret-position="198">
+          <caret line="10" column="14" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="48" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/user/info.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/java/pw/lumm/interceptors/LoginInterceptor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-484">
-          <caret line="26" column="65" lean-forward="true" selection-start-line="26" selection-start-column="65" selection-end-line="26" selection-end-column="70" />
-          <folding>
-            <element signature="n#style#0;n#span#0;n#button#0;n#center#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="198">
+          <caret line="15" column="44" lean-forward="true" selection-start-line="15" selection-start-column="44" selection-end-line="15" selection-end-column="44" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pw/lumm/service/inf/MessageService.java">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/new/detail.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="26" column="26" selection-start-line="26" selection-start-column="9" selection-end-line="26" selection-end-column="26" />
+        <state relative-caret-position="3630">
+          <caret line="165" column="43" lean-forward="true" selection-start-line="165" selection-start-column="43" selection-end-line="165" selection-end-column="43" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/question/detail.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/myjs/jquery.form.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="968">
+          <caret line="1342" column="32" selection-start-line="1342" selection-start-column="32" selection-end-line="1342" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-websocket/4.2.4.RELEASE/spring-websocket-4.2.4.RELEASE.jar!/org/springframework/web/socket/WebSocketSession.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="43" column="9" selection-start-line="43" selection-start-column="9" selection-end-line="43" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pw/lumm/utils/websocket/ChatHandshakeInterceptor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-635">
+          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pw/lumm/interceptors/MessageInterceptor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="110">
-          <caret line="83" column="90" selection-start-line="83" selection-start-column="59" selection-end-line="83" selection-end-column="90" />
+          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/question/emotionindex.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/java/pw/lumm/utils/websocket/WebSocketConfig.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="264">
-          <caret line="56" column="184" lean-forward="true" selection-start-line="56" selection-start-column="184" selection-end-line="56" selection-end-column="196" />
-          <folding>
-            <element signature="n#style#0;n#span#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
+          <caret line="16" column="16" selection-start-line="16" selection-start-column="16" selection-end-line="16" selection-end-column="16" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pw/lumm/service/impl/UserServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/spring/applicationContext-trans.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="98" column="36" lean-forward="true" selection-start-line="98" selection-start-column="36" selection-end-line="98" selection-end-column="36" />
+        <state relative-caret-position="-591" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pw/lumm/utils/websocket/ChatWebSocketHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="192" column="50" selection-start-line="192" selection-start-column="50" selection-end-line="192" selection-end-column="50" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/header.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="44" column="57" selection-start-line="44" selection-end-line="45" />
+        <state relative-caret-position="198">
+          <caret line="15" column="26" lean-forward="true" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/question/index.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/java/pw/lumm/utils/test.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-176">
-          <caret line="19" column="100" selection-start-line="19" selection-start-column="100" selection-end-line="19" selection-end-column="100" />
+        <state relative-caret-position="242">
+          <caret line="11" column="27" lean-forward="true" selection-start-line="11" selection-start-column="27" selection-end-line="11" selection-end-column="41" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/new/index.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/java/pw/lumm/dao/QuestionMapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-418">
-          <caret line="26" column="20" lean-forward="true" selection-start-line="26" selection-start-column="20" selection-end-line="26" selection-end-column="20" />
+        <state relative-caret-position="88">
+          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pw/lumm/controller/AnswerController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-533">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/pw/lumm/utils/SendCode.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="530">
-          <caret line="88" selection-start-line="88" selection-end-line="88" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="22">
+          <caret line="6" column="34" selection-start-line="6" selection-start-column="34" selection-end-line="6" selection-end-column="34" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/pw/lumm/controller/ChatController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="66" column="15" lean-forward="true" selection-start-line="66" selection-start-column="15" selection-end-line="66" selection-end-column="15" />
+        <state relative-caret-position="528">
+          <caret line="34" column="45" selection-start-line="34" selection-start-column="39" selection-end-line="34" selection-end-column="45" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/user/index.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/myjs/ktCreater.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="510" lean-forward="true" selection-start-line="491" selection-end-line="510" />
+        <state relative-caret-position="110">
+          <caret line="5" column="39" lean-forward="true" selection-start-line="5" selection-start-column="39" selection-end-line="5" selection-end-column="39" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pw/lumm/model/User.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/pw/lumm/service/inf/QuestionService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="101">
+          <caret line="26" column="118" selection-start-line="26" selection-start-column="118" selection-end-line="26" selection-end-column="118" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pw/lumm/model/Question.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-5">
+          <caret line="17" column="33" selection-start-line="17" selection-start-column="33" selection-end-line="17" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/MessageMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1694">
+          <caret line="77" column="15" selection-start-line="14" selection-start-column="7" selection-end-line="77" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/new/newsdetail.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4463" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/question/emotionindex.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1845" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/QuestionMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="10" column="8" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pw/lumm/utils/FastDFSClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="27" column="5" lean-forward="true" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/spring/spring-mvc.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="484">
+          <caret line="24" column="84" lean-forward="true" selection-start-line="23" selection-start-column="4" selection-end-line="24" selection-end-column="84" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/question/detail.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="229" column="28" lean-forward="true" selection-start-line="229" selection-start-column="28" selection-end-line="229" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pw/lumm/service/impl/QuestionServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2373">
+          <caret line="94" column="32" lean-forward="true" selection-start-line="94" selection-start-column="32" selection-end-line="94" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pw/lumm/controller/MessageController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="48" column="46" lean-forward="true" selection-start-line="48" selection-start-column="46" selection-end-line="48" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pw/lumm/controller/mainController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="35" column="34" lean-forward="true" selection-start-line="35" selection-start-column="34" selection-end-line="35" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pw/lumm/model/AdminExample.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="11" column="52" selection-start-line="11" selection-start-column="52" selection-end-line="11" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pw/lumm/model/ForumExample.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="9" column="27" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/question/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="24" column="102" selection-start-line="24" selection-start-column="102" selection-end-line="24" selection-end-column="102" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pw/lumm/controller/QuestionController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-738">
+          <caret line="48" column="33" selection-start-line="48" selection-start-column="33" selection-end-line="48" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/question/add.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="7" column="53" lean-forward="true" selection-start-line="7" selection-start-column="53" selection-end-line="7" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/spring/applicationContext-ser.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pw/lumm/service/inf/ForumService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="11" column="8" lean-forward="true" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/ForumMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="176">
-          <caret line="33" column="35" selection-start-line="33" selection-start-column="35" selection-end-line="33" selection-end-column="35" />
-          <folding>
-            <element signature="e#774#775#0" expanded="true" />
-            <element signature="e#826#827#0" expanded="true" />
-            <element signature="e#870#871#0" expanded="true" />
-            <element signature="e#704#705#0" expanded="true" />
-            <element signature="e#731#732#0" expanded="true" />
-            <element signature="e#771#772#0" expanded="true" />
-            <element signature="e#803#804#0" expanded="true" />
-          </folding>
+          <caret line="8" column="55" lean-forward="true" selection-start-line="8" selection-start-column="55" selection-end-line="8" selection-end-column="55" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/pw/lumm/controller/UserController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="74" lean-forward="true" selection-start-line="74" selection-end-line="74" />
+        <state relative-caret-position="2992">
+          <caret line="155" column="51" selection-start-line="155" selection-start-column="51" selection-end-line="155" selection-end-column="51" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/register.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/user/admin.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="231" column="57" selection-start-line="231" selection-start-column="57" selection-end-line="231" selection-end-column="57" />
-          <folding>
-            <element signature="n#style#0;n#button#0;n#form#0;n#div#1;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="168">
+          <caret line="61" column="72" lean-forward="true" selection-start-line="61" selection-start-column="72" selection-end-line="61" selection-end-column="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/new/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-654">
+          <caret line="37" column="51" selection-start-line="37" selection-start-column="48" selection-end-line="37" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="30" column="48" selection-start-line="30" selection-start-column="48" selection-end-line="30" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/user/info.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="17" column="43" selection-start-line="17" selection-start-column="43" selection-end-line="17" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/header.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1188">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/user/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="25" column="55" selection-start-line="25" selection-start-column="55" selection-end-line="25" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pw/lumm/service/impl/SearchServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="72" column="41" selection-start-line="72" selection-start-column="35" selection-end-line="72" selection-end-column="41" />
         </state>
       </provider>
     </entry>
@@ -1396,6 +1176,7 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>

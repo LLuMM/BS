@@ -8,6 +8,32 @@ import java.util.Date;
  * Created by LM on 2018/4/12.
  */
 public class User{
+    @Override
+    public String toString() {
+        return "User{" +
+                "uid='" + uid + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", post=" + post +
+                ", sign='" + sign + '\'' +
+                ", face='" + face + '\'' +
+                ", joindate='" + joindate + '\'' +
+                ", lastlogin='" + lastlogin + '\'' +
+                ", isbest=" + isbest +
+                ", userfav='" + userfav + '\'' +
+                ", userinfo='" + userinfo + '\'' +
+                ", userhidden=" + userhidden +
+                ", userviews=" + userviews +
+                ", privilege=" + privilege +
+                ", visits=" + visits +
+                ", phone='" + phone + '\'' +
+                ", status=" + status +
+                ", city='" + city + '\'' +
+                ", verifycode='" + verifycode + '\'' +
+                '}';
+    }
+
     @Expose
     private String uid;
     @Expose

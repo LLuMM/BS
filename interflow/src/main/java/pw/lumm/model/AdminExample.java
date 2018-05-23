@@ -1,11 +1,21 @@
 package pw.lumm.model;
 
 import java.util.List;
+import java.util.Map;
 
 public class AdminExample {
     List<User> users;
     List<Msg> msgs;
     List<Notic> notics;
+   Map<String,List<Forum>> userForum;
+
+    public Map<String, List<Forum>> getUserForum() {
+        return userForum;
+    }
+
+    public void setUserForum(Map<String, List<Forum>> userForum) {
+        this.userForum = userForum;
+    }
 
     public List<Notic> getNotics() {
         return notics;

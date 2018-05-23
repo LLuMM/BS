@@ -15,7 +15,7 @@
 
 <body>
 <jsp:include page="../header.jsp"/>
-<div class="container" style="margin-top: 100px">
+<div class="container" style="margin-top: 100px;">
     <c:if test="${newsExample != null&&newsExample.forums.size()>0}">
         <%--版块列表--%>
     <a href="#demo" class="btn btn-primary" data-toggle="collapse">版块列表</a>
@@ -32,7 +32,7 @@
 </c:if>
 
 </div>
-<div class="container" style="margin-top: 15px">
+<div class="container" style="margin-top: 15px;height: 1150px">
     <div class="row">
         <div class="col-sm-8">
             <c:if test='${newsExample.news.get("new")!= null}'>

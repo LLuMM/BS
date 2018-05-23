@@ -15,7 +15,7 @@
 <body>
 <jsp:include page="../header.jsp"/>
 <div class="container">
-    <div class="card" style="margin-top: 80px">
+    <div class="card" style="margin-top: 100px">
         <div class="card-header">
             <div class="container">
                 <center>
@@ -23,7 +23,9 @@
                          style="width: 80px">
                     <br>
                     <h3>${userExample.user.username}</h3><h5><c:if test="${userExample.user.privilege==1}">(版主)</c:if></h5>
-                    <button data-toggle="modal" class="btn btn-outline-success" data-target="#sendMsg"  data-whatever="${userExample.user.uid}" ><span style="font-size: 8px">加好友</span></button><br>
+                    <button data-toggle="modal" class="btn btn-outline-success" data-target="#sendMsg"  data-whatever="${userExample.user.uid}" ><span style="font-size: 8px">加好友</span></button>
+                    <button data-toggle="modal" class="btn btn-outline-success" data-target="#sendMsg"  data-whatever="${userExample.user.uid}" ><span style="font-size: 8px">关注</span></button>
+                    <br>
                     <c:if test="${userExample.user.sign!=null}"> <pre>${userExample.user.sign}</pre></c:if>
                     <c:if test="${userExample.user.sign==null}"><pre>这个家伙什么都没留下</pre></c:if><br>
 

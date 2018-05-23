@@ -22,7 +22,7 @@
 <body>
 <jsp:include page="../header.jsp"/>
 
-<div class="container" style="margin-top: 80px">
+<div class="container" style="margin-top: 80px;height: 600px">
 
     <br>
     <!-- Nav tabs -->
@@ -57,7 +57,15 @@
                 <c:forEach items="${adminExample.users}" var="us">
                     <tr>
                         <td>${us.username}</td>
-                        <td></td>
+                        <td>
+                            <c:if test="${adminExample.userForum!=null}">
+                                <c:forEach items='${adminExample.userForum.get("${us.username}")}' var="forum">
+                                    <a href="/question/index?fid=${forum.fid}">${forum.title}</a>
+                                </c:forEach>
+
+                            </c:if>
+
+                        </td>
                     </tr>
                 </c:forEach>
 
@@ -67,8 +75,10 @@
         </div>
 
         <div id="menu1" class="container tab-pane fade"><br>
-            <h3>最新消息</h3>
-            <c:if test="${adminExample!=null}">
+
+
+            <c:if test="${adminExample.msgs!=null&&adminExample.msgs.size()>0}">
+                <h3>最新消息</h3>
                 <table class="table table-hover">
                     <thead>
                     <tr>
@@ -76,9 +86,11 @@
                         <th>标题</th>
                         <th>内容</th>
                         <th>时间</th>
+                        <c:if test="${adminExample.msgs!=null&&adminExample.msgs.size()>0}">
                         <th><a href="#" class="btn btn-info" role="button">隐藏已读消息</a>
                             <button id="deleteMsgByReadStatus" class="btn btn-success">删除所有已读消息</button>
                         </th>
+                        </c:if>
                     </tr>
                     </thead>
                     <tbody>
@@ -111,10 +123,13 @@
                             </td>
                         </tr>
                     </c:forEach>
+
+
                     </tbody>
                 </table>
             </c:if>
-            <c:if test="${adminExample==null}">
+
+            <c:if test="${adminExample.msgs==null||adminExample.msgs.size()==0}">
                 暂无消息！
             </c:if>
         </div>
@@ -145,7 +160,7 @@
             </c:if>
             <h5>发布公告</h5>
             <textarea id="notice" name="content" style="width:700px;height:200px;"></textarea>
-            <button id="commit">发布</button>
+            <button id="commit" class="btn btn-outline-primary">发布</button>
         </div>
     </div>
 </div>
@@ -227,7 +242,6 @@
         });
 
         $("#deleteMsgByReadStatus").click(function () {
-            alert("sdsadas");
             var id = document.getElementById("loginid").value;
             if ("" != id) {
                 $.ajax({

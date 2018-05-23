@@ -32,6 +32,7 @@ public class QuestionServiceImpl implements QuestionService {
 
     String MSG_FORUMBAN= "您申请的版块被禁用，请联系管理员！";
     String MSG_FORUMALLOW = "管理员已同意！";
+    String ADMINID = "2abe95d2-fa87-4af0-8e3b-b1ca70b9e7b7";
 
 
 
@@ -63,7 +64,7 @@ public class QuestionServiceImpl implements QuestionService {
         msg.setTitle("申请版块：" + ftitle);
         msg.setContent(fcontent);
         msg.setToname("admin");
-        msg.setToid("2abe95d2-fa87-4af0-8e3b-b1ca70b9e7b7");
+        msg.setToid(ADMINID);
         msg.setTime(date);
         messageService.addMessage(msg);
         forumService.addForum(forum);
@@ -74,7 +75,10 @@ public class QuestionServiceImpl implements QuestionService {
 
         Msg msg = new Msg();
         //设置管理员信息已读
-        msg.setFromid(id);
+
+        String msgid = messageService.getMessageByfid(id);
+        msg.setId(msgid);
+
         messageService.setMessasgeStatus(msg);
 
         //给版主用户回信息
@@ -83,17 +87,16 @@ public class QuestionServiceImpl implements QuestionService {
         String mid = UUID.randomUUID().toString();
         msg1.setId(mid);
         if (type == 2){
-            msg1.setContent(MSG_FORUMBAN);
+            msg1.setContent(MSG_FORUMBAN+":"+forum.getTitle());
         }else if(type == 1){
-            msg1.setContent(MSG_FORUMALLOW);
+            msg1.setContent(MSG_FORUMALLOW+":"+forum.getTitle());
             userService.setUserPrivilege(forum.getUid(), type);
-
         }
-        msg1.setFromid("2abe95d2-fa87-4af0-8e3b-b1ca70b9e7b7");
+        msg1.setFromid(ADMINID);
         msg1.setTime(DateUtil.format(new Date()));
         msg1.setFromname("管理员");
         msg1.setToid(forum.getUid());
-        msg1.setType(2);
+        msg1.setType(3);
         messageService.addMessage(msg1);
         forumService.setForumStatus(id, type);
 
@@ -101,7 +104,7 @@ public class QuestionServiceImpl implements QuestionService {
     }
 
     @Override
-    public void addQuestion(String loginid, String fid, String title, String value_content) throws Exception  {
+    public void addQuestion(String loginid, String fid, String title, String value_content,String filepath,String filename) throws Exception  {
         User user = userService.getUserById(loginid);
         Question question = new Question();
         question.setId(UUID.randomUUID().toString());
@@ -112,8 +115,9 @@ public class QuestionServiceImpl implements QuestionService {
         question.setContent(value_content);
         question.setTitle(title);
         question.setTime(DateUtil.format(new Date()));
-
+        question.setFilepath(filepath);
         searchService.importQuestion(question);
+        question.setFilename(filename);
         questionMapper.addQuestion(question);
     }
 
