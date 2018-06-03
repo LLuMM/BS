@@ -34,14 +34,17 @@
 
         <c:if test="${userindex.user.privilege==1}">
             <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#menu2">用户中心</a>
+                <a class="nav-link" data-toggle="tab" href="#menu2">文章、问答管理</a>
             </li>
         </c:if>
         <li class="nav-item">
             <a class="nav-link" data-toggle="tab" href="#menu3">我的消息</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#menu4">我的帖子</a>
+            <a class="nav-link" data-toggle="tab" href="#menu4">我的文章</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#menu6">我的问答</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" data-toggle="tab" href="#menu5">版块管理</a>
@@ -115,7 +118,7 @@
                                     <td>${fm.key}</td>
                                     <td>${question.uname}</td>
                                     <td><a href="/question/detail?id=${question.id}">${question.title}</a></td>
-                                    <td>${ms.time}</td>
+                                    <td>${question.time}</td>
                                     <td>
                                         <c:if test="${question.status!=2}">
 
@@ -317,7 +320,7 @@
 
                         <!-- 模态框头部 -->
                         <div class="modal-header">
-                            <h4 class="modal-title">帖子列表</h4>
+                            <h4 class="modal-title">版块申请</h4>
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
 

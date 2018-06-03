@@ -1,9 +1,11 @@
 package pw.lumm.service.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pw.lumm.dao.NewsMapper;
 import pw.lumm.model.*;
 import pw.lumm.service.inf.NewsService;
+import pw.lumm.service.inf.SearchService;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -12,11 +14,13 @@ import java.util.List;
 public class NewsServiceImpl implements NewsService {
     @Resource
     NewsMapper newsMapper;
-
+    @Autowired
+    SearchService searchService;
     @Override
     public List<News> getHotNews(int type, int limi) throws Exception  {
         List<News> list = newsMapper.getHotNews(type, limi);
-        if (list != null && list.size() > 0)
+
+        if (list != null && list.size() >0)
             return list;
         else
             return null;
@@ -34,6 +38,7 @@ public class NewsServiceImpl implements NewsService {
     @Override
     public List<News> getAllNews() throws Exception  {
         List<News> newsList = newsMapper.getAllNews();
+
         return newsList;
     }
 

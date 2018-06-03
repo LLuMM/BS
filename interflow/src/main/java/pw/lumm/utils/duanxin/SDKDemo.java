@@ -18,22 +18,11 @@ public class SDKDemo {
 	/**
 	 * 
 	 * @description SDK示例
-	 * @param
+	 * @param args
 	 */
-
-
-	public static void aaa() {
-		setAccountInfo();
-		// 是否保持长连接
-		boolean isKeepAlive = true;
-		// 实例化短信处理对象
-		String userid = "LLUUMM";
-		SmsSendConn smsSendConn = new SmsSendConn(isKeepAlive);
-		singleSend(smsSendConn, userid);
-	}
 	public static void main(String[] args) {
 		// 用户账号
-		String userid = "LLUUMM";
+		String userid = "E103LW";
 
 		// 创建全局参数
 		GlobalParams globalParams = new GlobalParams();
@@ -62,33 +51,33 @@ public class SDKDemo {
 		//multiSend(smsSendConn, userid);
 
 		// 查询余额
-		getBalance(smsSendConn, userid);
+		//getBalance(smsSendConn, userid);
 		
 		//查询剩余金额或条数接口
-		getRemains(smsSendConn, userid);
+		//getRemains(smsSendConn, userid);
 
 		// 实例化短信处理对象
-		SmsSendConn smsSendConnMo = new SmsSendConn(isKeepAlive);
+		//SmsSendConn smsSendConnMo = new SmsSendConn(isKeepAlive);
 		// 每次请求想要获取的上行的最大条数。
 		int retsizeMo = 100;
 		// 实例化获取上行线程
-		RecvMoThread recvMoThread = new RecvMoThread(smsSendConnMo, userid, retsizeMo);
+		//RecvMoThread recvMoThread = new RecvMoThread(smsSendConnMo, userid, retsizeMo);
 		// 线程获取 启动获取上行的线程
-		recvMoThread.start();
-		System.out.println("获取上行的线程启动成功！");
+		//recvMoThread.start();
+		//System.out.println("获取上行的线程启动成功！");
 
 		// 实例化短信处理对象
-		SmsSendConn smsSendConnRpt = new SmsSendConn(isKeepAlive);
+		//SmsSendConn smsSendConnRpt = new SmsSendConn(isKeepAlive);
 		// 每次请求想要获取的状态报告的最大条数。
-		int retsizeRpt = 100;
+		//int retsizeRpt = 100;
 		// 实例化状态报告线程
-		RecvRptThread recvRptThread = new RecvRptThread(smsSendConnRpt, userid,retsizeRpt);
+		//RecvRptThread recvRptThread = new RecvRptThread(smsSendConnRpt, userid,retsizeRpt);
 		// 线程获取 启动获取状态报告的线程
-		recvRptThread.start();
-		System.out.println("获取状态报告的线程启动成功！");
+		//recvRptThread.start();
+		//System.out.println("获取状态报告的线程启动成功！");
 
 		// 移除用户账号(此处为移除用户账号功能示例，使用时请根据实际情况，有需要才调用此方法)
-		removeAccount(userid);
+		//removeAccount(userid);
 
 	}
 
@@ -97,14 +86,15 @@ public class SDKDemo {
 	 */
 	public static void setAccountInfo() {
 		// 设置用户账号信息
+
 		// 用户账号
-		String userid = "";
+		String userid = "E103LW";
 		// 密码
-		String password = "";
+		String password = "5ImCi9";
 		// 发送优先级
 		int priority = 1;
 		// 主IP信息
-		String ipAddress1 = "192.169.3.223:8089";
+		String ipAddress1 = "api01.monyun.cn:7901";
 
 		// 备用IP1信息
 		String ipAddress2 = "192.169.1.189:8086";
@@ -170,11 +160,12 @@ public class SDKDemo {
 			// 设置用户账号 指定用户账号发送，需要填写用户账号，不指定用户账号发送，无需填写用户账号
 			message.setUserid(userid);
 			// 设置手机号码 此处只能设置一个手机号码
-			message.setMobile("15754334355");
+			message.setMobile("13069219947");
+			//18946655315
 			// 设置内容
-			message.setContent("测试短信");
+			message.setContent("您的验证码是验证码：143456，打死都不要告诉别人哦！请于10分钟内正确输入，如非本人操作，请忽略此短信。");
 			// 设置扩展号
-			message.setExno("11");
+			//message.setExno("11");
 			// 用户自定义流水编号
 			message.setCustid("20160929194950100001");
 			// 自定义扩展数据

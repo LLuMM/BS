@@ -35,7 +35,7 @@
                     var dataObj = JSON.parse(Result);
                     if (dataObj.Status) {
                         alert("邀请成功!");
-                        $("#chatlist").append("<li><a href='/chat/tochat'>群聊一</a></li>");
+                        $("#chatlist").append("<li><a href='/chat/tochat'>&nbsp;&nbsp;&nbsp;群聊一</a></li>");
                     } else {
                         $("#error").text("网络异常！");
                     }
@@ -49,6 +49,8 @@
 <jsp:include page="../header.jsp"/>
 <div class="container" style="margin-top: 90px">
     <div class="row">
+        <div class="col-sm-8">
+        </div>
         <div class="col-sm-4">
             <h2>好友列表</h2>
             <div id="accordion">
@@ -130,8 +132,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-8">
-        </div>
+
 
     </div>
 </div>

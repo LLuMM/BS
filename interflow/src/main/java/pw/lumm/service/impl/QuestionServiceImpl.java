@@ -116,8 +116,9 @@ public class QuestionServiceImpl implements QuestionService {
         question.setTitle(title);
         question.setTime(DateUtil.format(new Date()));
         question.setFilepath(filepath);
-        searchService.importQuestion(question);
         question.setFilename(filename);
+        searchService.importQuestion(question);
+
         questionMapper.addQuestion(question);
     }
 

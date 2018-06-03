@@ -32,9 +32,12 @@
             <div class="card-body">
                 <c:if test="${questionExample!=null}">
                     <h3>${questionExample.question.title}</h3>
-                    <p>作者：${questionExample.question.uname}&nbsp;&nbsp;
-                        <c:if test="${questionExample.question.filepath!=null}">
-                            <span>${questionExample.question.filename}</span><a target="_blank" href="${questionExample.question.filepath}">预览</a><button type="button"  value="${questionExample.question.filepath}" onclick="down(this)">下载</button>
+                    <p>作者：${questionExample.question.uname}<br>时间:${questionExample.question.time}
+                        <c:if test="${questionExample.question.filepath!=null}"><br>
+                            <a target="_blank"
+                               href="${questionExample.question.filepath}">${questionExample.question.filename}</a>
+                            <button type="button" value="${questionExample.question.filepath}" onclick="down(this)"  class="btn btn-primary btn-sm">下载
+                            </button>
                         </c:if>
                     </p>
                     <span>${questionExample.question.content}</span>
@@ -215,23 +218,23 @@
 
     });
 
-         function down(event) {
-             var filename = event.value;
-            $.ajax({
-                type: "post",
-                url: "/question/downFile",
-                dataType: "text",
-                data: {
-                    "filename": filename
-                },
-                success: function (Result) {
-                    if (Result.status==200) {
-                        alert("正在下载!");
-                    } else {
+    function down(event) {
+        var filename = event.value;
+        $.ajax({
+            type: "post",
+            url: "/question/downFile",
+            dataType: "text",
+            data: {
+                "filename": filename
+            },
+            success: function (Result) {
+                if (Result.status == 200) {
+                    alert("正在下载!");
+                } else {
 
-                    }
                 }
-            });
+            }
+        });
     }
 
 
@@ -255,7 +258,6 @@
         //更改将title的text
         modal.find('.modal-body input').val(recipient)
     });
-
 
 
 </script>

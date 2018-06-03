@@ -12,8 +12,9 @@ import javax.servlet.ServletContextListener;
 public class NewsListener implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent event) {
-     /*   try{
-            NewsFresh.getHotNews();
+        try{
+            NewsFresh newsFresh = new NewsFresh();
+            newsFresh.getHotNews();
             ServletContext sc=event.getServletContext();
             WebApplicationContext ctx=WebApplicationContextUtils.getWebApplicationContext(sc);
             SearchService searchService = (SearchService) ctx.getBean("searchService");
@@ -22,7 +23,7 @@ public class NewsListener implements ServletContextListener {
         }catch (Exception e){
             e.printStackTrace();
             System.out.println("thrift服务未开或搜索服务没启动！");
-        }*/
+        }
     }
 
     @Override

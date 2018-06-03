@@ -1,0 +1,327 @@
+2018-05-29 17:41:34.595 长连接,使用账号[E103LW]的主IP信息[192.169.3.223:8089]第一次请求网关或者主IP恢复正常，使用主IP请求网关。
+2018-05-29 17:41:34.882 长连接请求方法失败！
+java.lang.IllegalArgumentException: Illegal character in authority at index 7: http://192.169.3.223:8089 http://api01.monyun.cn:7901single_send
+	at java.net.URI.create(URI.java:852)
+	at org.apache.http.client.methods.HttpPost.<init>(HttpPost.java:76)
+	at com.montnets.mwgate.smsutil.HttpPostBiz.executeKeepAliveNotUrlEncodePost(HttpPostBiz.java:183)
+	at com.montnets.mwgate.smsutil.SmsSendBiz.sendSmsByKeepAlive(SmsSendBiz.java:154)
+	at com.montnets.mwgate.smsutil.SmsSendConn.singleSend(SmsSendConn.java:167)
+	at pw.lumm.utils.duanxin.SDKDemo.singleSend(SDKDemo.java:180)
+	at pw.lumm.utils.duanxin.SDKDemo.main(SDKDemo.java:45)
+Caused by: java.net.URISyntaxException: Illegal character in authority at index 7: http://192.169.3.223:8089 http://api01.monyun.cn:7901single_send
+	at java.net.URI$Parser.fail(URI.java:2848)
+	at java.net.URI$Parser.parseAuthority(URI.java:3186)
+	at java.net.URI$Parser.parseHierarchical(URI.java:3097)
+	at java.net.URI$Parser.parse(URI.java:3053)
+	at java.net.URI.<init>(URI.java:588)
+	at java.net.URI.create(URI.java:850)
+	... 6 more
+
+2018-05-29 17:41:36.214 长连接请求方法失败！
+java.lang.IllegalArgumentException: Illegal character in authority at index 7: http://192.169.3.223:8089 http://api01.monyun.cn:7901single_send
+	at java.net.URI.create(URI.java:852)
+	at org.apache.http.client.methods.HttpPost.<init>(HttpPost.java:76)
+	at com.montnets.mwgate.smsutil.HttpPostBiz.executeKeepAliveNotUrlEncodePost(HttpPostBiz.java:183)
+	at com.montnets.mwgate.smsutil.SmsSendBiz.sendSmsByKeepAlive(SmsSendBiz.java:207)
+	at com.montnets.mwgate.smsutil.SmsSendConn.singleSend(SmsSendConn.java:167)
+	at pw.lumm.utils.duanxin.SDKDemo.singleSend(SDKDemo.java:180)
+	at pw.lumm.utils.duanxin.SDKDemo.main(SDKDemo.java:45)
+Caused by: java.net.URISyntaxException: Illegal character in authority at index 7: http://192.169.3.223:8089 http://api01.monyun.cn:7901single_send
+	at java.net.URI$Parser.fail(URI.java:2848)
+	at java.net.URI$Parser.parseAuthority(URI.java:3186)
+	at java.net.URI$Parser.parseHierarchical(URI.java:3097)
+	at java.net.URI$Parser.parse(URI.java:3053)
+	at java.net.URI.<init>(URI.java:588)
+	at java.net.URI.create(URI.java:850)
+	... 6 more
+
+2018-05-29 17:41:36.218 长连接,账号[E103LW]的主IP[192.169.3.223],端口：8089异常,将添加到异常主IP集合中检测。该账号有备IP,备IP信息为192.169.1.189:8086,将切换到备IP。待主IP恢复正常后，再切换回主IP。
+2018-05-29 17:42:32.579 检测账号[E103LW]主IP是否可用时,检测出主IP[192.169.3.223]不可用，端口:8089
+2018-05-29 17:42:32.596 检测账号[E103LW]主IP是否可用时,主IP[192.169.3.223]不可用,该主IP没有对应的主域名,不通过主域名获取主IP进行检测。
+2018-05-29 17:43:14.893 长连接,使用账号[E103LW]的主IP信息[192.169.3.223:8089]第一次请求网关或者主IP恢复正常，使用主IP请求网关。
+2018-05-29 17:43:21.187 向网关请求失败！
+org.apache.http.conn.ConnectTimeoutException: Connect to 192.169.3.223:8089 timed out
+	at org.apache.http.conn.scheme.PlainSocketFactory.connectSocket(PlainSocketFactory.java:119)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:177)
+	at org.apache.http.impl.conn.ManagedClientConnectionImpl.open(ManagedClientConnectionImpl.java:304)
+	at org.apache.http.impl.client.DefaultRequestDirector.tryConnect(DefaultRequestDirector.java:611)
+	at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:446)
+	at org.apache.http.impl.client.AbstractHttpClient.doExecute(AbstractHttpClient.java:863)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:115)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:57)
+	at com.montnets.mwgate.smsutil.HttpPostBiz.executeKeepAliveNotUrlEncodePost(HttpPostBiz.java:202)
+	at com.montnets.mwgate.smsutil.SmsSendBiz.sendSmsByKeepAlive(SmsSendBiz.java:154)
+	at com.montnets.mwgate.smsutil.SmsSendConn.singleSend(SmsSendConn.java:167)
+	at pw.lumm.utils.duanxin.SDKDemo.singleSend(SDKDemo.java:180)
+	at pw.lumm.utils.duanxin.SDKDemo.main(SDKDemo.java:45)
+
+2018-05-29 17:43:26.231 向网关请求失败！
+org.apache.http.conn.ConnectTimeoutException: Connect to 192.169.3.223:8089 timed out
+	at org.apache.http.conn.scheme.PlainSocketFactory.connectSocket(PlainSocketFactory.java:119)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:177)
+	at org.apache.http.impl.conn.ManagedClientConnectionImpl.open(ManagedClientConnectionImpl.java:304)
+	at org.apache.http.impl.client.DefaultRequestDirector.tryConnect(DefaultRequestDirector.java:611)
+	at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:446)
+	at org.apache.http.impl.client.AbstractHttpClient.doExecute(AbstractHttpClient.java:863)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:115)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:57)
+	at com.montnets.mwgate.smsutil.HttpPostBiz.executeKeepAliveNotUrlEncodePost(HttpPostBiz.java:202)
+	at com.montnets.mwgate.smsutil.SmsSendBiz.sendSmsByKeepAlive(SmsSendBiz.java:207)
+	at com.montnets.mwgate.smsutil.SmsSendConn.singleSend(SmsSendConn.java:167)
+	at pw.lumm.utils.duanxin.SDKDemo.singleSend(SDKDemo.java:180)
+	at pw.lumm.utils.duanxin.SDKDemo.main(SDKDemo.java:45)
+
+2018-05-29 17:43:26.232 长连接,账号[E103LW]的主IP[192.169.3.223],端口：8089异常,将添加到异常主IP集合中检测。该账号有备IP,备IP信息为192.169.1.189:8086,将切换到备IP。待主IP恢复正常后，再切换回主IP。
+2018-05-29 17:45:24.915 检测账号[E103LW]主IP是否可用时,检测出主IP[192.169.3.223]不可用，端口:8089
+2018-05-29 17:45:24.916 检测账号[E103LW]主IP是否可用时,主IP[192.169.3.223]不可用,该主IP没有对应的主域名,不通过主域名获取主IP进行检测。
+2018-05-29 17:46:36.682 长连接,使用账号[E103LW]的主IP信息[192.168.202.1:8080]第一次请求网关或者主IP恢复正常，使用主IP请求网关。
+2018-05-29 17:46:39.422 向网关请求失败！
+java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:85)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at org.apache.http.conn.scheme.PlainSocketFactory.connectSocket(PlainSocketFactory.java:117)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:177)
+	at org.apache.http.impl.conn.ManagedClientConnectionImpl.open(ManagedClientConnectionImpl.java:304)
+	at org.apache.http.impl.client.DefaultRequestDirector.tryConnect(DefaultRequestDirector.java:611)
+	at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:446)
+	at org.apache.http.impl.client.AbstractHttpClient.doExecute(AbstractHttpClient.java:863)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:115)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:57)
+	at com.montnets.mwgate.smsutil.HttpPostBiz.executeKeepAliveNotUrlEncodePost(HttpPostBiz.java:202)
+	at com.montnets.mwgate.smsutil.SmsSendBiz.sendSmsByKeepAlive(SmsSendBiz.java:154)
+	at com.montnets.mwgate.smsutil.SmsSendConn.singleSend(SmsSendConn.java:167)
+	at pw.lumm.utils.duanxin.SDKDemo.singleSend(SDKDemo.java:180)
+	at pw.lumm.utils.duanxin.SDKDemo.main(SDKDemo.java:45)
+
+2018-05-29 17:46:40.505 向网关请求失败！
+java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:85)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at org.apache.http.conn.scheme.PlainSocketFactory.connectSocket(PlainSocketFactory.java:117)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:177)
+	at org.apache.http.impl.conn.ManagedClientConnectionImpl.open(ManagedClientConnectionImpl.java:304)
+	at org.apache.http.impl.client.DefaultRequestDirector.tryConnect(DefaultRequestDirector.java:611)
+	at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:446)
+	at org.apache.http.impl.client.AbstractHttpClient.doExecute(AbstractHttpClient.java:863)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:115)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:57)
+	at com.montnets.mwgate.smsutil.HttpPostBiz.executeKeepAliveNotUrlEncodePost(HttpPostBiz.java:202)
+	at com.montnets.mwgate.smsutil.SmsSendBiz.sendSmsByKeepAlive(SmsSendBiz.java:207)
+	at com.montnets.mwgate.smsutil.SmsSendConn.singleSend(SmsSendConn.java:167)
+	at pw.lumm.utils.duanxin.SDKDemo.singleSend(SDKDemo.java:180)
+	at pw.lumm.utils.duanxin.SDKDemo.main(SDKDemo.java:45)
+
+2018-05-29 17:46:40.508 长连接,账号[E103LW]的主IP[192.168.202.1],端口：8080异常,将添加到异常主IP集合中检测。该账号有备IP,备IP信息为192.169.1.189:8086,将切换到备IP。待主IP恢复正常后，再切换回主IP。
+2018-05-29 17:47:07.526 短连接,指定账号,使用账号[E103LW]的主IP信息[192.168.202.1:8080]第一次请求网关或者主IP恢复正常，使用主IP请求网关。
+2018-05-29 17:47:09.793 向网关请求失败！
+java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:85)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at org.apache.http.conn.scheme.PlainSocketFactory.connectSocket(PlainSocketFactory.java:117)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:177)
+	at org.apache.http.impl.conn.ManagedClientConnectionImpl.open(ManagedClientConnectionImpl.java:304)
+	at org.apache.http.impl.client.DefaultRequestDirector.tryConnect(DefaultRequestDirector.java:611)
+	at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:446)
+	at org.apache.http.impl.client.AbstractHttpClient.doExecute(AbstractHttpClient.java:863)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:106)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:57)
+	at com.montnets.mwgate.smsutil.HttpPostBiz.executeNotKeepAliveNotUrlEncodePost(HttpPostBiz.java:441)
+	at com.montnets.mwgate.smsutil.SmsSendBiz.sendSmsByNotKeepAlive(SmsSendBiz.java:368)
+	at com.montnets.mwgate.smsutil.SmsSendConn.singleSend(SmsSendConn.java:172)
+	at pw.lumm.utils.duanxin.SDKDemo.singleSend(SDKDemo.java:180)
+	at pw.lumm.utils.duanxin.SDKDemo.main(SDKDemo.java:45)
+
+2018-05-29 17:47:09.796 短连接,账号[E103LW]的主IP[192.168.202.1],端口：8080异常,将添加到异常主IP集合中检测。该账号有备IP,备IP信息为192.169.1.189:8086,将切换到备IP。待主IP恢复正常后，再切换回主IP。
+2018-05-29 17:48:09.964 短连接,指定账号,使用账号[E103LW]的主IP信息[192.168.202.1:8080]第一次请求网关或者主IP恢复正常，使用主IP请求网关。
+2018-05-29 17:48:12.222 向网关请求失败！
+java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:85)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at org.apache.http.conn.scheme.PlainSocketFactory.connectSocket(PlainSocketFactory.java:117)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:177)
+	at org.apache.http.impl.conn.ManagedClientConnectionImpl.open(ManagedClientConnectionImpl.java:304)
+	at org.apache.http.impl.client.DefaultRequestDirector.tryConnect(DefaultRequestDirector.java:611)
+	at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:446)
+	at org.apache.http.impl.client.AbstractHttpClient.doExecute(AbstractHttpClient.java:863)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:106)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:57)
+	at com.montnets.mwgate.smsutil.HttpPostBiz.executeNotKeepAliveNotUrlEncodePost(HttpPostBiz.java:441)
+	at com.montnets.mwgate.smsutil.SmsSendBiz.sendSmsByNotKeepAlive(SmsSendBiz.java:368)
+	at com.montnets.mwgate.smsutil.SmsSendConn.singleSend(SmsSendConn.java:172)
+	at pw.lumm.utils.duanxin.SDKDemo.singleSend(SDKDemo.java:180)
+	at pw.lumm.utils.duanxin.SDKDemo.main(SDKDemo.java:45)
+
+2018-05-29 17:48:12.225 短连接,账号[E103LW]的主IP[192.168.202.1],端口：8080异常,将添加到异常主IP集合中检测。该账号有备IP,备IP信息为192.169.1.189:8086,将切换到备IP。待主IP恢复正常后，再切换回主IP。
+2018-05-29 17:49:36.010 检测账号[E103LW]主IP是否可用时,检测出主IP[192.168.202.1]不可用，端口:8080
+2018-05-29 17:49:36.011 检测账号[E103LW]主IP是否可用时,主IP[192.168.202.1]不可用,该主IP没有对应的主域名,不通过主域名获取主IP进行检测。
+2018-05-29 17:51:07.426 设置发送账号[E103LW]信息时,通过主域名[api01.monyun.cn]获取到主IP[114.67.62.211],端口:7901
+2018-05-29 17:51:07.694 短连接,指定账号,使用账号[E103LW]的主IP信息[114.67.62.211:7901]第一次请求网关或者主IP恢复正常，使用主IP请求网关。
+2018-05-29 17:53:51.789 短连接,指定账号,使用账号[E103LW]的主IP信息[10.200.5.120:8080]第一次请求网关或者主IP恢复正常，使用主IP请求网关。
+2018-05-29 17:53:54.940 向网关请求失败！
+java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:85)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at org.apache.http.conn.scheme.PlainSocketFactory.connectSocket(PlainSocketFactory.java:117)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:177)
+	at org.apache.http.impl.conn.ManagedClientConnectionImpl.open(ManagedClientConnectionImpl.java:304)
+	at org.apache.http.impl.client.DefaultRequestDirector.tryConnect(DefaultRequestDirector.java:611)
+	at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:446)
+	at org.apache.http.impl.client.AbstractHttpClient.doExecute(AbstractHttpClient.java:863)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:106)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:57)
+	at com.montnets.mwgate.smsutil.HttpPostBiz.executeNotKeepAliveNotUrlEncodePost(HttpPostBiz.java:441)
+	at com.montnets.mwgate.smsutil.SmsSendBiz.sendSmsByNotKeepAlive(SmsSendBiz.java:368)
+	at com.montnets.mwgate.smsutil.SmsSendConn.singleSend(SmsSendConn.java:172)
+	at pw.lumm.utils.duanxin.SDKDemo.singleSend(SDKDemo.java:180)
+	at pw.lumm.utils.duanxin.SDKDemo.main(SDKDemo.java:45)
+
+2018-05-29 17:53:54.948 短连接,账号[E103LW]的主IP[10.200.5.120],端口：8080异常,将添加到异常主IP集合中检测。该账号有备IP,备IP信息为192.169.1.189:8086,将切换到备IP。待主IP恢复正常后，再切换回主IP。
+2018-05-29 17:54:42.811 短连接,指定账号,使用账号[E103LW]的主IP信息[10.200.5.120:8080]第一次请求网关或者主IP恢复正常，使用主IP请求网关。
+2018-05-29 17:54:46.685 向网关请求失败！
+java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:85)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at org.apache.http.conn.scheme.PlainSocketFactory.connectSocket(PlainSocketFactory.java:117)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:177)
+	at org.apache.http.impl.conn.ManagedClientConnectionImpl.open(ManagedClientConnectionImpl.java:304)
+	at org.apache.http.impl.client.DefaultRequestDirector.tryConnect(DefaultRequestDirector.java:611)
+	at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:446)
+	at org.apache.http.impl.client.AbstractHttpClient.doExecute(AbstractHttpClient.java:863)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:106)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:57)
+	at com.montnets.mwgate.smsutil.HttpPostBiz.executeNotKeepAliveNotUrlEncodePost(HttpPostBiz.java:441)
+	at com.montnets.mwgate.smsutil.SmsSendBiz.sendSmsByNotKeepAlive(SmsSendBiz.java:368)
+	at com.montnets.mwgate.smsutil.SmsSendConn.singleSend(SmsSendConn.java:172)
+	at pw.lumm.utils.duanxin.SDKDemo.singleSend(SDKDemo.java:180)
+	at pw.lumm.utils.duanxin.SDKDemo.main(SDKDemo.java:45)
+
+2018-05-29 17:54:46.694 短连接,账号[E103LW]的主IP[10.200.5.120],端口：8080异常,将添加到异常主IP集合中检测。该账号有备IP,备IP信息为192.169.1.189:8086,将切换到备IP。待主IP恢复正常后，再切换回主IP。
+2018-05-29 17:56:09.835 检测账号[E103LW]主IP是否可用时,检测出主IP[10.200.5.120]不可用，端口:8080
+2018-05-29 17:56:09.837 检测账号[E103LW]主IP是否可用时,主IP[10.200.5.120]不可用,该主IP没有对应的主域名,不通过主域名获取主IP进行检测。
+2018-05-29 17:57:24.872 检测账号[E103LW]主IP是否可用时,检测出主IP[10.200.5.120]不可用，端口:8080
+2018-05-29 17:57:24.875 检测账号[E103LW]主IP是否可用时,主IP[10.200.5.120]不可用,该主IP没有对应的主域名,不通过主域名获取主IP进行检测。
+2018-05-29 17:58:25.160 检测账号[E103LW]主IP是否可用时,检测出主IP[10.200.5.120]不可用，端口:8080
+2018-05-29 17:58:25.162 检测账号[E103LW]主IP是否可用时,主IP[10.200.5.120]不可用,该主IP没有对应的主域名,不通过主域名获取主IP进行检测。
+2018-05-29 17:59:25.498 检测账号[E103LW]主IP是否可用时,检测出主IP[10.200.5.120]不可用，端口:8080
+2018-05-29 17:59:25.500 检测账号[E103LW]主IP是否可用时,主IP[10.200.5.120]不可用,该主IP没有对应的主域名,不通过主域名获取主IP进行检测。
+2018-05-29 17:59:50.226 短连接,指定账号,使用账号[E103LW]的主IP信息[192.168.191.1:8080]第一次请求网关或者主IP恢复正常，使用主IP请求网关。
+2018-05-29 17:59:51.563 短连接请求失败：HTTP/1.1 404 
+2018-05-29 17:59:51.567 短连接,账号[E103LW]的主IP[192.168.191.1],端口：8080异常,将添加到异常主IP集合中检测。该账号有备IP,备IP信息为192.169.1.189:8086,将切换到备IP。待主IP恢复正常后，再切换回主IP。
+2018-05-29 18:00:25.783 检测账号[E103LW]主IP是否可用时,检测出主IP[10.200.5.120]不可用，端口:8080
+2018-05-29 18:00:25.785 检测账号[E103LW]主IP是否可用时,主IP[10.200.5.120]不可用,该主IP没有对应的主域名,不通过主域名获取主IP进行检测。
+2018-05-29 18:00:48.482 检测账号[E103LW]主IP是否可用时,检测出主IP[192.168.191.1]不可用，端口:8080
+2018-05-29 18:00:48.484 检测账号[E103LW]主IP是否可用时,主IP[192.168.191.1]不可用,该主IP没有对应的主域名,不通过主域名获取主IP进行检测。
+2018-05-29 18:01:26.064 检测账号[E103LW]主IP是否可用时,检测出主IP[10.200.5.120]不可用，端口:8080
+2018-05-29 18:01:26.095 检测账号[E103LW]主IP是否可用时,主IP[10.200.5.120]不可用,该主IP没有对应的主域名,不通过主域名获取主IP进行检测。
+2018-05-29 18:01:26.957 设置发送账号[E103LW]信息时,通过主域名[api01.monyun.cn]获取到主IP[114.67.62.211],端口:7901
+2018-05-29 18:01:27.152 短连接,指定账号,使用账号[E103LW]的主IP信息[114.67.62.211:7901]第一次请求网关或者主IP恢复正常，使用主IP请求网关。
+2018-05-29 18:02:26.347 检测账号[E103LW]主IP是否可用时,检测出主IP[10.200.5.120]不可用，端口:8080
+2018-05-29 18:02:26.349 检测账号[E103LW]主IP是否可用时,主IP[10.200.5.120]不可用,该主IP没有对应的主域名,不通过主域名获取主IP进行检测。
+2018-05-29 18:03:26.551 检测账号[E103LW]主IP是否可用时,检测出主IP[10.200.5.120]不可用，端口:8080
+2018-05-29 18:03:26.552 检测账号[E103LW]主IP是否可用时,主IP[10.200.5.120]不可用,该主IP没有对应的主域名,不通过主域名获取主IP进行检测。
+2018-05-29 18:04:01.580 设置发送账号[E103LW]信息时,通过主域名[api01.monyun.cn]获取到主IP[114.67.62.211],端口:7901
+2018-05-29 18:04:01.833 长连接,使用账号[E103LW]的主IP信息[114.67.62.211:7901]第一次请求网关或者主IP恢复正常，使用主IP请求网关。
+2018-05-29 18:04:26.760 检测账号[E103LW]主IP是否可用时,检测出主IP[10.200.5.120]不可用，端口:8080
+2018-05-29 18:04:26.762 检测账号[E103LW]主IP是否可用时,主IP[10.200.5.120]不可用,该主IP没有对应的主域名,不通过主域名获取主IP进行检测。
+2018-05-29 18:05:27.348 检测账号[E103LW]主IP是否可用时,检测出主IP[10.200.5.120]不可用，端口:8080
+2018-05-29 18:05:27.350 检测账号[E103LW]主IP是否可用时,主IP[10.200.5.120]不可用,该主IP没有对应的主域名,不通过主域名获取主IP进行检测。
+2018-05-29 18:06:27.560 检测账号[E103LW]主IP是否可用时,检测出主IP[10.200.5.120]不可用，端口:8080
+2018-05-29 18:06:27.562 检测账号[E103LW]主IP是否可用时,主IP[10.200.5.120]不可用,该主IP没有对应的主域名,不通过主域名获取主IP进行检测。
+2018-05-29 18:07:27.767 检测账号[E103LW]主IP是否可用时,检测出主IP[10.200.5.120]不可用，端口:8080
+2018-05-29 18:07:27.769 检测账号[E103LW]主IP是否可用时,主IP[10.200.5.120]不可用,该主IP没有对应的主域名,不通过主域名获取主IP进行检测。
+2018-05-29 18:08:27.964 检测账号[E103LW]主IP是否可用时,检测出主IP[10.200.5.120]不可用，端口:8080
+2018-05-29 18:08:27.972 检测账号[E103LW]主IP是否可用时,主IP[10.200.5.120]不可用,该主IP没有对应的主域名,不通过主域名获取主IP进行检测。
+2018-05-29 18:09:28.151 检测账号[E103LW]主IP是否可用时,检测出主IP[10.200.5.120]不可用，端口:8080
+2018-05-29 18:09:28.153 检测账号[E103LW]主IP是否可用时,主IP[10.200.5.120]不可用,该主IP没有对应的主域名,不通过主域名获取主IP进行检测。
+2018-05-29 18:10:28.363 检测账号[E103LW]主IP是否可用时,检测出主IP[10.200.5.120]不可用，端口:8080
+2018-05-29 18:10:28.364 检测账号[E103LW]主IP是否可用时,主IP[10.200.5.120]不可用,该主IP没有对应的主域名,不通过主域名获取主IP进行检测。
+2018-05-29 18:11:25.884 设置发送账号[E103LW]信息时,通过主域名[api01.monyun.cn]获取到主IP[114.67.62.211],端口:7901
+2018-05-29 18:11:26.162 长连接,使用账号[E103LW]的主IP信息[114.67.62.211:7901]第一次请求网关或者主IP恢复正常，使用主IP请求网关。
+2018-05-29 18:11:28.574 检测账号[E103LW]主IP是否可用时,检测出主IP[10.200.5.120]不可用，端口:8080
+2018-05-29 18:11:28.576 检测账号[E103LW]主IP是否可用时,主IP[10.200.5.120]不可用,该主IP没有对应的主域名,不通过主域名获取主IP进行检测。
+2018-05-29 18:12:28.781 检测账号[E103LW]主IP是否可用时,检测出主IP[10.200.5.120]不可用，端口:8080
+2018-05-29 18:12:28.782 检测账号[E103LW]主IP是否可用时,主IP[10.200.5.120]不可用,该主IP没有对应的主域名,不通过主域名获取主IP进行检测。
+2018-05-29 18:12:54.361 设置发送账号[E103LW]信息时,通过主域名[api01.monyun.cn]获取到主IP[114.67.62.211],端口:7901
+2018-05-29 18:12:54.541 长连接,使用账号[E103LW]的主IP信息[114.67.62.211:7901]第一次请求网关或者主IP恢复正常，使用主IP请求网关。
+2018-05-29 18:13:29.053 检测账号[E103LW]主IP是否可用时,检测出主IP[10.200.5.120]不可用，端口:8080
+2018-05-29 18:13:29.055 检测账号[E103LW]主IP是否可用时,主IP[10.200.5.120]不可用,该主IP没有对应的主域名,不通过主域名获取主IP进行检测。
+2018-05-29 18:14:29.429 检测账号[E103LW]主IP是否可用时,检测出主IP[10.200.5.120]不可用，端口:8080
+2018-05-29 18:14:29.430 检测账号[E103LW]主IP是否可用时,主IP[10.200.5.120]不可用,该主IP没有对应的主域名,不通过主域名获取主IP进行检测。
+2018-05-29 18:15:29.766 检测账号[E103LW]主IP是否可用时,检测出主IP[10.200.5.120]不可用，端口:8080
+2018-05-29 18:15:29.767 检测账号[E103LW]主IP是否可用时,主IP[10.200.5.120]不可用,该主IP没有对应的主域名,不通过主域名获取主IP进行检测。
+2018-05-29 18:16:30.076 检测账号[E103LW]主IP是否可用时,检测出主IP[10.200.5.120]不可用，端口:8080
+2018-05-29 18:16:30.077 检测账号[E103LW]主IP是否可用时,主IP[10.200.5.120]不可用,该主IP没有对应的主域名,不通过主域名获取主IP进行检测。
+2018-05-29 18:17:16.302 设置发送账号[E103LW]信息时,通过主域名[api01.monyun.cn]获取到主IP[114.67.62.211],端口:7901
+2018-05-29 18:17:16.471 长连接,使用账号[E103LW]的主IP信息[114.67.62.211:7901]第一次请求网关或者主IP恢复正常，使用主IP请求网关。
+2018-05-29 18:17:30.550 检测账号[E103LW]主IP是否可用时,检测出主IP[10.200.5.120]不可用，端口:8080
+2018-05-29 18:17:30.553 检测账号[E103LW]主IP是否可用时,主IP[10.200.5.120]不可用,该主IP没有对应的主域名,不通过主域名获取主IP进行检测。
+2018-05-29 18:18:28.674 设置发送账号[E103LW]信息时,通过主域名[api01.monyun.cn]获取到主IP[114.67.62.211],端口:7901
+2018-05-29 18:18:28.870 长连接,使用账号[E103LW]的主IP信息[114.67.62.211:7901]第一次请求网关或者主IP恢复正常，使用主IP请求网关。
+2018-05-29 18:18:30.886 检测账号[E103LW]主IP是否可用时,检测出主IP[10.200.5.120]不可用，端口:8080
+2018-05-29 18:18:30.888 检测账号[E103LW]主IP是否可用时,主IP[10.200.5.120]不可用,该主IP没有对应的主域名,不通过主域名获取主IP进行检测。
+2018-05-29 18:18:42.924 设置发送账号[E103LW]信息时,通过主域名[api01.monyun.cn]获取到主IP[114.67.62.211],端口:7901
+2018-05-29 18:18:43.099 长连接,使用账号[E103LW]的主IP信息[114.67.62.211:7901]第一次请求网关或者主IP恢复正常，使用主IP请求网关。
+2018-05-29 18:19:31.161 检测账号[E103LW]主IP是否可用时,检测出主IP[10.200.5.120]不可用，端口:8080
+2018-05-29 18:19:31.163 检测账号[E103LW]主IP是否可用时,主IP[10.200.5.120]不可用,该主IP没有对应的主域名,不通过主域名获取主IP进行检测。
+2018-05-29 18:20:31.457 检测账号[E103LW]主IP是否可用时,检测出主IP[10.200.5.120]不可用，端口:8080
+2018-05-29 18:20:31.459 检测账号[E103LW]主IP是否可用时,主IP[10.200.5.120]不可用,该主IP没有对应的主域名,不通过主域名获取主IP进行检测。
+2018-05-29 18:21:10.792 设置发送账号[E103LW]信息时,通过主域名[api01.monyun.cn]获取到主IP[114.67.62.211],端口:7901
+2018-05-29 18:21:10.971 短连接,指定账号,使用账号[E103LW]的主IP信息[114.67.62.211:7901]第一次请求网关或者主IP恢复正常，使用主IP请求网关。
+2018-05-29 18:21:31.702 检测账号[E103LW]主IP是否可用时,检测出主IP[10.200.5.120]不可用，端口:8080
+2018-05-29 18:21:31.703 检测账号[E103LW]主IP是否可用时,主IP[10.200.5.120]不可用,该主IP没有对应的主域名,不通过主域名获取主IP进行检测。
+2018-05-29 18:22:31.965 检测账号[E103LW]主IP是否可用时,检测出主IP[10.200.5.120]不可用，端口:8080
+2018-05-29 18:22:31.967 检测账号[E103LW]主IP是否可用时,主IP[10.200.5.120]不可用,该主IP没有对应的主域名,不通过主域名获取主IP进行检测。
+2018-05-29 18:23:32.231 检测账号[E103LW]主IP是否可用时,检测出主IP[10.200.5.120]不可用，端口:8080
+2018-05-29 18:23:32.232 检测账号[E103LW]主IP是否可用时,主IP[10.200.5.120]不可用,该主IP没有对应的主域名,不通过主域名获取主IP进行检测。
+2018-05-29 18:24:32.574 检测账号[E103LW]主IP是否可用时,检测出主IP[10.200.5.120]不可用，端口:8080
+2018-05-29 18:24:32.577 检测账号[E103LW]主IP是否可用时,主IP[10.200.5.120]不可用,该主IP没有对应的主域名,不通过主域名获取主IP进行检测。
+2018-05-29 18:25:33.002 检测账号[E103LW]主IP是否可用时,检测出主IP[10.200.5.120]不可用，端口:8080
+2018-05-29 18:25:33.004 检测账号[E103LW]主IP是否可用时,主IP[10.200.5.120]不可用,该主IP没有对应的主域名,不通过主域名获取主IP进行检测。
+2018-05-29 18:26:33.315 检测账号[E103LW]主IP是否可用时,检测出主IP[10.200.5.120]不可用，端口:8080
+2018-05-29 18:26:33.316 检测账号[E103LW]主IP是否可用时,主IP[10.200.5.120]不可用,该主IP没有对应的主域名,不通过主域名获取主IP进行检测。
+2018-05-29 18:27:33.645 检测账号[E103LW]主IP是否可用时,检测出主IP[10.200.5.120]不可用，端口:8080
+2018-05-29 18:27:33.646 检测账号[E103LW]主IP是否可用时,主IP[10.200.5.120]不可用,该主IP没有对应的主域名,不通过主域名获取主IP进行检测。
+2018-05-29 18:28:33.897 检测账号[E103LW]主IP是否可用时,检测出主IP[10.200.5.120]不可用，端口:8080
+2018-05-29 18:28:33.898 检测账号[E103LW]主IP是否可用时,主IP[10.200.5.120]不可用,该主IP没有对应的主域名,不通过主域名获取主IP进行检测。
+2018-05-29 18:29:34.246 检测账号[E103LW]主IP是否可用时,检测出主IP[10.200.5.120]不可用，端口:8080
+2018-05-29 18:29:34.248 检测账号[E103LW]主IP是否可用时,主IP[10.200.5.120]不可用,该主IP没有对应的主域名,不通过主域名获取主IP进行检测。

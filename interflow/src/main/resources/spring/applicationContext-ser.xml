@@ -20,10 +20,11 @@
     </bean>
 
     <!--调度器，每分钟刷新新闻-->
-    <!--<bean id = "schedule" class="pw.lumm.utils.thrift.NewsFresh"></bean>
+    <bean id = "schedule" class="pw.lumm.utils.thrift.NewsFresh"></bean>
     <bean id="SpringQuartzJobMethod" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
         <property name="targetObject">
             <ref bean="schedule"/>
+
         </property>
         <property name="targetMethod">
             <value>getNews</value>
@@ -40,5 +41,5 @@
             </list>
         </property>
 
-    </bean>-->
+    </bean>
 </beans>

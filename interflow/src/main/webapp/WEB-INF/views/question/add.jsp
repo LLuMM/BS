@@ -26,8 +26,7 @@
             <div class="container">
                 <label>标题:</label>
                 <div class="raw">
-
-                    <input type="text" class="form-control" id="title" name="title" placeholder="" style="width: 200px">
+                    <input type="text" class="form-control" id="title" name="title" placeholder="" >
                     <input type="file" id="filecontent" name="filecontent" style=""/>
                 </div>
             </div>
@@ -165,13 +164,9 @@
             contentType: false, //必须
             processData: false, //必须
             success: function (Result) {
-                var dataObj = JSON.parse(Result);
-                if (dataObj.Status) {
-                    alert("发表成功!");
-                    location.reload();
-                } else {
-                    alert("网络异常");
-                }
+                alert("发表成功!");
+                document.getElementById("title").val("")
+                KindEditor.html("#content","");
             },
             error: function (error) {
                 alert(error);

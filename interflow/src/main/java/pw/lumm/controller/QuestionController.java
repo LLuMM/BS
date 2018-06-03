@@ -96,7 +96,7 @@ public class QuestionController extends BaseController {
             FastDFSClient fastDFSClient = new FastDFSClient("classpath:conf/client.conf");
             String path = fastDFSClient.uploadFile(filecontent.getBytes(), extName);
             String filepath = File_SERVER_URL + path;
-            questionService.addQuestion(loginid, fid, title, content, filepath,originalFilename);
+            questionService.addQuestion(loginid, fid, title, content,  filepath,originalFilename);
             response.Status = true;
         } catch (Exception e) {
             response.Status = false;

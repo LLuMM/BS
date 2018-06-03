@@ -28,7 +28,6 @@
                     <br>
                     <c:if test="${userExample.user.sign!=null}"> <pre>${userExample.user.sign}</pre></c:if>
                     <c:if test="${userExample.user.sign==null}"><pre>这个家伙什么都没留下</pre></c:if><br>
-
                 </center>
             </div>
         </div>
@@ -70,8 +69,7 @@
                     <div class="card-header">
                         主页访问量：${userExample.user.visits}<br>
                         加入时间：${userExample.user.joindate}<br>
-                        城市：
-                    </div>
+                        城市：${userExample.user.city}
                 </div>
             </div>
 

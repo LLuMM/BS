@@ -37,10 +37,5 @@
         <bean class="pw.lumm.interceptors.MessageInterceptor">
     </bean>
     </mvc:interceptor>
-
-
     </mvc:interceptors>
-
-
-
 </beans>

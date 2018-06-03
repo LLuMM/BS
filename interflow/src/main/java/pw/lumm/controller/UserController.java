@@ -12,6 +12,7 @@ import pw.lumm.model.*;
 import pw.lumm.service.inf.*;
 import pw.lumm.utils.FastDFSClient;
 import pw.lumm.utils.SendCode;
+import pw.lumm.utils.duanxin.SendUtil;
 
 import javax.servlet.http.*;
 import java.io.IOException;
@@ -67,16 +68,22 @@ public class UserController extends BaseController {
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public void register(User user,HttpServletRequest request,HttpServletResponse out) throws Exception {
+        out.setContentType("text/html; charset=utf-8");
         String code = (String) request.getSession().getAttribute("code");
-        System.out.println("code:"+code);
-        if (!"".equals(user.getVerifycode()) && code.equals(user.getVerifycode())) {
-
-            System.out.println("verifycode:"+user.getVerifycode());
-            userService.register(user);
-            response.Status = true;
-        } else {
+        String verifycode = user.getVerifycode();
+        if(code==null){
+            response.Message = "验证码失效，请重新获取！";
             response.Status = false;
-            response.Message = "验证码有误！";
+        }
+        else if ("".equals(verifycode) || !code.equals(verifycode) || verifycode==null) {
+            response.Message = "验证码有错！";
+            response.Status = false;
+
+        } else {
+            userService.register(user);
+            response.Message = "注册成功，请重新登陆！";
+            response.Status = true;
+            request.getSession().setAttribute("code","");
         }
         out.getWriter().write(gson.toJson(response));
 
@@ -270,8 +277,8 @@ public class UserController extends BaseController {
     @RequestMapping(value = "/sendcode")
     public void sendcode(HttpServletRequest request, HttpServletResponse out,String phone) throws IOException {
         try {
-            String code = SendCode.getThree();
-
+            SendUtil sendUtil = new SendUtil();
+            String code = sendUtil.singleSend(phone);
             request.getSession().setAttribute("code",code);
             System.out.println(code);
             response.Status = true;
