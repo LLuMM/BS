@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>发表文章</title>
+    <title>发表问题</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/kindeditor/themes/default/default.css"/>
     <script charset="utf-8"
             src="${pageContext.request.contextPath}/resources/kindeditor/kindeditor-all-min.js"></script>
@@ -18,11 +18,11 @@
 
     <div class="col-sm-8">
         <form id="uploadForm">
-            <div class="container">
+            <%--<div class="container">
                 当前版块位置：<a href="/question/index?fid=${forum.fid}">${forum.title}></a>
                 <input type="hidden" id="fid" name="fid" value="${forum.fid}">
 
-            </div>
+            </div>--%>
             <div class="container">
                 <label>标题:</label>
                 <div class="raw">
@@ -54,7 +54,7 @@
             $.ajax({
                 type: "post",
                 url: "/question/addQuestion",
-                dataType: "json",
+                dataType: "text",
                 data: {
                     "title": title,
                     "value_content": value_content,
@@ -62,8 +62,8 @@
                     "fid": fid
                 },
                 success: function (Result) {
-                    //var dataObj = JSON.parse(Result);
-                    if (Result.Status) {
+                    var dataObj = JSON.parse(Result);
+                    if (dataObj.Status) {
                         alert("发表成功");
                         //清空kindeditor内容
                         KindEditor.html("#content", "");
@@ -164,14 +164,9 @@
             contentType: false, //必须
             processData: false, //必须
             success: function (Result) {
-                if(Result.Status){
-                    alert("发表成功!");
-                    document.getElementById("title").val("")
-                    KindEditor.html("#content","");
-                }else {
-                    alert("异常");
-                }
-
+                alert("发表成功!");
+                document.getElementById("title").val("")
+                KindEditor.html("#content","");
             },
             error: function (error) {
                 alert(error);

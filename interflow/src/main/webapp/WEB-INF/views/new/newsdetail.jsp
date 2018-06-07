@@ -59,7 +59,7 @@
             <c:if test="${user !=null&&user !=''}">
                 <input type="hidden" id="uid" value="${user.uid}"/>
                 <input type="hidden" id="name" value="${user.username}"/>
-                <input type="hidden" id="nsid" value="${nsNewsExample.nsNews.nsid}"/>
+                <input type="hidden" id="nsid" value="${nsNewsExample.news.nid}"/>
             </c:if>
             <br>
             <button type="button" style="margin-top: 10px"  class="btn btn-outline-primary" id="subutton">立即发表</button>
@@ -119,7 +119,7 @@
                     $.ajax({
                         type: "post",
                         url: "/new/addAnswer",
-                        dataType: "text",
+                        dataType: "json",
                         data: {
                             "uid": uid,
                             "nsid": nsid,
@@ -127,8 +127,8 @@
                             "username": username
                         },
                         success: function (Result) {
-                            var dataObj = JSON.parse(Result);
-                            if (dataObj.Status) {
+                            //var dataObj = JSON.parse(Result);
+                            if (Result.Status) {
                                 alert("发表成功!");
                                 window.location.replace("/new/detail?n_id=" + nsid);
                             } else {
@@ -159,7 +159,7 @@
                     $.ajax({
                         type: "post",
                         url: "/answer/addAnswerToUser",
-                        dataType: "text",
+                        dataType: "json",
                         data: {
                             "qid": qid,
                             "toid": toid,
@@ -168,12 +168,12 @@
                             "type": 0
                         },
                         success: function (Result) {
-                            var dataObj = JSON.parse(Result);
-                            if (dataObj.Status) {
+                            //var dataObj = JSON.parse(Result);
+                            if (Result.Status) {
                                 alert("回复成功!");
                                 location.reload();
                             } else {
-                                alert(dataObj.Message);
+                                alert(Result.Message);
                             }
                         }
                     });

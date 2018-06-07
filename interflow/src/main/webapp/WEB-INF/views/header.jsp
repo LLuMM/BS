@@ -34,7 +34,7 @@
                     <a class="nav-link" href="/question/toemotion?type=2">情感专区</a>&nbsp;&nbsp;&nbsp;
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/question/add">问答</a>&nbsp;&nbsp;&nbsp;
+                    <a class="nav-link" href="/question/toAddquestion">问答</a>&nbsp;&nbsp;&nbsp;
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="tochat" >讨论区</a>
@@ -61,10 +61,7 @@
                 <span data-toggle="modal" data-target="#login" style="color: #ffffff">登陆&nbsp;|&nbsp;</span>
                 <a style="color: #ffffff" href="/user/toregister">注册</a>
             </c:if>
-
-
         </div>
-
     </div>
 </nav>
 
@@ -131,7 +128,7 @@
                         if (dataObj.user == '1') {
                             window.location.href = '/user/toadmin';
                         } else {
-                            location.reload();
+                            location.reload('header.jsp');
                         }
                     } else {
                         $("#error").text("用户名或密码有误！请重新填写！");

@@ -32,14 +32,16 @@
             <div class="card-body">
                 <c:if test="${questionExample!=null}">
                     <h3>${questionExample.question.title}</h3>
-                    <p>作者：${questionExample.question.uname}<br>时间:${questionExample.question.time}
-                        <c:if test="${questionExample.question.filepath!=null}"><br>
+                    <p>作者：${questionExample.question.uname}<br>时间：${questionExample.question.time}
+                        <c:if test="${questionExample.question.filepath!=null&&questionExample.question.filepath!=''}"><br>
                             <a target="_blank"
                                href="${questionExample.question.filepath}">${questionExample.question.filename}</a>
                             <button type="button" value="${questionExample.question.filepath}" onclick="down(this)"  class="btn btn-primary btn-sm">下载
                             </button>
                         </c:if>
                     </p>
+                    <div class="xline "></div>
+                    <br>
                     <span>${questionExample.question.content}</span>
                     <input type="hidden" id="qid" value="${questionExample.question.id}">
                 </c:if>
@@ -62,10 +64,10 @@
                 <img src="${answer.userface}" style="width: 30px;height:30px">
             </c:if>
             <span>
-                <a href="/user/userinfo?uid=${answer.uid}&who=">${answer.username}</a>
+                <a href="/user/touserinfo?uid=${answer.uid}">${answer.username}</a>
             </span><br>
             <c:if test="${answer.answerTo!=null}">
-                <span>@<a href="/user/userinfo?uid=${answer.answerTo}&who=">${answer.answerTo}</a></span>
+                <span>@<a href="/user/touserinfo?uid=${answer.answerTo}">${answer.answerTo}</a></span>
             </c:if>
             <span>${answer.content}</span>&nbsp;<br>
             <input type="hidden" id="un" value="${answer.username}">
@@ -78,8 +80,6 @@
             <div class="xline col-sm-9"></div>
         </c:forEach>
     </c:if>
-
-
 </div>
 <br>
 <div class="container">
@@ -151,7 +151,7 @@
                     $.ajax({
                         type: "post",
                         url: "/answer/addAnswer",
-                        dataType: "text",
+                        dataType: "json",
                         data: {
                             "uid": uid,
                             "id": id,
@@ -160,9 +160,9 @@
                         },
                         success: function (Result) {
 
-                            var dataObj = JSON.parse(Result);
+                            //var dataObj = JSON.parse(Result);
 
-                            if (dataObj.Status) {
+                            if (Result.Status) {
                                 alert("发表成功!");
                                 window.location.replace("/question/detail?id=" + id);
                             } else {
@@ -193,7 +193,7 @@
                     $.ajax({
                         type: "post",
                         url: "/answer/addAnswerToUser",
-                        dataType: "text",
+                        dataType: "json",
                         data: {
                             "qid": qid,
                             "toid": toid,
@@ -203,12 +203,12 @@
 
                         },
                         success: function (Result) {
-                            var dataObj = JSON.parse(Result);
-                            if (dataObj.Status) {
+                           // var dataObj = JSON.parse(Result);
+                            if (Result.Status) {
                                 alert("回复成功!");
                                 location.reload();
                             } else {
-                                alert(dataObj.Message);
+                                alert(Result.Message);
                             }
                         }
                     });
@@ -223,7 +223,7 @@
         $.ajax({
             type: "post",
             url: "/question/downFile",
-            dataType: "text",
+            dataType: "json",
             data: {
                 "filename": filename
             },

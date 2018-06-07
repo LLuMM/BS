@@ -194,6 +194,7 @@ public class QuestionServiceImpl implements QuestionService {
         questionMapper.deleteQuestionById(id);
         ansewerServer.deleteByQid(id);
         searchService.deleteQuestionById(id);
+
     }
 
     @Override

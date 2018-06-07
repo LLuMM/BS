@@ -34,10 +34,10 @@
             <a class="nav-link" data-toggle="tab" href="#menu1">消息中心</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#menu2">公告管理</a>
+            <a class="nav-link" data-toggle="tab" href="#menu3">用户管理</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#menu2">。。。。</a>
+            <a class="nav-link" data-toggle="tab" href="#menu2">公告管理</a>
         </li>
     </ul>
     <!-- Tab panes -->
@@ -54,12 +54,12 @@
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach items="${adminExample.users}" var="us">
+                <c:forEach items="${adminExample.forumUser}" var="us">
                     <tr>
                         <td>${us.username}</td>
                         <td>
                             <c:if test="${adminExample.userForum!=null}">
-                                <c:forEach items='${adminExample.userForum.get("${us.username}")}' var="forum">
+                                <c:forEach items="${adminExample.userForum.get('')}" var="forum">
                                     <a href="/question/index?fid=${forum.fid}">${forum.title}</a>
                                 </c:forEach>
 
@@ -162,6 +162,38 @@
             <textarea id="notice" name="content" style="width:700px;height:200px;"></textarea>
             <button id="commit" class="btn btn-outline-primary">发布</button>
         </div>
+        <div id="menu3" class="container tab-pane"><br>
+            <h3>版主用户</h3>
+            <c:if test="${adminExample!=null}">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>版主</th>
+                        <th>管理板块列表</th>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <c:forEach items="${adminExample.users}" var="us">
+                        <tr>
+                            <td>${us.username}&nbsp;
+                                <c:if test="${us.privilege==1}">(版主)</c:if></td>
+                            <%--<td>
+                                <c:if test="${adminExample.userForum!=null}">
+                                    <c:forEach items="${adminExample.userForum.get(${us.username})}" var="forum">
+                                        <a href="/question/index?fid=${forum.fid}">${forum.title}</a>
+                                    </c:forEach>
+
+                                </c:if>
+
+                            </td>--%>
+                        </tr>
+                    </c:forEach>
+
+                    </tbody>
+                </table>
+            </c:if>
+        </div>
     </div>
 </div>
 
@@ -173,16 +205,17 @@
         $.ajax({
             type: "post",
             url: "/question/setForumStatus",
-            dataType: "text",
+            dataType: "json",
             data: {
                 "id": id,
                 "status": 1
             },
             success: function (Result) {
-                var dataObj = JSON.parse(Result);
-                if (dataObj.Status) {
+                //var dataObj = JSON.parse(Result);
+                if (Result.Status) {
                     alert("审批成功!");
-                    location.reload();
+                    event.setAttribute("disabled", true);
+                    event.setAttribute("class", "btn btn-secondary");
                 } else {
                     $("#error").text("网络异常！");
                 }
@@ -196,14 +229,14 @@
         $.ajax({
             type: "post",
             url: "/question/setForumStatus",
-            dataType: "text",
+            dataType: "json",
             data: {
                 "id": id,
                 "status": 2
             },
             success: function (Result) {
-                var dataObj = JSON.parse(Result);
-                if (dataObj.Status) {
+               // var dataObj = JSON.parse(Result);
+                if (Result.Status) {
                     alert("审批成功!");
                     location.reload();
                 } else {
@@ -223,13 +256,13 @@
             $.ajax({
                 type: "post",
                 url: "/msg/addNotic",
-                dataType: "text",
+                dataType: "json",
                 data: {
                     "notic": notic
                 },
                 success: function (Result) {
-                    var dataObj = JSON.parse(Result);
-                    if (dataObj.Status) {
+                    //var dataObj = JSON.parse(Result);
+                    if (Result.Status) {
                         alert("发布成功!");
                         location.reload();
                     } else {
@@ -247,13 +280,13 @@
                 $.ajax({
                     type: "post",
                     url: "/msg/deleteByStatus",
-                    dataType: "text",
+                    dataType: "json",
                     data: {
                         "id": id
                     },
                     success: function (Result) {
-                        var dataObj = JSON.parse(Result);
-                        if (dataObj.Status) {
+                        //var dataObj = JSON.parse(Result);
+                        if (Result.Status) {
                             alert("删除成功!");
                             location.reload();
                         } else {
@@ -274,13 +307,13 @@
         $.ajax({
             type: "post",
             url: "/msg/deleteNotice",
-            dataType: "text",
+            dataType: "json",
             data: {
                 "id": id
             },
             success: function (Result) {
-                var dataObj = JSON.parse(Result);
-                if (dataObj.Status) {
+               // var dataObj = JSON.parse(Result);
+                if (Result.Status) {
                     alert("删除成功!");
                     location.reload();
                 } else {
@@ -296,13 +329,13 @@
         $.ajax({
             type: "post",
             url: "/msg/deleteMsgById",
-            dataType: "text",
+            dataType: "json",
             data: {
                 "id": id
             },
             success: function (Result) {
-                var dataObj = JSON.parse(Result);
-                if (dataObj.Status) {
+                //var dataObj = JSON.parse(Result);
+                if (Result.Status) {
                     alert("删除成功!");
                     location.reload();
                 } else {

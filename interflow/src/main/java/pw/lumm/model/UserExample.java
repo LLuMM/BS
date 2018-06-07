@@ -9,6 +9,24 @@ public class UserExample {
     private List<Answer> answers;
     private List<Msg> msgs;
     List<Forum> forums;
+    private int who;
+    private boolean isfriend;
+
+    public boolean isIsfriend() {
+        return isfriend;
+    }
+
+    public void setIsfriend(boolean isfriend) {
+        this.isfriend = isfriend;
+    }
+
+    public int getWho() {
+        return who;
+    }
+
+    public void setWho(int who) {
+        this.who = who;
+    }
 
     public List<Forum> getForums() {
         return forums;

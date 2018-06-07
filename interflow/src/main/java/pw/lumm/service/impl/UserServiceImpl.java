@@ -34,20 +34,20 @@ public class UserServiceImpl implements UserService {
     private String MSG_AGREE = "同意了你的请求！";
 
     @Override
-    public String register(User user) throws Exception{
+    public String register(User user) throws Exception {
 
         user.setUid(UUID.randomUUID().toString());
         user.setJoindate(DateUtil.format(new Date()));
 
-            String pwd = MD5.Encode(user.getPassword());
-            user.setPassword(pwd);
-            userMapper.insertUser(user);
-            return "success";
+        String pwd = MD5.Encode(user.getPassword());
+        user.setPassword(pwd);
+        userMapper.insertUser(user);
+        return "success";
 
     }
 
     @Override
-    public User login(String username, String password) throws Exception{
+    public User login(String username, String password) throws Exception {
 
         String pwd = MD5.Encode(password);
         List<User> list = userMapper.getByNameAndPwd(username, pwd);
@@ -56,8 +56,7 @@ public class UserServiceImpl implements UserService {
             user.setLastlogin(DateUtil.format(new Date()));
             userMapper.updateUser(user);
             return list.get(0);
-        }
-        else
+        } else
             return null;
     }
 
@@ -68,7 +67,16 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User getUserById(String id) throws Exception{
+    public List<User> getAllUser() throws Exception {
+        List<User> users =  userMapper.getAllUser();
+        if (users.size()>0&&users!=null){
+            return  users;
+        }
+        return null;
+    }
+
+    @Override
+    public User getUserById(String id) throws Exception {
         User user = userMapper.getUserById(id);
         if (user != null)
             return user;
@@ -99,6 +107,7 @@ public class UserServiceImpl implements UserService {
     public void updateUser(User user) throws Exception {
         userMapper.updateUser(user);
     }
+
     @Override
     public void setFace(String uid, String url) throws Exception {
         userMapper.setface(uid, url);
@@ -137,8 +146,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void friendRequest(String mid, int status) throws Exception  {
-
+    public void friendRequest(String mid, int status) throws Exception {
 
 
         Msg msg1 = messageService.getMessageById(mid);
@@ -171,29 +179,41 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> getFriendsById(String uid) throws Exception{
+    public List<User> getFriendsById(String uid) throws Exception {
         List<User> users = new ArrayList<>();
         List<Friends> friends = userMapper.getFriendsidByUid(uid);
         User user = null;
         if (friends.size() > 0) {
             for (int i = 0; i < friends.size(); i++) {
-                if(uid.equals(friends.get(i).getUserid())){
-                     user = userMapper.getUserById(friends.get(i).getFriendid());
-                }else if(uid.equals(friends.get(i).getFriendid())){
+                if (uid.equals(friends.get(i).getUserid())) {
+                    user = userMapper.getUserById(friends.get(i).getFriendid());
+                } else if (uid.equals(friends.get(i).getFriendid())) {
 
-                     user = userMapper.getUserById(friends.get(i).getUserid());
+                    user = userMapper.getUserById(friends.get(i).getUserid());
                 }
                 users.add(user);
             }
-            ComparatorUser comparator=new ComparatorUser();
+            ComparatorUser comparator = new ComparatorUser();
             Collections.sort(users, comparator);
         }
-        return users;
+        if (users != null && users.size() > 0)
+            return users;
+        else
+            return null;
     }
 
     @Override
-    public void setStatus(String username, int status) throws Exception{
+    public void setStatus(String username, int status) throws Exception {
         userMapper.setStatus(username, status);
+    }
+
+    @Override
+    public Friends checkfriend(String userid, String friendid) {
+        Friends friends = userMapper.checkfriend(userid, friendid);
+        if (friends != null) {
+            return friends;
+        }
+        return null;
     }
 
     @Test

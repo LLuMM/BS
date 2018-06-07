@@ -138,5 +138,6 @@ public class SearchServiceImpl implements SearchService {
 
     public void deleteQuestionById(String id) throws Exception {
         server.deleteById(id);
+        server.commit();
     }
 }

@@ -13,11 +13,11 @@
     <div class="card" >
         <div class="card-footer">
             <center>
-            <p>2018 © <a href="/">lumm.pw</a>社区交流</p>
+            <p>2018 © <a href="/">lumm.pw</a>&nbsp;&nbsp;社区交流</p>
 
             <p>
-                <a href="mailto:yubaolee@163.com">商务合作</a>
-                <a href="#" target="_blank">Git仓库</a>
+
+                <a href="https://github.com/LLuMM/MyProject.git" target="_blank">Git地址</a>
             </p>
             </center>
         </div>

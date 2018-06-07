@@ -5,80 +5,80 @@
     <insert id="addAnswer"  parameterType="pw.lumm.model.Answer" >
         insert into answer
         <trim prefix="(" suffix=")" suffixOverrides="," >
-            <if test="aid != null" >
+            <if test="aid != null and aid !=''" >
                 aid,
             </if>
-            <if test="content != null" >
+            <if test="content != null and content !=''" >
                 content,
             </if>
-            <if test="supportCnt != null" >
+            <if test="supportCnt != null and supportCnt !=''" >
                 supportCnt,
             </if>
-            <if test="opposeCnt != null" >
+            <if test="opposeCnt != null and opposeCnt !=''" >
                 opposeCnt,
             </if>
-            <if test="answerTo != null" >
+            <if test="answerTo != null and answerTo !=''" >
                 answerTo,
             </if>
-            <if test="time != null" >
+            <if test="time != null and time !=''" >
                 time,
             </if>
-            <if test="uid != null" >
+            <if test="uid != null and uid !=''" >
                 uid,
             </if>
-            <if test="accept != null" >
+            <if test="accept != null and accept !=''" >
                 accept,
             </if>
-            <if test="qid != null" >
+            <if test="qid != null and qid !=''" >
                 qid,
             </if>
-            <if test="username != null" >
+            <if test="username != null and username !=''" >
                 username,
             </if>
-            <if test="toid != null" >
+            <if test="toid != null and toid !=''" >
                 toid,
             </if>
-            <if test="questionTitle != null" >
+            <if test="questionTitle != null and questionTitle !=''" >
                 questionTitle,
             </if>
 
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides="," >
-            <if test="aid != null" >
+            <if test="aid != null and aid !=''" >
                 #{aid,jdbcType=VARCHAR},
             </if>
-            <if test="content != null" >
+            <if test="content != null and content !=''" >
                 #{content,jdbcType=VARCHAR},
             </if>
-            <if test="supportCnt != null" >
+            <if test="supportCnt != null and supportCnt !=''" >
                 #{supportCnt,jdbcType=VARCHAR},
             </if>
-            <if test="opposeCnt != null" >
+            <if test="opposeCnt != null and opposeCnt !=''" >
                 #{opposeCnt,jdbcType=VARCHAR},
             </if>
-            <if test="answerTo != null" >
+            <if test="answerTo != null and answerTo !=''" >
                 #{answerTo,jdbcType=VARCHAR},
             </if>
-            <if test="time != null" >
+            <if test="time != null and time !=''" >
                 #{time,jdbcType=TIMESTAMP},
             </if>
-            <if test="uid != null" >
+            <if test="uid != null and uid !=''" >
                 #{uid,jdbcType=VARCHAR},
             </if>
-            <if test="accept != null">
+            <if test="accept != null and accept !=''">
                 #{accept,jdbcType=VARCHAR},
             </if>
-            <if test="qid != null" >
+            <if test="qid != null and qid !=''" >
                 #{qid,jdbcType=VARCHAR},
             </if>
 
-            <if test="username != null" >
+            <if test="username != null and username !=''" >
                 #{username,jdbcType=VARCHAR},
             </if>
-            <if test="toid != null" >
+            <if test="toid != null and toid !=''" >
                 #{toid,jdbcType=VARCHAR},
             </if>
-            <if test="questionTitle != null" >
+            <if test="questionTitle != null and questionTitle !=''" >
                 #{questionTitle,jdbcType=VARCHAR},
             </if>
         </trim>

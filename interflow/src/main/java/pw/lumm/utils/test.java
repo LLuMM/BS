@@ -9,10 +9,11 @@ import java.io.IOException;
 import java.lang.reflect.Array;
 import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
+import java.util.UUID;
 
 public class test {
     public static void main(String[] args) throws IOException, NoSuchAlgorithmException {
-        System.out.println(MD5.Encode("root"));
-        int a[] = new int[10];
+
+        System.out.println(UUID.randomUUID().toString());
     }
 }

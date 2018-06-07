@@ -20,7 +20,7 @@
     <!-- Nav tabs -->
     <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item">
-            <a class="nav-link" href="/user/userinfo?uid=${user.uid}&who=1">个人主页</a>
+            <a class="nav-link" href="/user/userinfo?uid=${user.uid}">个人主页</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="/user/friendchat?uid=${user.uid}&who=1">好友中心</a>
@@ -464,13 +464,13 @@
         $.ajax({
             type: "post",
             url: "/msg/deleteMsgById",
-            dataType: "text",
+            dataType: "json",
             data: {
                 "id": id
             },
             success: function (Result) {
-                var dataObj = JSON.parse(Result);
-                if (dataObj.Status) {
+                //var dataObj = JSON.parse(Result);
+                if (Result.Status) {
                     alert("删除成功!");
                     location.reload();
                 } else {
@@ -486,15 +486,15 @@
         $.ajax({
             type: "post",
             url: "/msg/setMsgStatus",
-            dataType: "text",
+            dataType: "json",
             data: {
                 "id": id
             },
             success: function (Result) {
-                var dataObj = JSON.parse(Result);
-                if (dataObj.Status) {
-                    alert("设置成功!");
-                    location.reload();
+                //var dataObj = JSON.parse(Result);
+                if (Result.Status) {
+                    event.setAttribute("disabled", true);
+                    event.setAttribute("class", "btn btn-secondary");
                 } else {
                     $("#error").text("网络异常！");
                 }
@@ -527,15 +527,15 @@
         $.ajax({
             type: "post",
             url: "/user/friendRequest",
-            dataType: "text",
+            dataType: "json",
             data: {
                 "fromid": fromid,
                 "mid": mid,
                 "status": status
             },
             success: function (Result) {
-                var dataObj = JSON.parse(Result);
-                if (dataObj.Status) {
+                //var dataObj = JSON.parse(Result);
+                if (Result.Status) {
                     event.setAttribute("disabled", true);
                     event.setAttribute("class", "btn btn-secondary");
                 } else {
@@ -553,10 +553,10 @@
             url: "/user/updateUser",//url
             data: $('#form1').serializeArray(),
             contentype: "application/x-www-form-urlencoded",
-            success: function (result) {
-                var dataObj = JSON.parse(Result);
-                if (dataObj.Status) {
-                    alert("修改成功！");
+            success: function (Result) {
+
+                if (Result.Status) {
+                    alert(Result.Message);
                 }
                 else {
                     alert("异常！");

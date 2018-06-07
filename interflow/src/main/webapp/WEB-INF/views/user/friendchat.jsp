@@ -79,7 +79,7 @@
                                                         </c:if>
                                                     </div>
                                                     <div class="col-sm-8">
-                                                        <a href="/user/userinfo?uid=${user.uid}&who=">${user.username}</a>
+                                                        <a href="/user/touserinfo?uid=${user.uid}">${user.username}</a>
                                                         <span style="font-size:10px"><c:if test="${user.status==0}">离线</c:if></span>
                                                         <span style="font-size:10px"><c:if test="${user.status==1}">在线</c:if></span>
                                                         <br>

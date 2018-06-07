@@ -29,7 +29,7 @@ import java.util.Map;
 
 public class UserController extends BaseController {
 
-    private String IMAGE_SERVER_URL="http://192.168.202.200/";
+    private String IMAGE_SERVER_URL = "http://192.168.202.200/";
 
     @Autowired
     UserService userService;
@@ -43,7 +43,7 @@ public class UserController extends BaseController {
     @Autowired
     ForumService forumService;
     private String VC = "123";
-
+    private String adminid = "2abe95d2-fa87-4af0-8e3b-b1ca70b9e7b7";
     @RequestMapping(value = "/toregister")
     public String toRegister() {
         return "register";
@@ -67,15 +67,14 @@ public class UserController extends BaseController {
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public void register(User user,HttpServletRequest request,HttpServletResponse out) throws Exception {
+    public void register(User user, HttpServletRequest request, HttpServletResponse out) throws Exception {
         out.setContentType("text/html; charset=utf-8");
         String code = (String) request.getSession().getAttribute("code");
         String verifycode = user.getVerifycode();
-        if(code==null){
+        if (code == null) {
             response.Message = "验证码失效，请重新获取！";
             response.Status = false;
-        }
-        else if ("".equals(verifycode) || !code.equals(verifycode) || verifycode==null) {
+        } else if ("".equals(verifycode) || !code.equals(verifycode) || verifycode == null) {
             response.Message = "验证码有错！";
             response.Status = false;
 
@@ -83,7 +82,7 @@ public class UserController extends BaseController {
             userService.register(user);
             response.Message = "注册成功，请重新登陆！";
             response.Status = true;
-            request.getSession().setAttribute("code","");
+            request.getSession().setAttribute("code", "");
         }
         out.getWriter().write(gson.toJson(response));
 
@@ -115,14 +114,24 @@ public class UserController extends BaseController {
 
     @RequestMapping(value = "/toadmin")
     public String toadmin(Model model) throws Exception {
-        List<User> users = userService.getAllUserByForum();
-        List<Msg> msgs = messageService.getMessageByUid("2abe95d2-fa87-4af0-8e3b-b1ca70b9e7b7");
-        Map<String,List<Forum>> userForum = new HashMap<>();
+        //获取所有用户
+        List<User> users = userService.getAllUser();
+        //移除管理员用户
+        User admin = userService.getUserById(adminid);
+        users.remove(admin);
+        //获取版主用户
+        List<User> forumusers = userService.getAllUserByForum();
+        //获取管理员信息
+        List<Msg> msgs = messageService.getMessageByUid(adminid);
+        //保存版主管理的版块
+        Map<String, List<Forum>> userForum = new HashMap<>();
         AdminExample adminExample = new AdminExample();
+        adminExample.setForumUser(forumusers);
         adminExample.setUsers(users);
+
         //获取相关用户的管理版块
-        for (int i = 0; i<users.size();i++){
-            userForum.put(users.get(i).getUsername(),forumService.getFourmByUserId(users.get(i).getUid()));
+        for (int i = 0; i < forumusers.size(); i++) {
+            userForum.put(forumusers.get(i).getUsername(), forumService.getFourmByUserId(forumusers.get(i).getUid()));
         }
         adminExample.setUserForum(userForum);
         adminExample.setMsgs(msgs);
@@ -135,25 +144,28 @@ public class UserController extends BaseController {
     @RequestMapping(value = "/loginout")
     public void loginout(HttpServletRequest request, HttpServletResponse out, SessionStatus sessionStatus) throws Exception {
         HttpSession session = request.getSession();
-        User user  = (User) session.getAttribute("user");
+        User user = (User) session.getAttribute("user");
         session.setAttribute("user", "");
         userService.setStatus(user.getUsername(), 0);
         response.Status = true;
         out.getWriter().write(gson.toJson(response));
     }
+
     @RequestMapping(value = "/updateUser")
-    public void updateUser( HttpServletResponse out,User user) throws Exception {
+    public void updateUser(HttpServletResponse out, User user) throws Exception {
+        out.setContentType("text/html; charset=utf-8");
         try {
             userService.updateUser(user);
             response.Status = true;
-        }catch (Exception e){
+            response.Message = "修改成功";
+        } catch (Exception e) {
             response.Status = false;
         }
         out.getWriter().write(gson.toJson(response));
     }
 
     @RequestMapping(value = "/userindex")
-    public String toUserIndex(@RequestParam String uid, Model model) throws Exception{
+    public String toUserIndex(@RequestParam String uid, Model model) throws Exception {
         if ("2abe95d2-fa87-4af0-8e3b-b1ca70b9e7b7".equals(uid)) {
             return "redirect:toadmin";
         }
@@ -195,41 +207,85 @@ public class UserController extends BaseController {
     }
 
     @RequestMapping(value = "/userinfo")
-    public String toUserInfo(@RequestParam String uid, @RequestParam String who, Model model){
+    public String UserInfo(@RequestParam String uid, Model model) {
         User user = null;
         try {
             user = userService.getUserById(uid);
 
-        List<Question> questions = questionService.getQuestionByUserId(uid);
-        List<Answer> answers = ansewerServer.getAnswerByUserId(uid);
-        UserExample userExample = new UserExample();
-        if ("".equals(who)) {
-            int read = user.getVisits();
-            read = ++read;
-            user.setVisits(read);
-            userService.setVisits(read);
-        }
-
-        userExample.setUser(user);
-        userExample.setAnswers(answers);
-        userExample.setQuestions(questions);
-        model.addAttribute("userExample", userExample);
+            List<Question> questions = questionService.getQuestionByUserId(uid);
+            List<Answer> answers = ansewerServer.getAnswerByUserId(uid);
+            UserExample userExample = new UserExample();
+            userExample.setWho(1);
+            userExample.setUser(user);
+            userExample.setAnswers(answers);
+            userExample.setQuestions(questions);
+            model.addAttribute("userExample", userExample);
         } catch (Exception e) {
             e.printStackTrace();
         }
         return "user/info";
     }
 
-    @RequestMapping(value = "/upimg",method=RequestMethod.POST)
-    public String imgUpload(@RequestParam MultipartFile uploadFile, String uid){
+    @RequestMapping(value = "/touserinfo")
+    public String toUserInfo(@RequestParam String uid, Model model, HttpServletRequest request) {
+        User loginUser = null;
+        try {
+            Object obj = request.getSession().getAttribute("user");
+            if (obj != null && obj != "") {
+                loginUser = (User) request.getSession().getAttribute("user");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        User user = null;
+        //进行用户判断如果当前用户与所查看的用户是同一用户
+        try {
+            user = userService.getUserById(uid);
+            if (loginUser!=null&&user.getUid().equals(loginUser.getUid())) {
+                return "redirect:/user/userinfo?uid=" + user.getUid();
+            }
+
+            List<Question> questions = questionService.getQuestionByUserId(uid);
+            List<Answer> answers = ansewerServer.getAnswerByUserId(uid);
+            UserExample userExample = new UserExample();
+            userExample.setWho(0);
+            if (loginUser != null) {
+                Friends friends = userService.checkfriend(uid, loginUser.getUid());
+                if (friends != null) {
+                    userExample.setIsfriend(true);
+                } else
+                    userExample.setIsfriend(false);
+            }
+
+
+            int read = user.getVisits();
+            read = ++read;
+            user.setVisits(read);
+            userService.setVisits(read);
+            userExample.setWho(0);
+
+            userExample.setUser(user);
+            userExample.setAnswers(answers);
+            userExample.setQuestions(questions);
+            model.addAttribute("userExample", userExample);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "user/info";
+    }
+
+
+    @RequestMapping(value = "/upimg", method = RequestMethod.POST)
+    public String imgUpload(@RequestParam MultipartFile uploadFile, String uid) {
         String originalFilename = uploadFile.getOriginalFilename();
         String extName = originalFilename.substring(originalFilename.lastIndexOf(".") + 1);
         try {
             FastDFSClient fastDFSClient = new FastDFSClient("classpath:conf/client.conf");
             String path = fastDFSClient.uploadFile(uploadFile.getBytes(), extName);
             String url = IMAGE_SERVER_URL + path;
-            userService.setFace(uid,url);
-            questionService.setFrompic(uid,url);
+            userService.setFace(uid, url);
+            questionService.setFrompic(uid, url);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -237,49 +293,66 @@ public class UserController extends BaseController {
     }
 
     @RequestMapping(value = "/addfriend")
-    public void addfriend( HttpServletResponse out, String userid, String friendid, String msg) throws Exception {
+    public void addfriend(HttpServletResponse out, String userid, String friendid, String msg) throws Exception {
         out.setContentType("text/html; charset=utf-8");
-            try{
-                userService.addfriend(userid,friendid,msg);
-                response.Status = true;
-                response.Message = "发送成功";
-
-            }catch (Exception e){
-                e.printStackTrace();
-            }
-            out.getWriter().write(gson.toJson(response));
-    }
-
-    @RequestMapping(value = "/friendRequest")
-    public void friendRequest( HttpServletResponse out,String mid, int status) throws IOException {
-        out.setContentType("text/html; charset=utf-8");
-        try{
-            userService.friendRequest(mid,status);
+        try {
+            userService.addfriend(userid, friendid, msg);
             response.Status = true;
             response.Message = "发送成功";
 
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        out.getWriter().write(gson.toJson(response));
+    }
+/*    @RequestMapping(value = "/checkfriend")
+    public void checkfriend( HttpServletResponse out, String userid, String friendid) throws Exception {
+        out.setContentType("text/html; charset=utf-8");
+        try{
+            User user = userService.checkfriend(userid,friendid);
+            if (user!=null){
+                response.Status = false;
+                response.Message = "已是好友关系";
+            }
         }catch (Exception e){
+            e.printStackTrace();
+        }
+        out.getWriter().write(gson.toJson(response));
+    }*/
+
+    @RequestMapping(value = "/friendRequest")
+    public void friendRequest(HttpServletResponse out, String mid, int status) throws IOException {
+        out.setContentType("text/html; charset=utf-8");
+        try {
+            userService.friendRequest(mid, status);
+            response.Status = true;
+            response.Message = "发送成功";
+
+        } catch (Exception e) {
 
         }
         out.getWriter().write(gson.toJson(response));
     }
+
     @RequestMapping(value = "/friendchat")
-    public String  friendchat(String uid, Model model) {
+    public String friendchat(String uid, Model model) {
         List<User> users = null;
         try {
             users = userService.getFriendsById(uid);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
         model.addAttribute("users", users);
         return "user/friendchat";
     }
+
     @RequestMapping(value = "/sendcode")
-    public void sendcode(HttpServletRequest request, HttpServletResponse out,String phone) throws IOException {
+    public void sendcode(HttpServletRequest request, HttpServletResponse out, String phone) throws IOException {
         try {
             SendUtil sendUtil = new SendUtil();
             String code = sendUtil.singleSend(phone);
-            request.getSession().setAttribute("code",code);
+            request.getSession().setAttribute("code", code);
             System.out.println(code);
             response.Status = true;
         } catch (Exception e) {

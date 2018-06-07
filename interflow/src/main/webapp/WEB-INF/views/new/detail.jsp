@@ -40,12 +40,11 @@
             <div class="card-body">
                 <div class="container">
                     <div class="card-body" style="height: 200px;">
-                        dsadasdasd
                     </div>
                 </div>
                 <div class="container">
                     <div class="card-body" style="height: 200px">
-                        aaaaaaaaaaaaaaaaaaaa
+
                     </div>
                 </div>
 
@@ -140,7 +139,7 @@
                     $.ajax({
                         type: "post",
                         url: "/new/addAnswer",
-                        dataType: "text",
+                        dataType: "json",
                         data: {
                             "uid": uid,
                             "nsid": nsid,
@@ -148,8 +147,7 @@
                             "username": username
                         },
                         success: function (Result) {
-                            var dataObj = JSON.parse(Result);
-                            if (dataObj.Status) {
+                            if (Result.Status) {
                                 alert("发表成功!");
                                 window.location.replace("/new/detail?n_id=" + nsid);
                             } else {
@@ -180,7 +178,7 @@
                     $.ajax({
                         type: "post",
                         url: "/answer/addAnswerToUser",
-                        dataType: "text",
+                        dataType: "json",
                         data: {
                             "qid": qid,
                             "toid": toid,
@@ -189,8 +187,7 @@
                             "type": 0
                         },
                         success: function (Result) {
-                            var dataObj = JSON.parse(Result);
-                            if (dataObj.Status) {
+                            if (Result.Status) {
                                 alert("回复成功!");
                                 location.reload();
                             } else {

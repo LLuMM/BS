@@ -1,6 +1,7 @@
 package pw.lumm.service.inf;
 
 import pw.lumm.model.Forum;
+import pw.lumm.model.Friends;
 import pw.lumm.model.User;
 
 import java.io.UnsupportedEncodingException;
@@ -23,6 +24,11 @@ public interface UserService {
     /*获取所有版主用户
     * */
     public List<User> getAllUserByForum() throws Exception;
+
+    /*获取所有用户
+     * */
+    public List<User> getAllUser() throws Exception;
+
 
     /*通过用户id获取用户信息
     * */
@@ -53,4 +59,6 @@ public interface UserService {
     List<User> getFriendsById(String uid) throws Exception ;
 
     void setStatus(String username, int status) throws Exception;
+
+    Friends checkfriend(String userid, String friendid);
 }

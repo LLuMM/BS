@@ -9,11 +9,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
-    <title>热点技术</title>
+    <title>${forumExample.forum.title}</title>
 </head>
 <body>
 <jsp:include page="../header.jsp"/>
-<div class="container" style="margin-top: 100px;height:800px">
+<div class="container" style="margin-top: 100px">
 
     <div class="row">
         <div class="col-sm-2">
@@ -22,11 +22,11 @@
 
         <div class="col-sm-10">
             <mark style="font-size: 20px"> ${forumExample.forum.content}</mark>
-            <mark style="font-size: 20px">版主<a
-                    href="/user/touserinfo?uid=${forumExample.user.uid}">${forumExample.user.username}</a></mark>
+            <mark style="font-size: 20px"> 版主<a href="/user/userinfo?uid=${forumExample.user.uid}&who=">${forumExample.user.username}</a></mark>
         </div>
     </div>
-
+</div>
+<div class="container" style="margin-top: 5px">
     <div class="row">
         <div class="col-sm-8">
             <c:if test="${forumExample.questions != null}">
@@ -41,10 +41,9 @@
                                                 <img src="${question.frompic}" style="width: 50px;height: 50px"/>
                                             </c:if>
 
-                                            <c:if test="${question.frompic==null||question.frompic==''}">
+                                            <c:if test="${question.frompic==null}">
                                                 <img src="../img/user.jpg" style="width: 50px;height: 50px"/>
                                             </c:if>
-
                                         </a>
                                     </div>
                                     <div class="col-sm-10" style="margin-top: 15px">
@@ -89,17 +88,17 @@
 <jsp:include page="../footer.jsp"/>
 <script>
     $(function () {
-        $('[data-toggle="tooltip"]').tooltip();
+
         $("#upquestion").click(function () {
             $.ajax({
                 url: "/question/add",
                 type: "get",
                 async: false,
-                success: function (Result) {  //当请求之后调用。传入返回后的数据，以及包含成功代码的字符串。
+                success : function(Result) {  //当请求之后调用。传入返回后的数据，以及包含成功代码的字符串。
                     window.location.href = "/question/add?id=${forumExample.forum.fid}";
                 },
-                error: function (Result) {
-                    if (Result.status == 600) {
+                error : function(Result) {
+                    if (Result.status==600){
                         alert("您还没登陆，请登录！");
                     }
                 }

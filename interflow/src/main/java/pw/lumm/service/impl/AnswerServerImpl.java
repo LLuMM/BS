@@ -132,20 +132,24 @@ public class AnswerServerImpl implements AnsewerServer {
     public void addAnswerToNews(String uid, String nsid, String content, String username) throws Exception {
         String aid = UUID.randomUUID().toString();
 
-        Date date = new Date();
-        User user = userService.getUserById(uid);
-        String name = user.getUsername();
-        Answer answer = new Answer();
-        NsNews nsNews = newsService.getNewsDetail(nsid);
-        answer.setUid(uid);
-        answer.setContent(content);
-        answer.setTime(DateUtil.format(date));
-        answer.setQid(nsid);
-        answer.setAid(aid);
-        answer.setUsername(name);
+        try {
+            Date date = new Date();
+            User user = userService.getUserById(uid);
+            String name = user.getUsername();
+            Answer answer = new Answer();
+            NsNews nsNews = newsService.getNewsDetail(nsid);
+            answer.setUid(uid);
+            answer.setContent(content);
+            answer.setTime(DateUtil.format(date));
+            answer.setQid(nsid);
+            answer.setAid(aid);
+            answer.setUsername(name);
 
-        answer.setQuestionTitle(nsNews.getTitle());
-        ansewerMapper.addAnswer(answer);
+
+            ansewerMapper.addAnswer(answer);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
 
     }

@@ -15,7 +15,6 @@ import pw.lumm.model.User;
 
 /**
  * websocket的链接建立是基于http握手协议，我们可以添加一个拦截器处理握手之前和握手之后过程
-
  *
  */
 @Component
@@ -47,7 +46,6 @@ public class ChatHandshakeInterceptor implements HandshakeInterceptor{
 		System.out.println("--------------握手开始...");
 		return true;
 	}
-
 	/**
      * 握手之后
      */

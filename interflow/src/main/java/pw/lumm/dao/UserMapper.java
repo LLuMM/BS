@@ -34,4 +34,8 @@ public interface UserMapper {
     List<Friends> getFriendsidByUid(String uid);
 
     void setStatus(String username, int status);
+
+    Friends checkfriend(String userid, String friendid);
+
+    List<User> getAllUser();
 }

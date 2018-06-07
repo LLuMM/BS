@@ -6,6 +6,16 @@ import java.util.Map;
 public class AdminExample {
     List<User> users;
     List<Msg> msgs;
+    List<User> forumUser;
+
+    public List<User> getForumUser() {
+        return forumUser;
+    }
+
+    public void setForumUser(List<User> forumUser) {
+        this.forumUser = forumUser;
+    }
+
     List<Notic> notics;
    Map<String,List<Forum>> userForum;
 

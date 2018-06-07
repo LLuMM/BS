@@ -22,7 +22,7 @@
     <div id="demo" class="collapse" style="margin-top: 6px">
         <div class="row">
             <c:forEach items="${questionExample.forums}" var="forum">
-                <a class="btn btn-outline-info" style="margin-left: 6px;margin-top: 5px" href="/question/index?fid=${forum.fid}">
+                <a class="btn btn-outline-info" style="margin-left: 6px;margin-top: 5px" href="/question/index?fid=${forum.fid}" data-toggle="tooltip" data-placement="top" title="${forum.content}">
                        ${forum.title}
                 </a>
             </c:forEach>
@@ -42,13 +42,15 @@
                             <div class="container">
                                 <div class="row">
                                     <div class="col-sm-2">
+                                        <a class="nav-link" href="/user/touserinfo?uid=${question.userid}">
                                         <c:if test="${ns.frompic!=null}">
                                             <img src="${ns.frompic}" style="width: 60px;height: 60px"/>
                                         </c:if>
 
                                         <c:if test="${ns.frompic==null}">
-                                            <img src="../img/jishu.jpg" style="width: 60px;height: 60px"/>
+                                            <img src="../img/user.jpg" style="width: 60px;height: 60px"/>
                                         </c:if>
+                                        </a>
                                     </div>
                                     <div class="col-sm-10">
                                         <p><a href="/question//detail?id=${ns.id}">${ns.title}</a>&nbsp;<c:if test="${ns.stick==1}"><span style="margin-left: 10px" class="badge badge-pill badge-primary">置顶

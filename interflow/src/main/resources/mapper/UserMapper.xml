@@ -8,9 +8,16 @@
     <select id="getByNameAndPwd"
             resultType="pw.lumm.model.User">SELECT * FROM tb_user WHERE username = #{0} and password = #{1}
 </select>
+    <select id="checkfriend"
+            resultType="pw.lumm.model.Friends">SELECT * FROM friends WHERE (userid = #{0} and friendid = #{1}) or
+          (userid = #{1} and friendid = #{0})
+</select>
 
     <select id="getAllUserByForum" resultType="pw.lumm.model.User">
       SELECT * FROM tb_user WHERE privilege = 1
+    </select>
+    <select id="getAllUser" resultType="pw.lumm.model.User">
+      SELECT * FROM tb_user
     </select>
 
     <select id="getUserById" resultType="pw.lumm.model.User">
@@ -34,34 +41,34 @@
     <update id="updateUser" parameterType="pw.lumm.model.User">
         update tb_user
         <set>
-            <if test="username != null">
+            <if test="username != null and username !=''">
                 username = #{username},
             </if>
-            <if test="password != null">
+            <if test="password != null and password !=''">
                 password = #{password},
             </if>
-            <if test="email != null">
+            <if test="email != null and email !=''">
                 email= #{email},
             </if>
-            <if test="face != null">
+            <if test="face != null and password !=''">
                 face= #{face},
             </if>
-            <if test="privilege != null">
+            <if test="privilege != null and privilege != ''">
                 privilege= #{privilege},
             </if>
-            <if test="lastlogin != null">
+            <if test="lastlogin != null and lastlogin != ''">
                 lastlogin= #{lastlogin},
             </if>
-            <if test="visits != null">
+            <if test="visits != null and visits != ''">
                 visits= #{visits},
             </if>
-            <if test="phone != null">
+            <if test="phone != null and phone != ''">
                 phone= #{phone},
             </if>
-            <if test="sign != null">
+            <if test="sign != null and sign != ''">
                 sign= #{sign},
             </if>
-            <if test="city != null">
+            <if test="city != null and city !=''">
                 city= #{city},
             </if>
         </set>

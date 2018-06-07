@@ -25,10 +25,6 @@ public class NewsController extends BaseController {
 
     @Autowired
     private NewsService newsService;
-
-    @Autowired
-    private QuestionService questionService;
-
     @Autowired
     private AnsewerServer ansewerServer;
     @Autowired

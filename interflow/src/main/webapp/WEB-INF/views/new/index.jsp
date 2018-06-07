@@ -22,7 +22,7 @@
     <div id="demo" class="collapse" style="margin-top: 6px">
         <div class="row">
             <c:forEach items="${newsExample.forums}" var="forum">
-                <a class="btn btn-outline-info" style="margin-left: 6px;margin-top: 5px" href="/question/index?fid=${forum.fid}">
+                <a class="btn btn-outline-info" style="margin-left: 6px;margin-top: 5px" href="/question/index?fid=${forum.fid}" data-toggle="tooltip" data-placement="top" title="${forum.content}">
                        ${forum.title}
                 </a>
             </c:forEach>
@@ -71,6 +71,7 @@
             </div>
         </div>
     </div>
+<%--<c:if test='${newsExample.news.get("new")!= null}'>
     <div class="row" style="margin-top: 10px">
         <div class="mx-auto" style="width:300px">
             <ul class="pagination">
@@ -82,6 +83,7 @@
             </ul>
         </div>
     </div>
+</c:if>--%>
 </div>
 <jsp:include page="../footer.jsp"/>
 </body>

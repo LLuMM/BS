@@ -137,13 +137,13 @@
             $.ajax({
                 type: "post",
                 url: "/user/checkUsername",
-                dataType: "text",
+                dataType: "json",
                 data: {
                     "username": username
                 },
                 success: function (Result) {
-                    var dataObj = JSON.parse(Result);
-                    if (dataObj.Status) {
+                    //var dataObj = JSON.parse(Result);
+                    if (Result.Status) {
                         $("#regerror").text("用户名已存在！");
                     }
                     else {
@@ -228,13 +228,13 @@
                 $.ajax({
                     type: "post",
                     url: "/user/sendcode",
-                    dataType: "text",
+                    dataType: "json",
                     data: {
                         "phone": phone,
                     },
                     success: function (Result) {
-                        var dataObj = JSON.parse(Result);
-                        if (!dataObj.Status) {
+                        //var dataObj = JSON.parse(Result);
+                        if (!Result.Status) {
 
                         }
                         else {

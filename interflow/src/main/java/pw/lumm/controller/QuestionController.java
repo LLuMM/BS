@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 import pw.lumm.model.*;
 import pw.lumm.service.inf.ForumService;
 import pw.lumm.service.inf.QuestionService;
+import pw.lumm.service.inf.SearchService;
 import pw.lumm.service.inf.UserService;
 import pw.lumm.utils.FastDFSClient;
 
@@ -37,6 +38,7 @@ public class QuestionController extends BaseController {
     @Autowired
     private UserService userService;
 
+
     @RequestMapping("/index")
     public String toIndex(@RequestParam String fid, Model model) throws Exception {
         List<Question> questions = questionService.getQuestionByForunmId(fid);
@@ -48,7 +50,10 @@ public class QuestionController extends BaseController {
         forumExample.setQuestions(questions);
         forumExample.setUser(user);
         model.addAttribute("forumExample", forumExample);
-        return "question/index";
+        if(forum.getType()==1){
+            return "question/index";
+        }
+        return "question/emotionlist";
     }
 
 
@@ -57,6 +62,13 @@ public class QuestionController extends BaseController {
         Forum forum = forumService.getFourmById(id);
         model.addAttribute("forum", forum);
         return "question/add";
+    }
+
+    @RequestMapping("/toAddquestion")
+    public String toAddquestion() throws Exception {
+       /* Forum forum = forumService.getFourmById(id);
+        model.addAttribute("forum", forum);*/
+        return "answer/add";
     }
 
 
@@ -88,15 +100,23 @@ public class QuestionController extends BaseController {
         }
         out.getWriter().write(gson.toJson(response));
     }*/
-    @RequestMapping(value = "/addQuestion",method = RequestMethod.POST)
-    public void addQuestion(HttpServletResponse out, String loginid, String fid, String title, String content,MultipartFile filecontent) throws IOException {
-        String originalFilename = filecontent.getOriginalFilename();
-        String extName = originalFilename.substring(originalFilename.lastIndexOf(".") + 1);
+    @RequestMapping(value = "/addQuestion", method = RequestMethod.POST)
+    public void addQuestion(HttpServletResponse out, String loginid, String fid, String title, String content, MultipartFile filecontent) throws IOException {
+        String filepath = "";
+        String originalFilename = "";
         try {
-            FastDFSClient fastDFSClient = new FastDFSClient("classpath:conf/client.conf");
-            String path = fastDFSClient.uploadFile(filecontent.getBytes(), extName);
-            String filepath = File_SERVER_URL + path;
-            questionService.addQuestion(loginid, fid, title, content,  filepath,originalFilename);
+            originalFilename = filecontent.getOriginalFilename();
+            String extName = originalFilename.substring(originalFilename.lastIndexOf(".") + 1);
+            if (extName != null) {
+                FastDFSClient fastDFSClient = new FastDFSClient("classpath:conf/client.conf");
+                String path = fastDFSClient.uploadFile(filecontent.getBytes(), extName);
+                filepath = File_SERVER_URL + path;
+                questionService.addQuestion(loginid, fid, title, content, filepath, originalFilename);
+                response.Status = true;
+            }else {
+
+            }
+            questionService.addQuestion(loginid, fid, title, content, null, null);
             response.Status = true;
         } catch (Exception e) {
             response.Status = false;
@@ -112,6 +132,7 @@ public class QuestionController extends BaseController {
         QuestionExample questionExample = new QuestionExample();
         questionExample.setAnswers(answers);
         questionExample.setQuestion(question);
+
         model.addAttribute("questionExample", questionExample);
         return "question/detail";
     }
@@ -127,7 +148,7 @@ public class QuestionController extends BaseController {
                 questionExample.setQuestions(questions);
             }
         }
-        model.addAttribute("questionExample",questionExample);
+        model.addAttribute("questionExample", questionExample);
         return "question/emotionindex";
     }
 
@@ -187,6 +208,7 @@ public class QuestionController extends BaseController {
         out.setContentType("text/html; charset=utf-8");
         try {
             questionService.deleteByQid(id);
+
             response.Status = true;
         } catch (Exception e) {
             response.Status = false;
@@ -211,6 +233,7 @@ public class QuestionController extends BaseController {
 
 
     }
+
     @RequestMapping(value = "/downFile")
     public void downFile(@RequestParam String filename) {
         try {
@@ -218,8 +241,7 @@ public class QuestionController extends BaseController {
             FastDFSClient fastDFSClient = new FastDFSClient("classpath:conf/client.conf");
             fastDFSClient.downFile(filename);
 
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
