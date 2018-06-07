@@ -17,7 +17,7 @@
 
             <p>
 
-                <a href="https://github.com/LLuMM/MyProject.git" target="_blank">Git地址</a>
+                <a href="https://github.com/LLuMM/BS.git" target="_blank">本系统Git地址</a>
             </p>
             </center>
         </div>

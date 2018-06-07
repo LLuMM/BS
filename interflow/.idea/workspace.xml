@@ -24,11 +24,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="UserController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="UserController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/pw/lumm/controller/UserController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="567">
-              <caret line="125" column="16" lean-forward="true" selection-start-line="125" selection-start-column="16" selection-end-line="125" selection-end-column="16" />
+              <caret line="125" column="16" selection-start-line="125" selection-start-column="16" selection-end-line="125" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="footer.jsp" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/footer.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="93">
+              <caret line="21" column="21" selection-start-line="21" selection-start-column="21" selection-end-line="21" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -37,7 +46,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/user/admin.jsp">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="533">
-              <caret line="152" column="32" lean-forward="true" selection-start-line="152" selection-start-column="32" selection-end-line="152" selection-end-column="32" />
+              <caret line="152" column="32" selection-start-line="152" selection-start-column="32" selection-end-line="152" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -46,7 +55,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/question/index.jsp">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="259">
-              <caret line="55" column="54" lean-forward="true" selection-start-line="55" selection-start-column="54" selection-end-line="55" selection-end-column="54" />
+              <caret line="55" column="54" selection-start-line="55" selection-start-column="54" selection-end-line="55" selection-end-column="54" />
               <folding>
                 <element signature="n#style#0;n#img#1;n#a#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#span#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -59,7 +68,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/user/info.jsp">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="88">
-              <caret line="34" column="83" lean-forward="true" selection-start-line="33" selection-start-column="28" selection-end-line="34" selection-end-column="83" />
+              <caret line="34" column="83" selection-start-line="33" selection-start-column="28" selection-end-line="34" selection-end-column="83" />
             </state>
           </provider>
         </entry>
@@ -164,7 +173,6 @@
         <option value="$PROJECT_DIR$/src/main/java/pw/lumm/dao/UserMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/pw/lumm/service/impl/UserServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/question/detail.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/footer.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/pw/lumm/service/impl/QuestionServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/pw/lumm/service/impl/SearchServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/pw/lumm/controller/QuestionController.java" />
@@ -176,6 +184,7 @@
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/user/admin.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/question/index.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/pw/lumm/controller/UserController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/footer.jsp" />
       </list>
     </option>
   </component>
@@ -812,7 +821,7 @@
       <workItem from="1528195874114" duration="3210000" />
       <workItem from="1528247510966" duration="24045000" />
       <workItem from="1528337707225" duration="3198000" />
-      <workItem from="1528349979812" duration="14627000" />
+      <workItem from="1528349979812" duration="15490000" />
     </task>
     <servers />
   </component>
@@ -849,7 +858,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="577780000" />
+    <option name="totallyTimeSpent" value="578643000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1130,13 +1139,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/footer.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="20" column="16" lean-forward="true" selection-start-line="20" selection-start-column="16" selection-end-line="20" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/answer/add.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="141">
@@ -1256,14 +1258,14 @@
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/user/info.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="88">
-          <caret line="34" column="83" lean-forward="true" selection-start-line="33" selection-start-column="28" selection-end-line="34" selection-end-column="83" />
+          <caret line="34" column="83" selection-start-line="33" selection-start-column="28" selection-end-line="34" selection-end-column="83" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/question/index.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="259">
-          <caret line="55" column="54" lean-forward="true" selection-start-line="55" selection-start-column="54" selection-end-line="55" selection-end-column="54" />
+          <caret line="55" column="54" selection-start-line="55" selection-start-column="54" selection-end-line="55" selection-end-column="54" />
           <folding>
             <element signature="n#style#0;n#img#1;n#a#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#span#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -1274,14 +1276,21 @@
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/user/admin.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="533">
-          <caret line="152" column="32" lean-forward="true" selection-start-line="152" selection-start-column="32" selection-end-line="152" selection-end-column="32" />
+          <caret line="152" column="32" selection-start-line="152" selection-start-column="32" selection-end-line="152" selection-end-column="32" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/pw/lumm/controller/UserController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="567">
-          <caret line="125" column="16" lean-forward="true" selection-start-line="125" selection-start-column="16" selection-end-line="125" selection-end-column="16" />
+          <caret line="125" column="16" selection-start-line="125" selection-start-column="16" selection-end-line="125" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/footer.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="93">
+          <caret line="21" column="21" selection-start-line="21" selection-start-column="21" selection-end-line="21" selection-end-column="21" />
         </state>
       </provider>
     </entry>
