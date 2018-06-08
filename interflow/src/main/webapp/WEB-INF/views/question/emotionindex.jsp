@@ -42,7 +42,7 @@
                             <div class="container">
                                 <div class="row">
                                     <div class="col-sm-2">
-                                        <a class="nav-link" href="/user/touserinfo?uid=${question.userid}">
+                                        <a class="nav-link" href="/user/touserinfo?uid=${ns.userid}">
                                         <c:if test="${ns.frompic!=null}">
                                             <img src="${ns.frompic}" style="width: 60px;height: 60px"/>
                                         </c:if>
@@ -53,7 +53,7 @@
                                         </a>
                                     </div>
                                     <div class="col-sm-10">
-                                        <p><a href="/question//detail?id=${ns.id}">${ns.title}</a>&nbsp;<c:if test="${ns.stick==1}"><span style="margin-left: 10px" class="badge badge-pill badge-primary">置顶
+                                        <p><a href="/question/detail?id=${ns.id}">${ns.title}</a>&nbsp;<c:if test="${ns.stick==1}"><span style="margin-left: 10px" class="badge badge-pill badge-primary">置顶
                                         </span></c:if><c:if test="${ns.status==1}"><span style="margin-left: 10px" class="badge badge-pill badge-danger">精帖
                                         </span></c:if></p>
                                         <span style="font-size: 8px">${ns.uname}&nbsp;&nbsp;${ns.time}</span>&nbsp;&nbsp;<img src="../img/liulan.jpg" style="width: 20px;height: 20px"/>&nbsp;&nbsp;${ns.hits}

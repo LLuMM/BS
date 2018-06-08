@@ -17,7 +17,7 @@
       SELECT * FROM tb_user WHERE privilege = 1
     </select>
     <select id="getAllUser" resultType="pw.lumm.model.User">
-      SELECT * FROM tb_user
+      SELECT * FROM tb_user where privilege != 0
     </select>
 
     <select id="getUserById" resultType="pw.lumm.model.User">

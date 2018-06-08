@@ -38,7 +38,7 @@ public class UserServiceImpl implements UserService {
 
         user.setUid(UUID.randomUUID().toString());
         user.setJoindate(DateUtil.format(new Date()));
-
+        user.setPrivilege(1);
         String pwd = MD5.Encode(user.getPassword());
         user.setPassword(pwd);
         userMapper.insertUser(user);

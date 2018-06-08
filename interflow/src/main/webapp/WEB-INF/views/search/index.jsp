@@ -14,9 +14,11 @@
 <body>
 <jsp:include page="../header.jsp"/>
 <div class="container"  style="margin-top: 100px">
+
     <div class="row">
         <div class="col-sm-8">
             <c:if test='${searchItemExample!= null&&searchItemExample.searchItems.size()>0}'>
+                一共搜索到（${searchItemExample.count}）条记录<br>
                 <c:forEach items='${searchItemExample.searchItems}' var="ns" >
                     <div class="card bg-light text-dark " style="margin-top: 5px">
                         <div class="card-body">

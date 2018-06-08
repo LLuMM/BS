@@ -220,8 +220,6 @@
         modal.find('.modal-title').text('回复 -> ' + name)  //
         //更改将title的text
         modal.find('.modal-body input').val(recipient);
-
-
     });
 
 

@@ -9,5 +9,5 @@ public interface SearchService {
     SearchItemExample search(String keyword) throws Exception ;
     void importQuestion(Question question) throws Exception ;
     void deleteQuestionById(String id) throws Exception ;
-    void deleteAllNews() throws Exception ;
+    void deleteAllNews();
 }

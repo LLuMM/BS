@@ -42,7 +42,6 @@ public class QuestionController extends BaseController {
     @RequestMapping("/index")
     public String toIndex(@RequestParam String fid, Model model) throws Exception {
         List<Question> questions = questionService.getQuestionByForunmId(fid);
-
         Forum forum = forumService.getFourmById(fid);
         User user = userService.getUserById(forum.getUid());
         ForumExample forumExample = new ForumExample();
@@ -107,17 +106,16 @@ public class QuestionController extends BaseController {
         try {
             originalFilename = filecontent.getOriginalFilename();
             String extName = originalFilename.substring(originalFilename.lastIndexOf(".") + 1);
-            if (extName != null) {
+            if (extName != null&&extName!="") {
                 FastDFSClient fastDFSClient = new FastDFSClient("classpath:conf/client.conf");
                 String path = fastDFSClient.uploadFile(filecontent.getBytes(), extName);
                 filepath = File_SERVER_URL + path;
                 questionService.addQuestion(loginid, fid, title, content, filepath, originalFilename);
                 response.Status = true;
             }else {
-
+                questionService.addQuestion(loginid, fid, title, content, null, null);
+                response.Status = true;
             }
-            questionService.addQuestion(loginid, fid, title, content, null, null);
-            response.Status = true;
         } catch (Exception e) {
             response.Status = false;
             response.Message = e.getMessage();
@@ -141,6 +139,7 @@ public class QuestionController extends BaseController {
     public String toemotion(@RequestParam int type, Model model) throws Exception {
         QuestionExample questionExample = new QuestionExample();
         List<Forum> forumList = forumService.getForum(type, 1);
+
         questionExample.setForums(forumList);
         if (forumList != null && forumList.size() > 0) {
             for (int i = 0; i < forumList.size(); i++) {

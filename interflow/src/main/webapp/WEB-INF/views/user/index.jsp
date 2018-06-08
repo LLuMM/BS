@@ -274,8 +274,12 @@
                             <td>${question.time}</td>
                             <td>浏览量：${question.hits}</td>
                             <td>
-                                <button value="${question.id}" onclick="btnClick2(this)">编辑</button>
-                                <button value="${question.id}" onclick="deleteQuestion(this)">删除</button>
+                                <button type="button" class="badge badge-primary" value="${question.id}"
+                                        onclick="btnClick2(this)">编辑
+                                </button>
+                                <button type="button" class="badge badge-danger" value="${question.id}"
+                                        onclick="deleteQuestion(this)">删除
+                                </button>
                             </td>
 
                         </tr>
@@ -304,16 +308,21 @@
                             <td><a href="/question/index?fid=${forum.fid}">${forum.title}</a></td>
                             <td>${forum.content}</td>
                             <td>${forum.time}</td>
-                            <td><button id="deleteforum" type="button"
-                            >删除</button><button id="update" type="button"
-                            >编辑</button></td>
+                            <td>
+                                <button id="update" type="button" class="badge badge-primary"
+                                >编辑
+                                </button>
+                                <button id="deleteforum" type="button" class="badge badge-danger"
+                                >删除
+                                </button>
+                            </td>
                         </tr>
                     </c:forEach>
                     </tbody>
                 </table>
             </c:if>
 
-            <%--模态框--%>
+            <%--版块申请模态框--%>
             <div class="modal fade" id="applymodal">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -333,7 +342,8 @@
                             <h5>版块名：</h5>
                             <p><input type="text" id="ftitle"/></p>
                             <h5>介绍：</h5>
-                            <textarea name="fcontent" id="fcontent" cols="20" rows="10" placeholder="20字内的描述"></textarea><br>
+                            <textarea name="fcontent" id="fcontent" cols="20" rows="10"
+                                      placeholder="20字内的描述"></textarea><br>
                             <button id="apply">申请</button>
 
                         </div>
@@ -564,10 +574,6 @@
             }
         });
     }
-
-
-
 </script>
-
 </body>
 </html>

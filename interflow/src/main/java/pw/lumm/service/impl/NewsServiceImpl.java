@@ -16,18 +16,28 @@ public class NewsServiceImpl implements NewsService {
     NewsMapper newsMapper;
     @Autowired
     SearchService searchService;
+
     @Override
-    public List<News> getHotNews(int type, int limi) throws Exception  {
+    public List<News> getHotNews(int type, int limi) throws Exception {
         List<News> list = newsMapper.getHotNews(type, limi);
 
-        if (list != null && list.size() >0)
+        if (list != null && list.size() > 0)
             return list;
         else
             return null;
     }
 
     @Override
-    public NsNews getNewsDetail(String n_id)  throws Exception {
+    public List<News> getNews(int type, int limi) throws Exception {
+        List<News> newsList = newsMapper.getNews(type, limi);
+        if (newsList != null && newsList.size() > 0)
+            return newsList;
+        else
+            return null;
+    }
+
+    @Override
+    public NsNews getNewsDetail(String n_id) throws Exception {
         NsNews nsNews = newsMapper.getDetil(n_id);
         if (nsNews != null)
             return nsNews;
@@ -36,24 +46,24 @@ public class NewsServiceImpl implements NewsService {
     }
 
     @Override
-    public List<News> getAllNews() throws Exception  {
+    public List<News> getAllNews() throws Exception {
         List<News> newsList = newsMapper.getAllNews();
 
         return newsList;
     }
 
     @Override
-    public News getNewsById(String n_id) throws Exception  {
+    public News getNewsById(String n_id) throws Exception {
         News news = newsMapper.getNewsById(n_id);
-        if (news!=null)
+        if (news != null)
             return news;
         else
             return null;
     }
 
     @Override
-    public void updateRead(String nid,int read) {
-        newsMapper.updateRead(nid,read);
+    public void updateRead(String nid, int read) {
+        newsMapper.updateRead(nid, read);
     }
 
 

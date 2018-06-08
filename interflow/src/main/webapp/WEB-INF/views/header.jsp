@@ -58,7 +58,7 @@
             </c:if>
             <c:if test="${user ==null|| user ==''}">
                 <input type="hidden" id="loginid" value="">
-                <span data-toggle="modal" data-target="#login" style="color: #ffffff">登陆&nbsp;|&nbsp;</span>
+                <span data-toggle="modal" data-target="#login" style="color: #ffffff">登录&nbsp;|&nbsp;</span>
                 <a style="color: #ffffff" href="/user/toregister">注册</a>
             </c:if>
         </div>

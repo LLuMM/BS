@@ -10,4 +10,6 @@ public interface AnsewerMapper {
     List<Answer> getAnswerByUserId(String uid);
     List<Answer> getAnswerByNewId(String n_id);
     void deleteByQid(String id);
+
+    void setFace(String uid, String url);
 }

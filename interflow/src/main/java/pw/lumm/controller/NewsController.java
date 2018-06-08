@@ -34,14 +34,17 @@ public class NewsController extends BaseController {
     @RequestMapping("/index")
     public String toIndex(@RequestParam int type, Model model) throws Exception {
 
+
         NewsExample newsExample = new NewsExample();
         List<Forum> forumList = forumService.getForum(type, 1);
         HashMap<String, List<News>> mapnews = new HashMap<>();
-
-        List<News> newsLists = newsService.getHotNews(type, 10);
+        HashMap<String, List<News>> hotnews = new HashMap<>();
+        List<News> newsLists = newsService.getNews(type, 10);
+        List<News> hotlists = newsService.getHotNews(type,5);
         newsExample.setForums(forumList);
-
+        hotnews.put("hotnew",hotlists);
         mapnews.put("new", newsLists);
+        newsExample.setHotnews(hotnews);
         newsExample.setNews(mapnews);
         model.addAttribute("newsExample", newsExample);
         return "new/index";

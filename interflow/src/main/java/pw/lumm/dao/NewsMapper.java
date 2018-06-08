@@ -15,4 +15,6 @@ public interface NewsMapper {
     News getNewsById(String n_id);
 
     void updateRead(String nid,int read);
+
+    List<News> getNews(int type, int limi);
 }

@@ -34,6 +34,7 @@ public class SearchServiceImpl implements SearchService {
 
         SolrInputDocument document = new SolrInputDocument();
         document.addField("id", question.getId());
+        document.addField("img_url", question.getFrompic());
         document.addField("news_title", question.getTitle());
         document.addField("date", question.getTime());
         document.addField("source", question.getUname());
@@ -122,13 +123,15 @@ public class SearchServiceImpl implements SearchService {
             itemSearchs.add(itemSearch);
         }
         example.setSearchItems(itemSearchs);
+        example.setCount(itemSearchs.size());
         return example;
     }
 
-    public void deleteAllNews() throws Exception {
+    public void deleteAllNews(){
         try {
             server.deleteByQuery("type:0");
             server.deleteByQuery("type:1");
+            server.commit();
         } catch (SolrServerException e) {
             e.printStackTrace();
         } catch (IOException e) {

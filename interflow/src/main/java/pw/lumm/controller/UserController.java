@@ -42,17 +42,17 @@ public class UserController extends BaseController {
 
     @Autowired
     ForumService forumService;
-    private String VC = "123";
     private String adminid = "2abe95d2-fa87-4af0-8e3b-b1ca70b9e7b7";
+
     @RequestMapping(value = "/toregister")
     public String toRegister() {
         return "register";
     }
 
-    /*通过短信接口设置verifycod值*/
+   /* *//*通过短信接口设置verifycod值*//*
     @RequestMapping(value = "/getVerifycode")
     public void getVerifycode() {
-    }
+    }*/
 
     @RequestMapping("/checkUsername")
     public void checkUsername(HttpServletResponse out, String username) throws Exception {
@@ -116,9 +116,7 @@ public class UserController extends BaseController {
     public String toadmin(Model model) throws Exception {
         //获取所有用户
         List<User> users = userService.getAllUser();
-        //移除管理员用户
-        User admin = userService.getUserById(adminid);
-        users.remove(admin);
+
         //获取版主用户
         List<User> forumusers = userService.getAllUserByForum();
         //获取管理员信息
@@ -285,6 +283,7 @@ public class UserController extends BaseController {
             String path = fastDFSClient.uploadFile(uploadFile.getBytes(), extName);
             String url = IMAGE_SERVER_URL + path;
             userService.setFace(uid, url);
+            ansewerServer.setFace(uid,url);
             questionService.setFrompic(uid, url);
         } catch (Exception e) {
             e.printStackTrace();

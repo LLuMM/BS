@@ -38,8 +38,8 @@
                                     data-whatever="${userExample.user.uid}"><span style="font-size: 8px">加好友</span>
                             </button>
                         </c:if>
-                        <button data-toggle="modal" class="btn btn-outline-success" data-target="#sendMsg"
-                                data-whatever="${userExample.user.uid}"><span style="font-size: 8px">关注</span></button>
+                        <button type="button" id="attention" data-toggle="modal" class="btn btn-outline-success"
+                                value="${userExample.user.uid}"><span style="font-size: 8px">关注</span></button>
                         <br>
                         <c:if test="${userExample.user.sign!=null}">
                             <pre>${userExample.user.sign}</pre>
@@ -194,6 +194,38 @@
             var modal = $(this)  //获得模态框本身
             modal.find('.modal-body input').val(recipient)
         });
+        //点击关注
+        $('#attention').click(function () {
+            var id = document.getElementById("loginid").value;
+            if ("" == id) {
+                alert("亲，请登录！");
+                $('#sendMsg').modal('hide');
+            } else {
+                alert("关注成功！");
+                /*var friendid = document.getElementById("friendid").value;
+                var msg = document.getElementById("msg").value;
+                $.ajax({
+                    type: "post",
+                    url: "/user/addfriend",
+                    dataType: "json",
+                    data: {
+                        "userid": id,
+                        "friendid": friendid,
+                        "msg": msg,
+                    },
+                    success: function (Result) {
+                        // var dataObj = JSON.parse(Result);
+                        if (Result.Status) {
+                            alert("发送成功!");
+                            location.reload();
+                        } else {
+                            alert(dataObj.Message);
+                        }
+                    }
+                });*/
+            }
+        });
+
 
         //提交好友验证信息
         $("#send").click(function () {

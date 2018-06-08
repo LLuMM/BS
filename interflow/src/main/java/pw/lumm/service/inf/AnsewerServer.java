@@ -30,4 +30,6 @@ public interface AnsewerServer {
     /*通过文章id删除评论
     * */
     void deleteByQid(String id)  throws Exception ;
+
+    void setFace(String uid, String url);
 }

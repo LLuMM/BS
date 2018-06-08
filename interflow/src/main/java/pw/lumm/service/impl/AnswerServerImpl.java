@@ -167,4 +167,9 @@ public class AnswerServerImpl implements AnsewerServer {
     public void deleteByQid(String id) throws Exception {
         ansewerMapper.deleteByQid(id);
     }
+
+    @Override
+    public void setFace(String uid, String url) {
+        ansewerMapper.setFace(uid, url);
+    }
 }

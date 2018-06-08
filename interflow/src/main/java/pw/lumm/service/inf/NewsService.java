@@ -10,8 +10,12 @@ public interface NewsService {
      /*获取热门信息
      * */
      List<News> getHotNews(int type, int limi) throws Exception ;
+    /*获取部分新闻信息
+     * */
+    List<News> getNews(int type, int limi) throws Exception ;
 
-     /*获取新闻具体信息
+
+    /*获取新闻具体信息
      * */
      NsNews getNewsDetail(String n_id) throws Exception ;
 

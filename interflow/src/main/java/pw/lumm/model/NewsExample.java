@@ -7,6 +7,15 @@ public class NewsExample {
     List<Forum> forums;
     List<Notic> notics;
     HashMap<String,List<News>> news;
+    HashMap<String,List<News>> hotnews;
+
+    public HashMap<String, List<News>> getHotnews() {
+        return hotnews;
+    }
+
+    public void setHotnews(HashMap<String, List<News>> hotnews) {
+        this.hotnews = hotnews;
+    }
 
     public HashMap<String, List<News>> getNews() {
         return news;

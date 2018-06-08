@@ -57,17 +57,17 @@
 <div class="container">
     <c:if test="${questionExample.answers!=null}">
         <c:forEach var="answer" items="${questionExample.answers}">
-            <c:if test="${answer.userface==null}">
+            <c:if test="${answer.userface==null||answer.userface==''}">
                 <img src="../img/user.jpg" style="width: 30px;height: 30px">
             </c:if>
-            <c:if test="${answer.userface!=null}">
+            <c:if test="${answer.userface!=null&&answer.userface!=''}">
                 <img src="${answer.userface}" style="width: 30px;height:30px">
             </c:if>
             <span>
                 <a href="/user/touserinfo?uid=${answer.uid}">${answer.username}</a>
             </span><br>
             <c:if test="${answer.answerTo!=null}">
-                <span>@<a href="/user/touserinfo?uid=${answer.answerTo}">${answer.answerTo}</a></span>
+                <span>@<a href="/user/touserinfo?uid=${answer.toid}">${answer.answerTo}</a></span>
             </c:if>
             <span>${answer.content}</span>&nbsp;<br>
             <input type="hidden" id="un" value="${answer.username}">
